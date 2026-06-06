@@ -22,6 +22,16 @@ Do not replace previous entries. Add the newest entry at the top under `Entries`
 
 ## Entries
 
+### 2026-06-06 - Added GitHub Pages Root Redirect
+
+- Changed: Added a root `index.html` that redirects GitHub Pages visitors from `/HCLA/` to the homepage v4 preview file.
+- Why: GitHub Pages requires an index file at the published root; without it, the repository root URL does not show the homepage preview.
+- Files:
+  - `../index.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Confirm root index points to `04%20-%20Website%20Rebuild/pages/homepage/ghl-homepage-v4-custom-code.html`.
+- Open items: Allow GitHub Pages a minute or two to rebuild after push, then refresh `https://socialtech2400.github.io/HCLA/`.
+
 ### 2026-06-06 - Added Homepage Media Enhancements
 
 - Changed: Added a round Jay/Winnie hero portrait, a responsive Healing Ecosystem image carousel, UN award photo/certificate gallery, founder portraits, calligraphy-style line drawings for the Three Harmonies, and replacement consent-aware proof copy. Converted Winnie's HEIC profile image to a web-safe JPEG for homepage use.
