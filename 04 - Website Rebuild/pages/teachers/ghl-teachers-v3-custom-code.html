@@ -144,6 +144,18 @@
   #hcla-teachers .hcla-card ul { display: grid; gap: 9px; margin: 18px 0 0; padding: 0; list-style: none; }
   #hcla-teachers .hcla-card li { position: relative; padding-left: 18px; }
   #hcla-teachers .hcla-card li::before { content: ""; position: absolute; top: 0.75em; left: 0; width: 8px; height: 1px; background: var(--hcla-gold); }
+  #hcla-teachers .hcla-testimonial-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-teachers .hcla-testimonial-grid-wide { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #hcla-teachers .hcla-testimonial-card { display: flex; flex-direction: column; min-width: 0; min-height: 100%; background: var(--hcla-white); }
+  #hcla-teachers .hcla-testimonial-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(28px,4vw,44px); }
+  #hcla-teachers .hcla-testimonial-media { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: var(--hcla-ivory); color: inherit; text-decoration: none; }
+  #hcla-teachers .hcla-testimonial-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 220ms ease; }
+  #hcla-teachers .hcla-testimonial-media:hover img, #hcla-teachers .hcla-testimonial-media:focus img { transform: scale(1.03); }
+  #hcla-teachers .hcla-testimonial-quote { margin-bottom: 18px; color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: clamp(24px,2.4vw,34px); line-height: 1.18; }
+  #hcla-teachers .hcla-testimonial-body { color: var(--hcla-muted); }
+  #hcla-teachers .hcla-testimonial-person { margin: 0 0 3px; color: var(--hcla-ink); font-weight: 600; }
+  #hcla-teachers .hcla-testimonial-title { margin: 0 0 20px; color: var(--hcla-gold); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  #hcla-teachers .hcla-testimonial-card .hcla-link { margin-top: auto; padding-top: 22px; }
   #hcla-teachers .hcla-profile-card { overflow: hidden; padding: 0; }
   #hcla-teachers .hcla-profile-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(28px,4vw,44px); }
   #hcla-teachers .hcla-profile-photo { overflow: hidden; margin: 0; aspect-ratio: 4 / 5; background: var(--hcla-ivory); }
@@ -196,6 +208,7 @@
 
   @media (max-width: 1040px) {
     #hcla-teachers .hcla-grid-4, #hcla-teachers .hcla-band-inner, #hcla-teachers .hcla-logo-wall { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #hcla-teachers .hcla-testimonial-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
     #hcla-teachers .hcla-editorial { grid-template-columns: 1fr; }
     #hcla-teachers .hcla-media-frame { min-height: 360px; }
   }
@@ -213,7 +226,7 @@
     #hcla-teachers .hcla-hero-content { padding-top: 110px; padding-bottom: 48px; }
     #hcla-teachers .hcla-hero-actions { align-items: flex-start; flex-direction: column; }
     #hcla-teachers .hcla-hero-actions .hcla-button { width: min(100%,260px); }
-    #hcla-teachers .hcla-grid-2, #hcla-teachers .hcla-grid-3, #hcla-teachers .hcla-grid-4, #hcla-teachers .hcla-band-inner, #hcla-teachers .hcla-logo-wall, #hcla-teachers .hcla-footer-grid { grid-template-columns: 1fr; }
+    #hcla-teachers .hcla-grid-2, #hcla-teachers .hcla-grid-3, #hcla-teachers .hcla-grid-4, #hcla-teachers .hcla-testimonial-grid, #hcla-teachers .hcla-band-inner, #hcla-teachers .hcla-logo-wall, #hcla-teachers .hcla-footer-grid { grid-template-columns: 1fr; }
     #hcla-teachers .hcla-footer-links { justify-content: flex-start; }
   }
   @media (max-width: 480px) {
@@ -323,6 +336,18 @@
   (function () {
     var root = document.getElementById('hcla-teachers');
     if (!root) return;
+
+    function hclaPreviewHref(href) {
+      if (!href || href.charAt(0) !== "/" || href.indexOf("//") === 0) return href;
+      if (!/(^|\.)github\.io$/.test(window.location.hostname)) return href;
+      if (href === "/") return "../../";
+      return "../../" + href.replace(/^\/+/, "");
+    }
+
+    Array.prototype.slice.call(root.querySelectorAll('a[href^="/"]')).forEach(function (link) {
+      link.setAttribute("href", hclaPreviewHref(link.getAttribute("href")));
+    });
+
     var heroBg = root.getAttribute('data-ghl-hero-bg');
     if (heroBg && heroBg.indexOf('{{') === -1) {
       root.style.setProperty('--hcla-hero-bg', 'url("' + heroBg + '")');

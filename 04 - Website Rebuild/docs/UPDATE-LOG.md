@@ -22,6 +22,18 @@ Do not replace previous entries. Add the newest entry at the top under `Entries`
 
 ## Entries
 
+### 2026-06-16 - Fixed GitHub Pages Preview Navigation
+
+- Changed: Added GitHub Pages-only link rewriting for internal absolute links in the homepage and generated page script.
+- Why: GitHub Pages serves this repo under `/HCLA/`, while the GHL custom-code pages use production root links such as `/classes`; those root links leave the project path and 404 on the preview site.
+- Files:
+  - `pages/homepage/ghl-homepage-v4-custom-code.html`
+  - `scripts/generate-subpages.js`
+  - generated page files under `pages/`
+  - `docs/UPDATE-LOG.md`
+- Validation: Regenerated generated pages; ran `node --check scripts/generate-subpages.js`; parsed homepage/classes/teachers/testimonials inline scripts; confirmed `git diff --check` passes.
+- Open items: This rewrite is only active on `github.io`; production GHL links remain root-relative.
+
 ### 2026-06-12 - Updated Classes Page Imagery
 
 - Changed: Replaced the class-room media image with `images/generated/hcla-prepared-guided-room.png` and replaced the facilitator founder placeholder with `pages/classes/Dr. Winnie Chan Wang.jpeg`. Added the current classes page green editorial paragraph contrast override to match the generated template.

@@ -350,6 +350,18 @@ function script(id) {
   (function () {
     var root = document.getElementById('${id}');
     if (!root) return;
+
+    function hclaPreviewHref(href) {
+      if (!href || href.charAt(0) !== "/" || href.indexOf("//") === 0) return href;
+      if (!/(^|\\.)github\\.io$/.test(window.location.hostname)) return href;
+      if (href === "/") return "../../";
+      return "../../" + href.replace(/^\\/+/, "");
+    }
+
+    Array.prototype.slice.call(root.querySelectorAll('a[href^="/"]')).forEach(function (link) {
+      link.setAttribute("href", hclaPreviewHref(link.getAttribute("href")));
+    });
+
     var heroBg = root.getAttribute('data-ghl-hero-bg');
     if (heroBg && heroBg.indexOf('{{') === -1) {
       root.style.setProperty('--hcla-hero-bg', 'url("' + heroBg + '")');

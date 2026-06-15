@@ -144,6 +144,26 @@
   #hcla-new-student .hcla-card ul { display: grid; gap: 9px; margin: 18px 0 0; padding: 0; list-style: none; }
   #hcla-new-student .hcla-card li { position: relative; padding-left: 18px; }
   #hcla-new-student .hcla-card li::before { content: ""; position: absolute; top: 0.75em; left: 0; width: 8px; height: 1px; background: var(--hcla-gold); }
+  #hcla-new-student .hcla-testimonial-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-new-student .hcla-testimonial-grid-wide { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #hcla-new-student .hcla-testimonial-card { display: flex; flex-direction: column; min-width: 0; min-height: 100%; background: var(--hcla-white); }
+  #hcla-new-student .hcla-testimonial-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(28px,4vw,44px); }
+  #hcla-new-student .hcla-testimonial-media { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: var(--hcla-ivory); color: inherit; text-decoration: none; }
+  #hcla-new-student .hcla-testimonial-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 220ms ease; }
+  #hcla-new-student .hcla-testimonial-media:hover img, #hcla-new-student .hcla-testimonial-media:focus img { transform: scale(1.03); }
+  #hcla-new-student .hcla-testimonial-quote { margin-bottom: 18px; color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: clamp(24px,2.4vw,34px); line-height: 1.18; }
+  #hcla-new-student .hcla-testimonial-body { color: var(--hcla-muted); }
+  #hcla-new-student .hcla-testimonial-person { margin: 0 0 3px; color: var(--hcla-ink); font-weight: 600; }
+  #hcla-new-student .hcla-testimonial-title { margin: 0 0 20px; color: var(--hcla-gold); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  #hcla-new-student .hcla-testimonial-card .hcla-link { margin-top: auto; padding-top: 22px; }
+  #hcla-new-student .hcla-profile-card { overflow: hidden; padding: 0; }
+  #hcla-new-student .hcla-profile-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(28px,4vw,44px); }
+  #hcla-new-student .hcla-profile-photo { overflow: hidden; margin: 0; aspect-ratio: 4 / 5; background: var(--hcla-ivory); }
+  #hcla-new-student .hcla-profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+  #hcla-new-student .hcla-profile-photo-winnie img, #hcla-new-student .hcla-profile-photo-jay img { object-position: center 42%; }
+  #hcla-new-student .hcla-award-media { margin: 0; overflow: hidden; background: rgba(0,0,0,0.14); }
+  #hcla-new-student .hcla-award-media img { width: 100%; height: clamp(320px,42vw,520px); object-fit: cover; }
+  #hcla-new-student .hcla-award-media figcaption { padding: 14px 16px; color: rgba(255,255,255,0.82); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
   #hcla-new-student .hcla-section-green .hcla-grid-2, #hcla-new-student .hcla-section-green .hcla-grid-3, #hcla-new-student .hcla-section-green .hcla-grid-4 { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.22); }
   #hcla-new-student .hcla-section-green .hcla-card { background: rgba(0,0,0,0.12); }
   #hcla-new-student .hcla-section-green .hcla-card p, #hcla-new-student .hcla-section-green .hcla-card li { color: rgba(255,255,255,0.9); }
@@ -151,6 +171,7 @@
   #hcla-new-student .hcla-price { margin: 2px 0 18px; color: var(--hcla-gold); font-family: var(--hcla-font-headline); font-size: 24px; }
   #hcla-new-student .hcla-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,0.78fr); align-items: center; gap: clamp(36px,6vw,86px); }
   #hcla-new-student .hcla-editorial p { color: var(--hcla-muted); }
+  #hcla-new-student .hcla-section-green .hcla-editorial p { color: rgba(255,255,255,0.92); }
   #hcla-new-student .hcla-media-frame { position: relative; overflow: hidden; min-height: 430px; background: var(--hcla-ivory); }
   #hcla-new-student .hcla-media-frame img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; }
   #hcla-new-student .hcla-band { border-top: 1px solid var(--hcla-border); border-bottom: 1px solid var(--hcla-border); background: var(--hcla-ivory); }
@@ -187,6 +208,7 @@
 
   @media (max-width: 1040px) {
     #hcla-new-student .hcla-grid-4, #hcla-new-student .hcla-band-inner, #hcla-new-student .hcla-logo-wall { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #hcla-new-student .hcla-testimonial-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
     #hcla-new-student .hcla-editorial { grid-template-columns: 1fr; }
     #hcla-new-student .hcla-media-frame { min-height: 360px; }
   }
@@ -204,7 +226,7 @@
     #hcla-new-student .hcla-hero-content { padding-top: 110px; padding-bottom: 48px; }
     #hcla-new-student .hcla-hero-actions { align-items: flex-start; flex-direction: column; }
     #hcla-new-student .hcla-hero-actions .hcla-button { width: min(100%,260px); }
-    #hcla-new-student .hcla-grid-2, #hcla-new-student .hcla-grid-3, #hcla-new-student .hcla-grid-4, #hcla-new-student .hcla-band-inner, #hcla-new-student .hcla-logo-wall, #hcla-new-student .hcla-footer-grid { grid-template-columns: 1fr; }
+    #hcla-new-student .hcla-grid-2, #hcla-new-student .hcla-grid-3, #hcla-new-student .hcla-grid-4, #hcla-new-student .hcla-testimonial-grid, #hcla-new-student .hcla-band-inner, #hcla-new-student .hcla-logo-wall, #hcla-new-student .hcla-footer-grid { grid-template-columns: 1fr; }
     #hcla-new-student .hcla-footer-links { justify-content: flex-start; }
   }
   @media (max-width: 480px) {
@@ -289,6 +311,26 @@
   (function () {
     var root = document.getElementById('hcla-new-student');
     if (!root) return;
+
+    function hclaPreviewHref(href) {
+      if (!href || href.charAt(0) !== "/" || href.indexOf("//") === 0) return href;
+      if (!/(^|\.)github\.io$/.test(window.location.hostname)) return href;
+      if (href === "/") return "../../";
+      return "../../" + href.replace(/^\/+/, "");
+    }
+
+    Array.prototype.slice.call(root.querySelectorAll('a[href^="/"]')).forEach(function (link) {
+      link.setAttribute("href", hclaPreviewHref(link.getAttribute("href")));
+    });
+
+    var heroBg = root.getAttribute('data-ghl-hero-bg');
+    if (heroBg && heroBg.indexOf('{{') === -1) {
+      root.style.setProperty('--hcla-hero-bg', 'url("' + heroBg + '")');
+    }
+    Array.prototype.slice.call(root.querySelectorAll('[data-ghl-src]')).forEach(function (img) {
+      var ghlSrc = img.getAttribute('data-ghl-src');
+      if (ghlSrc && ghlSrc.indexOf('{{') === -1) img.setAttribute('src', ghlSrc);
+    });
     var menuButton = root.querySelector('.hcla-menu-button');
     var navPanel = root.querySelector('#hcla-new-student-nav');
     if (menuButton && navPanel) {

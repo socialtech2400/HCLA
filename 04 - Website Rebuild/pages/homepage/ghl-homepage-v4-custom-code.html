@@ -1884,6 +1884,17 @@
     var root = document.getElementById('hcla-homepage');
     if (!root) return;
 
+    function hclaPreviewHref(href) {
+      if (!href || href.charAt(0) !== "/" || href.indexOf("//") === 0) return href;
+      if (!/(^|\.)github\.io$/.test(window.location.hostname)) return href;
+      if (href === "/") return "../../";
+      return "../../" + href.replace(/^\/+/, "");
+    }
+
+    Array.prototype.slice.call(root.querySelectorAll('a[href^="/"]')).forEach(function (link) {
+      link.setAttribute("href", hclaPreviewHref(link.getAttribute("href")));
+    });
+
     var menuButton = root.querySelector('.hcla-menu-button');
     var navPanel = root.querySelector('#hcla-homepage-nav');
 
@@ -1927,7 +1938,7 @@
 
         if (tierCta) {
           tierCta.textContent = 'Reserve ' + label;
-          tierCta.setAttribute('href', '/find-a-class?tier=' + encodeURIComponent(slug));
+          tierCta.setAttribute('href', hclaPreviewHref('/find-a-class?tier=' + encodeURIComponent(slug)));
         }
 
         if (tierDescription) {
