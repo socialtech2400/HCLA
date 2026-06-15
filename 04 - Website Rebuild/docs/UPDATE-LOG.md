@@ -22,6 +22,126 @@ Do not replace previous entries. Add the newest entry at the top under `Entries`
 
 ## Entries
 
+### 2026-06-12 - Updated Classes Page Imagery
+
+- Changed: Replaced the class-room media image with `images/generated/hcla-prepared-guided-room.png` and replaced the facilitator founder placeholder with `pages/classes/Dr. Winnie Chan Wang.jpeg`. Added the current classes page green editorial paragraph contrast override to match the generated template.
+- Why: The classes page needed approved imagery for the prepared class rhythm section and Dr. Winnie Chan Wang facilitator section.
+- Files:
+  - `scripts/generate-subpages.js`
+  - `pages/classes/ghl-classes-v3-custom-code.html`
+  - `pages/classes/Dr. Winnie Chan Wang.jpeg`
+  - `images/generated/hcla-prepared-guided-room.png`
+  - `docs/UPDATE-LOG.md`
+- Validation: Ran `node --check scripts/generate-subpages.js`; parsed the classes page inline script; verified `images/generated/hcla-prepared-guided-room.png` and `pages/classes/Dr. Winnie Chan Wang.jpeg` exist locally; confirmed the classes page and generator reference both new images.
+- Open items: Preview the classes page in GHL after deployment to confirm image paths resolve in the live media environment.
+
+### 2026-06-12 - Added Old Testimonials to Testimonials Page
+
+- Changed: Replaced the testimonials placeholder section with three video-linked testimonials and four written story testimonials from `testimonials/testimonials-old.md`.
+- Why: The testimonials page had placeholder copy even though prior testimonial content was available in the workspace.
+- Files:
+  - `testimonials/testimonials-old.md`
+  - `scripts/generate-subpages.js`
+  - `pages/testimonials/ghl-testimonials-v3-custom-code.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Ran `node --check scripts/generate-subpages.js`; parsed the testimonials page inline script; confirmed the page has one style block, one script block, seven testimonial cards, three video testimonial cards, four LeadConnector image URLs, all source names, and no remaining placeholder testimonial copy.
+- Open items: Confirm the external YouTube thumbnail and LeadConnector image URLs load correctly in GHL preview.
+
+### 2026-06-12 - Fixed Teachers Green Section Paragraph Contrast
+
+- Changed: Added a stronger green-section editorial paragraph override to the teachers page and the generated page CSS template.
+- Why: The award section uses `.hcla-section-green` and `.hcla-editorial`; the later `.hcla-editorial p` rule was overriding the green-section white paragraph color with muted gray.
+- Files:
+  - `scripts/generate-subpages.js`
+  - `pages/teachers/ghl-teachers-v3-custom-code.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Ran `node --check scripts/generate-subpages.js`; parsed the teachers page inline script; confirmed the green editorial paragraph override exists in both files and appears after the muted `.hcla-editorial p` rule in the teachers page.
+- Open items: Preview the teachers page in GHL after deployment to confirm no platform CSS overrides are reintroducing muted paragraph color.
+
+### 2026-06-12 - Added Homepage Photography to Teachers Page
+
+- Changed: Updated the teachers page hero, award section, and founder profile cards to use the approved homepage images for Jay, Winnie, and the 2026 World Cultural Harmony Award. Added the matching GHL media placeholders so hosted homepage media can replace local preview paths in production.
+- Why: The teachers page needed real photography instead of placeholder/media-free profile sections, while staying aligned with the homepage visual system.
+- Files:
+  - `scripts/generate-subpages.js`
+  - `pages/teachers/ghl-teachers-v3-custom-code.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Ran `node --check scripts/generate-subpages.js`; parsed the teachers page inline script; confirmed the teachers page references the new hero, award, Winnie, and Jay image paths and GHL media placeholders; verified all four homepage image files exist locally.
+- Open items: Preview the teachers page in GHL after deployment to confirm hosted image paths resolve.
+
+### 2026-06-12 - Made Replacement Images Visible And Brightened Green Text
+
+- Changed: Moved `Replace 1.jpeg` into the first visible Healing Ecosystem carousel slide, kept the original first image in the fourth slot, and raised green-section paragraph contrast to brighter white across the generated pages and homepage variants.
+- Why: The replacement carousel image was previously in a later slide and easy to miss, and testimonial green-section copy still looked too dim in local review.
+- Files:
+  - `scripts/generate-subpages.js`
+  - `pages/homepage/ghl-homepage-v4-custom-code.html`
+  - `pages/homepage/ghl-homepage-v3-custom-code.html`
+  - `pages/classes/ghl-classes-v3-custom-code.html`
+  - `pages/teachers/ghl-teachers-v3-custom-code.html`
+  - `pages/conscious-connections/ghl-conscious-connections-v3-custom-code.html`
+  - `pages/heart-center-connection/ghl-heart-center-connection-v3-custom-code.html`
+  - `pages/testimonials/ghl-testimonials-v3-custom-code.html`
+  - `pages/find-a-class/ghl-find-a-class-v3-custom-code.html`
+  - `pages/contact/ghl-contact-v3-custom-code.html`
+  - `pages/new-student/ghl-new-student-v3-custom-code.html`
+  - `pages/faq/ghl-faq-v3-custom-code.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Confirmed the local server is serving the replacement homepage image paths and the testimonial `rgba(255,255,255,0.92)` green-section text rule. Reviewed `qa/screenshots/local-homepage-replacements-visible.png` and `qa/screenshots/local-testimonials-green-fixed.png`.
+- Open items: Only one carousel replacement file was found in the workspace; add another file with `replace` in the name if a second carousel image should also be swapped.
+
+### 2026-06-12 - Fixed Green Section Text Contrast Sitewide
+
+- Changed: Added stronger green-section color overrides for centered/content paragraphs, links, prices, and placeholder boxes in the generated page template; regenerated all non-homepage pages; added matching green-section paragraph overrides to homepage v3 and homepage v4.
+- Why: Some green sections could inherit muted gray text from generic centered/body copy rules, making text too low-contrast on dark green backgrounds.
+- Files:
+  - `scripts/generate-subpages.js`
+  - `pages/homepage/ghl-homepage-v4-custom-code.html`
+  - `pages/homepage/ghl-homepage-v3-custom-code.html`
+  - `pages/classes/ghl-classes-v3-custom-code.html`
+  - `pages/teachers/ghl-teachers-v3-custom-code.html`
+  - `pages/conscious-connections/ghl-conscious-connections-v3-custom-code.html`
+  - `pages/heart-center-connection/ghl-heart-center-connection-v3-custom-code.html`
+  - `pages/testimonials/ghl-testimonials-v3-custom-code.html`
+  - `pages/find-a-class/ghl-find-a-class-v3-custom-code.html`
+  - `pages/contact/ghl-contact-v3-custom-code.html`
+  - `pages/new-student/ghl-new-student-v3-custom-code.html`
+  - `pages/faq/ghl-faq-v3-custom-code.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Re-ran script/style checks across all page HTML files; confirmed each page includes the green centered-copy override. Reviewed representative screenshots: `qa/screenshots/green-homepage.png`, `qa/screenshots/green-testimonials.png`, `qa/screenshots/green-contact.png`, and `qa/screenshots/green-classes.png`.
+- Open items: Re-check in GHL after embed insertion, since native GHL widgets may bring their own text colors.
+
+### 2026-06-12 - Replaced Homepage Carousel And Winnie Images
+
+- Changed: Replaced the fourth Healing Ecosystem carousel image with `Replace 1.jpeg` and replaced Winnie's founder profile image with `Replace Winnie Profile Picture.jpeg`. Adjusted the Winnie portrait object positioning for the new image while preserving the existing 4:5 portrait crop and 16:9 carousel crop behavior.
+- Why: The user marked replacement media for the homepage carousel and Winnie profile picture.
+- Files:
+  - `pages/homepage/ghl-homepage-v4-custom-code.html`
+  - `images/Homepage Images/Healing Ecosystem Carousel/Replace 1.jpeg`
+  - `images/Homepage Images/Winnie Profile Picture/Replace Winnie Profile Picture.jpeg`
+  - `docs/UPDATE-LOG.md`
+- Validation: Ran homepage script/style and local-image path checks. Reviewed `qa/screenshots/homepage-v4-replacements-desktop.png` and `qa/screenshots/homepage-v4-replacements-mobile.png` to confirm the replacement carousel and Winnie portrait crops are consistent on desktop and mobile.
+- Open items: If a second carousel replacement image was intended, add it to the carousel folder with `replace` in the filename and update the matching slide.
+
+### 2026-06-12 - Added Local Preview Routes
+
+- Changed: Added local preview route shims for the homepage and each production-style route so links like `/classes`, `/teachers`, `/find-a-class`, `/faq`, and `/contact` work in the static local server.
+- Why: The GHL custom-code pages use production-style absolute links, but the local preview files live under `pages/`; the route shims let the local server behave more like the live site.
+- Files:
+  - `index.html`
+  - `classes/index.html`
+  - `teachers/index.html`
+  - `conscious-connections/index.html`
+  - `heart-center-connection/index.html`
+  - `testimonials/index.html`
+  - `find-a-class/index.html`
+  - `contact/index.html`
+  - `new-student/index.html`
+  - `faq/index.html`
+  - `docs/UPDATE-LOG.md`
+- Validation: Confirmed each local route returns `200` on the running static server and points to the matching custom-code page file. Captured `qa/screenshots/local-route-classes.png` through `/classes` and confirmed it loads the actual Classes page.
+- Open items: These are preview helpers only; GHL should still use the custom-code page files directly.
+
 ### 2026-06-06 - Added GitHub Pages Root Redirect
 
 - Changed: Added a root `index.html` that redirects GitHub Pages visitors from `/HCLA/` to the homepage v4 preview file.

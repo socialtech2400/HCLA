@@ -1,0 +1,328 @@
+<!-- Heart Center LA | Find a Class | Route: /find-a-class | GHL custom-code block -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Sora:wght@200;300;400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  #hcla-find-a-class {
+    --hcla-ink: #212121;
+    --hcla-navy: #1e2a64;
+    --hcla-deep-green: #395b52;
+    --hcla-gold: #8c7342;
+    --hcla-champagne: #e6dac1;
+    --hcla-ivory: #f2f2ed;
+    --hcla-muted: #757575;
+    --hcla-border: #dddddd;
+    --hcla-bg: #ffffff;
+    --hcla-white: #ffffff;
+    --hcla-wide: 1200px;
+    --hcla-content: 760px;
+    --hcla-page-pad: clamp(20px, 4vw, 56px);
+    --hcla-space-md: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
+    --hcla-space-lg: clamp(2rem, 3.2vw + 1rem, 3rem);
+    --hcla-space-xl: clamp(3.25rem, 4vw + 2rem, 4.5rem);
+    --hcla-space-xxl: clamp(5.25rem, 7.2vw + 3rem, 7.5rem);
+    --hcla-font-headline: Cardo, Palatino, Georgia, serif;
+    --hcla-font-body: "Source Sans 3", Arial, sans-serif;
+    --hcla-hero-bg: url("../../images/generated/hcla-homepage-hero-placeholder.png");
+    color: var(--hcla-ink);
+    background: var(--hcla-bg);
+    font-family: var(--hcla-font-body);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  #hcla-find-a-class, #hcla-find-a-class * { box-sizing: border-box; }
+  #hcla-find-a-class a { color: inherit; }
+  #hcla-find-a-class img { display: block; max-width: 100%; }
+  #hcla-find-a-class h1, #hcla-find-a-class h2, #hcla-find-a-class h3, #hcla-find-a-class p { margin-top: 0; }
+  #hcla-find-a-class h1, #hcla-find-a-class h2, #hcla-find-a-class h3 { font-family: var(--hcla-font-headline); font-weight: 400; line-height: 1.16; overflow-wrap: break-word; }
+  #hcla-find-a-class h1 {
+    max-width: 980px;
+    margin-bottom: 20px;
+    color: var(--hcla-white);
+    font-family: Sora, var(--hcla-font-body);
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 200;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  #hcla-find-a-class h2 { color: var(--hcla-ink); font-size: clamp(34px, 4.5vw, 56px); }
+  #hcla-find-a-class h3 { color: var(--hcla-ink); font-size: clamp(24px, 2.5vw, 34px); }
+
+  #hcla-find-a-class .hcla-wrap { width: min(var(--hcla-wide), calc(100% - (var(--hcla-page-pad) * 2))); margin: 0 auto; }
+  #hcla-find-a-class .hcla-content { width: min(var(--hcla-content), calc(100% - (var(--hcla-page-pad) * 2))); margin: 0 auto; }
+  #hcla-find-a-class .hcla-eyebrow {
+    margin-bottom: 12px;
+    color: var(--hcla-muted);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  #hcla-find-a-class .hcla-hero .hcla-eyebrow { color: rgba(255,255,255,0.86); }
+  #hcla-find-a-class .hcla-button, #hcla-find-a-class .hcla-button:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 11px 22px 9px;
+    border: 1px solid var(--hcla-gold);
+    border-radius: 0;
+    background: var(--hcla-gold);
+    color: var(--hcla-white);
+    font-family: var(--hcla-font-headline);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+  #hcla-find-a-class .hcla-button:hover, #hcla-find-a-class .hcla-button:focus { background: #735d31; border-color: #735d31; }
+  #hcla-find-a-class .hcla-button-secondary, #hcla-find-a-class .hcla-button-secondary:visited { background: transparent; color: var(--hcla-gold); }
+  #hcla-find-a-class .hcla-button-secondary:hover, #hcla-find-a-class .hcla-button-secondary:focus { background: var(--hcla-gold); color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-button-light, #hcla-find-a-class .hcla-button-light:visited { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.94); color: var(--hcla-ink); }
+  #hcla-find-a-class .hcla-button-light:hover, #hcla-find-a-class .hcla-button-light:focus { border-color: var(--hcla-white); background: var(--hcla-white); color: var(--hcla-gold); }
+  #hcla-find-a-class .hcla-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hcla-gold);
+    font-family: var(--hcla-font-headline);
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  #hcla-find-a-class .hcla-link::after { content: ""; width: 36px; height: 1px; background: currentColor; }
+  #hcla-find-a-class .hcla-divider { width: 150px; height: 1px; margin: 22px auto 26px; background: var(--hcla-gold); }
+  #hcla-find-a-class .hcla-divider-left { margin-right: 0; margin-left: 0; }
+
+  #hcla-find-a-class .hcla-site-header { position: absolute; z-index: 10; top: 0; left: 0; width: 100%; color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-header-inner { display: grid; grid-template-columns: minmax(110px,1fr) auto minmax(110px,1fr); align-items: center; gap: 20px; min-height: 82px; padding: 12px 0; }
+  #hcla-find-a-class .hcla-menu-button { display: inline-flex; align-items: center; justify-self: start; gap: 10px; width: auto; min-height: 42px; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font-family: var(--hcla-font-headline); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #hcla-find-a-class .hcla-menu-icon { position: relative; width: 28px; height: 12px; }
+  #hcla-find-a-class .hcla-menu-icon::before, #hcla-find-a-class .hcla-menu-icon::after { content: ""; position: absolute; left: 0; width: 100%; height: 1px; background: currentColor; }
+  #hcla-find-a-class .hcla-menu-icon::before { top: 0; }
+  #hcla-find-a-class .hcla-menu-icon::after { bottom: 0; }
+  #hcla-find-a-class .hcla-brand, #hcla-find-a-class .hcla-brand:visited { justify-self: center; color: inherit; font-family: var(--hcla-font-headline); font-size: clamp(22px,3vw,34px); letter-spacing: 0.18em; line-height: 1; text-align: center; text-decoration: none; text-transform: uppercase; }
+  #hcla-find-a-class .hcla-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
+  #hcla-find-a-class .hcla-header-phone { color: rgba(255,255,255,0.9); font-family: var(--hcla-font-headline); font-size: 15px; letter-spacing: 0.12em; text-decoration: none; white-space: nowrap; }
+  #hcla-find-a-class .hcla-header-actions .hcla-button { min-height: 40px; padding: 9px 16px 7px; font-size: 12px; }
+  #hcla-find-a-class .hcla-nav-panel { position: absolute; top: 82px; left: var(--hcla-page-pad); width: min(360px, calc(100vw - (var(--hcla-page-pad) * 2))); padding: 24px; border: 1px solid rgba(230,218,193,0.72); background: rgba(242,242,237,0.98); box-shadow: 0 12px 30px rgba(33,33,33,0.12); color: var(--hcla-ink); opacity: 0; transform: translateY(-8px); visibility: hidden; transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease; }
+  #hcla-find-a-class .hcla-nav-panel.is-open { opacity: 1; transform: translateY(0); visibility: visible; }
+  #hcla-find-a-class .hcla-nav-panel a { display: block; padding: 12px 0 10px; border-bottom: 1px solid rgba(140,115,66,0.18); color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 17px; letter-spacing: 0.13em; text-decoration: none; text-transform: uppercase; }
+  #hcla-find-a-class .hcla-nav-panel a:hover, #hcla-find-a-class .hcla-nav-panel a:focus { color: var(--hcla-gold); }
+  #hcla-find-a-class .hcla-nav-phone { margin: 20px 0 0; color: var(--hcla-muted); font-size: 15px; }
+
+  #hcla-find-a-class .hcla-hero { position: relative; min-height: clamp(440px, 58vh, 640px); overflow: hidden; color: var(--hcla-white); background: #1d1b17; }
+  #hcla-find-a-class .hcla-hero::before { content: ""; position: absolute; inset: 0; background-image: var(--hcla-hero-bg); background-position: center; background-size: cover; opacity: 0.62; }
+  #hcla-find-a-class .hcla-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.52), rgba(0,0,0,0.32) 42%, rgba(0,0,0,0.56)); }
+  #hcla-find-a-class .hcla-hero-content { position: relative; z-index: 2; display: flex; min-height: clamp(440px, 58vh, 640px); align-items: flex-end; padding: 132px 0 var(--hcla-space-xl); }
+  #hcla-find-a-class .hcla-hero-copy { width: min(920px, 100%); }
+  #hcla-find-a-class .hcla-hero-copy p:not(.hcla-eyebrow) { max-width: 680px; margin-bottom: 28px; color: rgba(255,255,255,0.92); font-size: clamp(19px,2vw,24px); }
+  #hcla-find-a-class .hcla-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  #hcla-find-a-class .hcla-section { padding: var(--hcla-space-xxl) 0; }
+  #hcla-find-a-class .hcla-section-soft { background: var(--hcla-ivory); }
+  #hcla-find-a-class .hcla-section-green { background: var(--hcla-deep-green); color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-section-green h2, #hcla-find-a-class .hcla-section-green h3, #hcla-find-a-class .hcla-section-green .hcla-eyebrow { color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-section-green p, #hcla-find-a-class .hcla-section-green li { color: rgba(255,255,255,0.92); }
+  #hcla-find-a-class .hcla-section-green .hcla-centered p { color: rgba(255,255,255,0.92); }
+  #hcla-find-a-class .hcla-centered { text-align: center; }
+  #hcla-find-a-class .hcla-centered p { max-width: 760px; margin-right: auto; margin-left: auto; color: var(--hcla-muted); font-size: 20px; }
+  #hcla-find-a-class .hcla-section-green .hcla-centered p, #hcla-find-a-class .hcla-section-green .hcla-content p { color: rgba(255,255,255,0.92); }
+  #hcla-find-a-class .hcla-section-green .hcla-link, #hcla-find-a-class .hcla-section-green .hcla-price { color: var(--hcla-champagne); }
+  #hcla-find-a-class .hcla-grid-2, #hcla-find-a-class .hcla-grid-3, #hcla-find-a-class .hcla-grid-4 { display: grid; gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-find-a-class .hcla-grid-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #hcla-find-a-class .hcla-grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #hcla-find-a-class .hcla-grid-4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  #hcla-find-a-class .hcla-card { display: flex; flex-direction: column; padding: clamp(28px,4vw,44px); background: var(--hcla-white); }
+  #hcla-find-a-class .hcla-card p, #hcla-find-a-class .hcla-card li { color: var(--hcla-muted); }
+  #hcla-find-a-class .hcla-card ul { display: grid; gap: 9px; margin: 18px 0 0; padding: 0; list-style: none; }
+  #hcla-find-a-class .hcla-card li { position: relative; padding-left: 18px; }
+  #hcla-find-a-class .hcla-card li::before { content: ""; position: absolute; top: 0.75em; left: 0; width: 8px; height: 1px; background: var(--hcla-gold); }
+  #hcla-find-a-class .hcla-section-green .hcla-grid-2, #hcla-find-a-class .hcla-section-green .hcla-grid-3, #hcla-find-a-class .hcla-section-green .hcla-grid-4 { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.22); }
+  #hcla-find-a-class .hcla-section-green .hcla-card { background: rgba(0,0,0,0.12); }
+  #hcla-find-a-class .hcla-section-green .hcla-card p, #hcla-find-a-class .hcla-section-green .hcla-card li { color: rgba(255,255,255,0.9); }
+  #hcla-find-a-class .hcla-section-green .hcla-card li::before { background: var(--hcla-champagne); }
+  #hcla-find-a-class .hcla-price { margin: 2px 0 18px; color: var(--hcla-gold); font-family: var(--hcla-font-headline); font-size: 24px; }
+  #hcla-find-a-class .hcla-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,0.78fr); align-items: center; gap: clamp(36px,6vw,86px); }
+  #hcla-find-a-class .hcla-editorial p { color: var(--hcla-muted); }
+  #hcla-find-a-class .hcla-media-frame { position: relative; overflow: hidden; min-height: 430px; background: var(--hcla-ivory); }
+  #hcla-find-a-class .hcla-media-frame img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; }
+  #hcla-find-a-class .hcla-band { border-top: 1px solid var(--hcla-border); border-bottom: 1px solid var(--hcla-border); background: var(--hcla-ivory); }
+  #hcla-find-a-class .hcla-band-inner { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: var(--hcla-border); }
+  #hcla-find-a-class .hcla-band-item { min-height: 112px; padding: 24px; background: var(--hcla-ivory); }
+  #hcla-find-a-class .hcla-band-item strong { display: block; color: var(--hcla-gold); font-family: var(--hcla-font-headline); font-size: 22px; font-weight: 400; }
+  #hcla-find-a-class .hcla-band-item span { display: block; margin-top: 6px; color: var(--hcla-muted); font-size: 15px; }
+  #hcla-find-a-class .hcla-placeholder { padding: clamp(28px,4vw,44px); border: 1px dashed rgba(140,115,66,0.52); background: rgba(255,255,255,0.58); color: var(--hcla-muted); }
+  #hcla-find-a-class .hcla-placeholder strong { display: block; color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 24px; font-weight: 400; }
+  #hcla-find-a-class .hcla-section-green .hcla-placeholder { border-color: rgba(230,218,193,0.52); background: rgba(0,0,0,0.14); color: rgba(255,255,255,0.9); }
+  #hcla-find-a-class .hcla-section-green .hcla-placeholder strong { color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-accordion { display: grid; gap: 12px; margin-top: var(--hcla-space-lg); }
+  #hcla-find-a-class .hcla-accordion-item { border: 1px solid var(--hcla-border); background: var(--hcla-white); }
+  #hcla-find-a-class .hcla-accordion-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 64px; padding: 18px 22px; border: 0; background: transparent; color: var(--hcla-ink); cursor: pointer; font-family: var(--hcla-font-headline); font-size: 22px; text-align: left; }
+  #hcla-find-a-class .hcla-accordion-button::after { content: "+"; color: var(--hcla-gold); font-family: var(--hcla-font-body); }
+  #hcla-find-a-class .hcla-accordion-button[aria-expanded="true"]::after { content: "-"; }
+  #hcla-find-a-class .hcla-accordion-panel { display: none; padding: 0 22px 22px; color: var(--hcla-muted); }
+  #hcla-find-a-class .hcla-accordion-panel.is-open { display: block; }
+  #hcla-find-a-class .hcla-logo-wall { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-find-a-class .hcla-logo-item { display: grid; place-items: center; min-height: 112px; padding: 22px; background: var(--hcla-white); }
+  #hcla-find-a-class .hcla-logo-item img { max-width: 155px; max-height: 58px; object-fit: contain; filter: grayscale(1); opacity: 0.78; }
+  #hcla-find-a-class .hcla-final-cta { position: relative; overflow: hidden; background: #1b1b18; color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-final-cta::before { content: ""; position: absolute; inset: 0; background-image: url("../../images/generated/hcla-homepage-class-detail-placeholder.png"); background-position: center; background-size: cover; opacity: 0.22; }
+  #hcla-find-a-class .hcla-final-cta::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.52); }
+  #hcla-find-a-class .hcla-final-cta .hcla-wrap { position: relative; z-index: 2; }
+  #hcla-find-a-class .hcla-final-cta h2 { color: var(--hcla-white); }
+  #hcla-find-a-class .hcla-final-cta p { color: rgba(255,255,255,0.82); }
+  #hcla-find-a-class .hcla-site-footer { padding: 44px 0; background: var(--hcla-ivory); color: var(--hcla-muted); font-size: 15px; }
+  #hcla-find-a-class .hcla-footer-grid { display: grid; grid-template-columns: minmax(220px,0.8fr) minmax(0,1.2fr); gap: 30px; }
+  #hcla-find-a-class .hcla-footer-brand { color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #hcla-find-a-class .hcla-footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px 20px; }
+  #hcla-find-a-class .hcla-footer-links a { color: var(--hcla-muted); text-decoration-color: rgba(140,115,66,0.42); text-underline-offset: 3px; }
+  #hcla-find-a-class .hcla-footer-copy { grid-column: 1 / -1; margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--hcla-border); font-size: 13px; }
+
+  @media (max-width: 1040px) {
+    #hcla-find-a-class .hcla-grid-4, #hcla-find-a-class .hcla-band-inner, #hcla-find-a-class .hcla-logo-wall { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #hcla-find-a-class .hcla-editorial { grid-template-columns: 1fr; }
+    #hcla-find-a-class .hcla-media-frame { min-height: 360px; }
+  }
+  @media (max-width: 780px) {
+    #hcla-find-a-class { font-size: 17px; }
+    #hcla-find-a-class h1 { max-width: 10.5ch; font-size: clamp(34px,8.8vw,44px); }
+    #hcla-find-a-class h2 { font-size: clamp(30px,8vw,38px); }
+    #hcla-find-a-class h3 { font-size: clamp(23px,6.6vw,30px); }
+    #hcla-find-a-class .hcla-centered p { max-width: 32ch; font-size: 18px; }
+    #hcla-find-a-class .hcla-header-inner { grid-template-columns: auto 1fr; min-height: 72px; gap: 12px; }
+    #hcla-find-a-class .hcla-brand { font-size: 20px; letter-spacing: 0.1em; }
+    #hcla-find-a-class .hcla-header-actions, #hcla-find-a-class .hcla-menu-button span:last-child { display: none; }
+    #hcla-find-a-class .hcla-nav-panel { top: 72px; }
+    #hcla-find-a-class .hcla-hero, #hcla-find-a-class .hcla-hero-content { min-height: 540px; }
+    #hcla-find-a-class .hcla-hero-content { padding-top: 110px; padding-bottom: 48px; }
+    #hcla-find-a-class .hcla-hero-actions { align-items: flex-start; flex-direction: column; }
+    #hcla-find-a-class .hcla-hero-actions .hcla-button { width: min(100%,260px); }
+    #hcla-find-a-class .hcla-grid-2, #hcla-find-a-class .hcla-grid-3, #hcla-find-a-class .hcla-grid-4, #hcla-find-a-class .hcla-band-inner, #hcla-find-a-class .hcla-logo-wall, #hcla-find-a-class .hcla-footer-grid { grid-template-columns: 1fr; }
+    #hcla-find-a-class .hcla-footer-links { justify-content: flex-start; }
+  }
+  @media (max-width: 480px) {
+    #hcla-find-a-class { --hcla-page-pad: 18px; }
+    #hcla-find-a-class .hcla-brand { display: block; max-width: 150px; font-size: 16px; letter-spacing: 0.08em; line-height: 1.1; }
+    #hcla-find-a-class .hcla-hero-copy p:not(.hcla-eyebrow) { max-width: 32ch; }
+  }
+</style>
+
+<section id="hcla-find-a-class" class="hcla-page hcla-find-a-class" data-hcla-page="find-a-class">
+  <header class="hcla-site-header" aria-label="Heart Center LA site header">
+    <div class="hcla-wrap hcla-header-inner">
+      <button class="hcla-menu-button" type="button" aria-expanded="false" aria-controls="hcla-find-a-class-nav">
+        <span class="hcla-menu-icon" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+      <a class="hcla-brand" href="/" aria-label="Heart Center LA homepage">Heart Center LA</a>
+      <div class="hcla-header-actions">
+        <a class="hcla-header-phone" href="tel:+12138561293">(213) 856-1293</a>
+        <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
+      </div>
+    </div>
+    <nav id="hcla-find-a-class-nav" class="hcla-nav-panel" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/new-student">New Student</a>
+      <a href="/classes">Classes</a>
+      <a href="/teachers">Teachers</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact">Contact</a>
+      <p class="hcla-nav-phone">heartcenterla1@gmail.com<br>(213) 856-1293</p>
+    </nav>
+  </header>
+  <main>
+    <section class="hcla-hero" aria-label="Reserve the level of support you need today">
+      <div class="hcla-wrap hcla-hero-content">
+        <div class="hcla-hero-copy">
+          <p class="hcla-eyebrow">Book a class</p>
+          <h1>Reserve the level of support you need today</h1>
+          <p>Choose a tier, find a time, and let the practice show you what comes next.</p>
+          <div class="hcla-hero-actions">
+            <a class="hcla-button hcla-button-light" href="#class-calendar">View Calendar</a>
+            <a class="hcla-button hcla-button-secondary" href="/new-student">New Student</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hcla-section" aria-labelledby="booking-tiers"><div class="hcla-wrap"><div class="hcla-centered"><p class="hcla-eyebrow">Choose first</p><h2 id="booking-tiers">Four class levels</h2><div class="hcla-divider"></div><p>If you are new, Refresh or Reset is usually the easiest doorway.</p></div>
+        <div class="hcla-grid-4">
+          <article class="hcla-card"><h3>Refresh</h3><div class="hcla-price">$35</div><p>A light renewal for when you are still functional, but tired.</p><ul><li>Energy lifts</li><li>Mental clarity improves</li><li>Emotional load lightens</li></ul><p><a class="hcla-button hcla-button-secondary" href="/find-a-class?tier=refresh">Start with Refresh</a></p></article>
+          <article class="hcla-card"><h3>Reset</h3><div class="hcla-price">$84</div><p>A conscious interruption of a pattern so you can clear and re-orient.</p><ul><li>Habits are interrupted</li><li>Focus returns</li><li>Nervous system state shifts</li></ul><p><a class="hcla-button hcla-button-secondary" href="/find-a-class?tier=reset">Book Reset</a></p></article>
+          <article class="hcla-card"><h3>Restore</h3><div class="hcla-price">$196</div><p>Repair for something that has been depleted, damaged, or worn down.</p><ul><li>Capacity rebuilds</li><li>Stability returns</li><li>Longer-held stress is addressed</li></ul><p><a class="hcla-button hcla-button-secondary" href="/find-a-class?tier=restore">Begin Restore</a></p></article>
+          <article class="hcla-card"><h3>Revitalize</h3><div class="hcla-price">$238/mo</div><p>A full month of classes for the kind of renewal that changes how you see yourself.</p><ul><li>Identity shifts</li><li>Purpose becomes clearer</li><li>New vitality has room to emerge</li></ul><p><a class="hcla-button hcla-button-secondary" href="/find-a-class?tier=revitalize">Start Revitalize</a></p></article>
+        </div></div></section>
+    <section id="class-calendar" class="hcla-section hcla-section-soft" aria-labelledby="calendar"><div class="hcla-wrap hcla-editorial"><div><p class="hcla-eyebrow">Calendar</p><h2 id="calendar">Select your class time</h2><div class="hcla-divider hcla-divider-left"></div><p>Paste the GHL calendar embed here or place a native GHL calendar element directly below this custom-code section and anchor it as <strong>class-calendar</strong>.</p><p>Classes are based in Pasadena, CA. Confirm timezone and location in the GHL calendar settings before launch.</p></div><div class="hcla-placeholder"><strong>Class calendar embed</strong><p>{{HCLA_CLASS_CALENDAR_EMBED}}</p></div></div></section>
+    <section class="hcla-section hcla-section-green" aria-labelledby="manual-help"><div class="hcla-wrap hcla-content hcla-centered"><p class="hcla-eyebrow">Need help choosing?</p><h2 id="manual-help">Start with the doorway, not the whole journey</h2><div class="hcla-divider"></div><p>Email heartcenterla1@gmail.com or call (213) 856-1293 if the calendar is not enough context.</p><a class="hcla-button hcla-button-light" href="/contact">Contact Us</a></div></section>
+    <section class="hcla-section hcla-final-cta" aria-labelledby="hcla-final-title">
+      <div class="hcla-wrap">
+        <div class="hcla-content hcla-centered">
+          <p class="hcla-eyebrow">Begin here</p>
+          <h2 id="hcla-final-title">Reserve a class and give the pattern a place to move</h2>
+          <div class="hcla-divider"></div>
+          <p>Choose the class tier that matches your capacity today. If you are new, start with Refresh or Reset and let the practice show you what comes next.</p>
+          <div class="hcla-hero-actions" style="justify-content:center;">
+            <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
+            <a class="hcla-button hcla-button-secondary" href="/new-student">New Student</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="hcla-site-footer">
+    <div class="hcla-wrap hcla-footer-grid">
+      <div>
+        <div class="hcla-footer-brand">Heart Center LA</div>
+        <p>heartcenterla1@gmail.com<br>(213) 856-1293<br>2801 E. Foothill Blvd., Pasadena CA 91107</p>
+      </div>
+      <nav class="hcla-footer-links" aria-label="Footer navigation">
+        <a href="/">Home</a><a href="/new-student">New Student</a><a href="/classes">Classes</a><a href="/teachers">Teachers</a><a href="/testimonials">Testimonials</a><a href="/faq">FAQ</a><a href="/contact">Contact</a>
+      </nav>
+      <p class="hcla-footer-copy">&copy; 2026 Heart Center LA. All rights reserved.</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('hcla-find-a-class');
+    if (!root) return;
+    var menuButton = root.querySelector('.hcla-menu-button');
+    var navPanel = root.querySelector('#hcla-find-a-class-nav');
+    if (menuButton && navPanel) {
+      menuButton.addEventListener('click', function () {
+        var expanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!expanded));
+        navPanel.classList.toggle('is-open', !expanded);
+      });
+      navPanel.addEventListener('click', function (event) {
+        if (event.target && event.target.tagName === 'A') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          navPanel.classList.remove('is-open');
+        }
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          navPanel.classList.remove('is-open');
+        }
+      });
+    }
+    Array.prototype.slice.call(root.querySelectorAll('.hcla-accordion-button')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        var panel = button.nextElementSibling;
+        button.setAttribute('aria-expanded', String(!expanded));
+        if (panel) panel.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>

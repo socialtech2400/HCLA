@@ -1,0 +1,104 @@
+<!--
+Heart Center LA | Page Shell Template
+Copy this into a page file, replace PAGE_SLUG/PAGE_TITLE, then keep all CSS and JS self-contained.
+-->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  #hcla-PAGE_SLUG {
+    --hcla-ink: #212121;
+    --hcla-navy: #1e2a64;
+    --hcla-deep-green: #395b52;
+    --hcla-green: #88987d;
+    --hcla-gold: #8c7342;
+    --hcla-champagne: #e6dac1;
+    --hcla-ivory: #f2f2ed;
+    --hcla-muted: #757575;
+    --hcla-soft: #f2f2ed;
+    --hcla-border: #dddddd;
+    --hcla-bg: #fff;
+    --hcla-white: #fff;
+    --hcla-max: 1180px;
+    --hcla-content: 720px;
+    --hcla-radius: 4px;
+    --hcla-font-headline: Cardo, Palatino, Georgia, serif;
+    --hcla-font-body: "Source Sans 3", Arial, sans-serif;
+    color: var(--hcla-ink);
+    background: var(--hcla-bg);
+    font-family: var(--hcla-font-body);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  #hcla-PAGE_SLUG * {
+    box-sizing: border-box;
+  }
+
+  #hcla-PAGE_SLUG .hcla-wrap {
+    width: min(var(--hcla-max), calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  #hcla-PAGE_SLUG h1,
+  #hcla-PAGE_SLUG h2,
+  #hcla-PAGE_SLUG h3 {
+    font-family: var(--hcla-font-headline);
+    font-weight: 400;
+    line-height: 1.18;
+  }
+</style>
+
+<section id="hcla-PAGE_SLUG" class="hcla-page hcla-PAGE_SLUG" data-hcla-page="PAGE_SLUG">
+  <header class="hcla-site-header">
+    <div class="hcla-wrap">
+      <a class="hcla-brand" href="/">Heart Center LA</a>
+      <button class="hcla-nav-toggle" type="button" aria-expanded="false" aria-controls="hcla-PAGE_SLUG-nav">
+        Menu
+      </button>
+      <nav id="hcla-PAGE_SLUG-nav" class="hcla-nav-links" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/new-student">New Student</a>
+        <a href="/classes">Classes</a>
+        <a href="/teachers">Teachers</a>
+        <a href="/testimonials">Testimonials</a>
+        <a href="/faq">FAQ</a>
+        <a href="/contact">Contact</a>
+        <a class="hcla-nav-cta" href="/find-a-class">BOOK A CLASS</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hcla-hero">
+      <div class="hcla-wrap">
+        <h1>PAGE_TITLE</h1>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hcla-site-footer">
+    <div class="hcla-wrap">
+      <p>Heart Center LA</p>
+      <p>heartcenterla1@gmail.com | (213) 856-1293 | 2801 E. Foothill Blvd., Pasadena CA 91107</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('hcla-PAGE_SLUG');
+    if (!root) return;
+
+    var toggle = root.querySelector('.hcla-nav-toggle');
+    var links = root.querySelector('.hcla-nav-links');
+
+    if (toggle && links) {
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('is-open', !expanded);
+      });
+    }
+  })();
+</script>

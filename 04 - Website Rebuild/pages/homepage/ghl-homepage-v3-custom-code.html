@@ -1,6 +1,6 @@
-<!-- Heart Center LA | Homepage v4 | Route: / | GHL custom-code block -->
+<!-- Heart Center LA | Homepage v3 | Route: / | GHL custom-code block -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Sora:wght@200;300;400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
 
   #hcla-homepage {
     --hcla-ink: #212121;
@@ -61,17 +61,14 @@
     font-family: var(--hcla-font-headline);
     font-weight: 400;
     line-height: 1.16;
-    overflow-wrap: break-word;
   }
 
   #hcla-homepage h1 {
     max-width: 860px;
     margin-bottom: 20px;
     color: var(--hcla-white);
-    font-family: Sora, var(--hcla-font-body);
     font-size: clamp(46px, 7vw, 86px);
-    font-weight: 200;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -367,42 +364,6 @@
     object-fit: cover;
   }
 
-  #hcla-homepage .hcla-hero-portrait {
-    position: absolute;
-    z-index: 3;
-    right: var(--hcla-page-pad);
-    bottom: clamp(42px, 6vw, 86px);
-    width: clamp(188px, 19vw, 286px);
-    margin: 0;
-    color: var(--hcla-white);
-  }
-
-  #hcla-homepage .hcla-hero-portrait-frame {
-    overflow: hidden;
-    aspect-ratio: 1;
-    border: 1px solid rgba(230, 218, 193, 0.82);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
-  }
-
-  #hcla-homepage .hcla-hero-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 34%;
-  }
-
-  #hcla-homepage .hcla-hero-portrait figcaption {
-    margin-top: 12px;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    line-height: 1.35;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
   #hcla-homepage .hcla-hero::after {
     content: "";
     position: absolute;
@@ -574,10 +535,6 @@
     color: rgba(255, 255, 255, 0.92);
   }
 
-  #hcla-homepage .hcla-centered .hcla-harmonies-intro {
-    color: rgba(255, 255, 255, 0.96);
-  }
-
   #hcla-homepage .hcla-glance-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -626,80 +583,6 @@
     font-size: 14px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-  }
-
-  #hcla-homepage .hcla-ecosystem-carousel {
-    position: relative;
-    margin-top: var(--hcla-space-lg);
-  }
-
-  #hcla-homepage .hcla-carousel-track {
-    display: grid;
-    grid-auto-columns: minmax(320px, 42%);
-    grid-auto-flow: column;
-    gap: 16px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-  }
-
-  #hcla-homepage .hcla-carousel-slide {
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    aspect-ratio: 16 / 9;
-    background: var(--hcla-ivory);
-    scroll-snap-align: start;
-  }
-
-  #hcla-homepage .hcla-carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #hcla-homepage .hcla-carousel-slide figcaption {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    left: 14px;
-    padding: 10px 12px 8px;
-    background: rgba(33, 33, 33, 0.64);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    line-height: 1.25;
-    text-transform: uppercase;
-  }
-
-  #hcla-homepage .hcla-carousel-controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 12px;
-  }
-
-  #hcla-homepage .hcla-carousel-button {
-    display: inline-grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--hcla-gold);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--hcla-gold);
-    cursor: pointer;
-    font-family: var(--hcla-font-headline);
-    font-size: 25px;
-    line-height: 1;
-  }
-
-  #hcla-homepage .hcla-carousel-button:hover,
-  #hcla-homepage .hcla-carousel-button:focus {
-    background: var(--hcla-gold);
-    color: var(--hcla-white);
   }
 
   #hcla-homepage .hcla-editorial {
@@ -791,23 +674,6 @@
     background: rgba(0, 0, 0, 0.12);
   }
 
-  #hcla-homepage .hcla-harmony-art {
-    display: block;
-    width: 86px;
-    height: 68px;
-    margin-bottom: 24px;
-    color: var(--hcla-champagne);
-  }
-
-  #hcla-homepage .hcla-harmony-art path,
-  #hcla-homepage .hcla-harmony-art circle {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.35;
-  }
-
   #hcla-homepage .hcla-harmony h3 {
     margin-bottom: 16px;
   }
@@ -881,58 +747,31 @@
     gap: clamp(32px, 6vw, 88px);
   }
 
-  #hcla-homepage .hcla-award-gallery {
+  #hcla-homepage .hcla-award-mark {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.22);
+    place-items: center;
+    min-height: 340px;
+    padding: 40px;
+    border: 1px solid rgba(230, 218, 193, 0.44);
+    text-align: center;
   }
 
-  #hcla-homepage .hcla-award-photo {
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    aspect-ratio: 4 / 3;
-    background: rgba(0, 0, 0, 0.16);
-  }
-
-  #hcla-homepage .hcla-award-photo-large {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 9;
-  }
-
-  #hcla-homepage .hcla-award-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #hcla-homepage .hcla-award-photo figcaption {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
-    padding: 9px 11px 8px;
-    background: rgba(33, 33, 33, 0.64);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    line-height: 1.25;
-    text-transform: uppercase;
-  }
-
-  #hcla-homepage .hcla-award-year {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    padding: 8px 12px 7px;
-    background: rgba(242, 242, 237, 0.94);
-    color: var(--hcla-gold);
+  #hcla-homepage .hcla-award-mark strong {
+    display: block;
+    color: var(--hcla-champagne);
     font-family: var(--hcla-font-headline);
-    font-size: 18px;
-    letter-spacing: 0.14em;
+    font-size: clamp(60px, 10vw, 116px);
+    font-weight: 400;
+    line-height: 0.9;
+  }
+
+  #hcla-homepage .hcla-award-mark span {
+    display: block;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
 
   #hcla-homepage .hcla-founder-grid {
@@ -947,27 +786,6 @@
   #hcla-homepage .hcla-founder-card {
     padding: clamp(30px, 5vw, 52px);
     background: var(--hcla-white);
-  }
-
-  #hcla-homepage .hcla-founder-portrait {
-    overflow: hidden;
-    margin: 0 0 26px;
-    aspect-ratio: 4 / 5;
-    background: var(--hcla-ivory);
-  }
-
-  #hcla-homepage .hcla-founder-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #hcla-homepage .hcla-founder-portrait-winnie img {
-    object-position: center 42%;
-  }
-
-  #hcla-homepage .hcla-founder-portrait-jay img {
-    object-position: center 42%;
   }
 
   #hcla-homepage .hcla-founder-card h3 {
@@ -1153,10 +971,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #hcla-homepage .hcla-carousel-track {
-      grid-auto-columns: minmax(320px, 68%);
-    }
-
     #hcla-homepage .hcla-editorial,
     #hcla-homepage .hcla-award-layout,
     #hcla-homepage .hcla-proof-grid {
@@ -1177,25 +991,6 @@
       max-width: 9.5ch;
       font-size: clamp(34px, 8.8vw, 44px);
       letter-spacing: 0.02em;
-    }
-
-    #hcla-homepage h2 {
-      font-size: clamp(30px, 8vw, 38px);
-    }
-
-    #hcla-homepage h3 {
-      font-size: clamp(23px, 6.6vw, 30px);
-    }
-
-    #hcla-homepage .hcla-centered p {
-      max-width: 32ch;
-      font-size: 18px;
-    }
-
-    #hcla-homepage .hcla-centered h2 {
-      max-width: 12ch;
-      margin-right: auto;
-      margin-left: auto;
     }
 
     #hcla-homepage .hcla-header-inner {
@@ -1233,18 +1028,6 @@
     #hcla-homepage .hcla-hero-content {
       padding-top: 110px;
       padding-bottom: 48px;
-    }
-
-    #hcla-homepage .hcla-hero-portrait {
-      top: 88px;
-      right: auto;
-      left: min(62vw, 250px);
-      bottom: auto;
-      width: 94px;
-    }
-
-    #hcla-homepage .hcla-hero-portrait figcaption {
-      display: none;
     }
 
     #hcla-homepage .hcla-hero-copy p {
@@ -1290,15 +1073,6 @@
       min-height: auto;
     }
 
-    #hcla-homepage .hcla-carousel-track {
-      grid-auto-columns: minmax(280px, 86%);
-      gap: 12px;
-    }
-
-    #hcla-homepage .hcla-carousel-controls {
-      justify-content: center;
-    }
-
     #hcla-homepage .hcla-media-frame {
       min-height: 320px;
     }
@@ -1307,14 +1081,6 @@
       position: static;
       max-width: none;
       background: var(--hcla-white);
-    }
-
-    #hcla-homepage .hcla-award-gallery {
-      grid-template-columns: 1fr;
-    }
-
-    #hcla-homepage .hcla-award-photo-large {
-      grid-column: auto;
     }
 
     #hcla-homepage .hcla-footer-links {
@@ -1337,12 +1103,6 @@
 
     #hcla-homepage .hcla-hero-copy p:not(.hcla-eyebrow) {
       max-width: 32ch;
-    }
-
-    #hcla-homepage .hcla-hero-portrait {
-      top: 86px;
-      left: clamp(218px, 64vw, 250px);
-      width: 94px;
     }
 
     #hcla-homepage .hcla-hero-actions {
@@ -1405,23 +1165,11 @@
         >
       </div>
 
-      <figure class="hcla-hero-portrait" data-media-slot="homepage-founders-portrait" data-media-state="local-preview">
-        <div class="hcla-hero-portrait-frame">
-          <img
-            data-media-img
-            data-ghl-src="{{HCLA_HOMEPAGE_FOUNDERS_IMAGE_URL}}"
-            src="../../images/Homepage Images/On top Hero Image, Jay and Winnie.png"
-            alt="Dr. Jay Dubois and Dr. Winnie Chan Wang"
-          >
-        </div>
-        <figcaption>Jay Dubois + Winnie Chan Wang</figcaption>
-      </figure>
-
       <div class="hcla-wrap hcla-hero-content">
         <div class="hcla-hero-copy">
           <p class="hcla-eyebrow">Pasadena healing classes</p>
-          <h1>Let healing happen</h1>
-          <p>Healing classes and community practice in Pasadena.</p>
+          <h1>Spaces that encourage healing to happen</h1>
+          <p>Heart Center LA offers classes, breathwork, relational practice, and community experiences designed to help you see, name, and change the patterns that keep you stuck.</p>
           <div class="hcla-hero-actions">
             <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
             <a class="hcla-button hcla-button-secondary" href="/classes">Explore Classes</a>
@@ -1450,7 +1198,7 @@
             <span class="hcla-tier-name">Restore</span>
             <span class="hcla-tier-price">$196</span>
           </button>
-          <button class="hcla-tier-option" type="button" aria-pressed="false" data-tier-label="Revitalize" data-tier-use="For rebuilding from a deeper place — when the old version of you no longer fits.">
+          <button class="hcla-tier-option" type="button" aria-pressed="false" data-tier-label="Revitalize" data-tier-use="For a full month of classes and deeper renewal.">
             <span class="hcla-tier-name">Revitalize</span>
             <span class="hcla-tier-price">$238/mo</span>
           </button>
@@ -1469,61 +1217,7 @@
           <p class="hcla-eyebrow">At a glance</p>
           <h2 id="hcla-glance-title">One healing ecosystem, four ways in</h2>
           <div class="hcla-divider"></div>
-          <p>Every offering uses the same method and the same language. The difference is the doorway.</p>
-        </div>
-
-        <div class="hcla-ecosystem-carousel" data-carousel aria-label="Healing ecosystem photos">
-          <div class="hcla-carousel-track" data-carousel-track tabindex="0">
-            <figure class="hcla-carousel-slide" data-media-slot="ecosystem-carousel-1" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_ECOSYSTEM_IMAGE_1_URL}}"
-                src="../../images/Homepage Images/Healing Ecosystem Carousel/Replace 1.jpeg"
-                alt="Heart Center LA workshop gathering with teachers and attendees"
-              >
-              <figcaption>Workshop practice</figcaption>
-            </figure>
-            <figure class="hcla-carousel-slide" data-media-slot="ecosystem-carousel-2" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_ECOSYSTEM_IMAGE_2_URL}}"
-                src="../../images/Homepage Images/Healing Ecosystem Carousel/2.webp"
-                alt="Heart Center LA group gathering after practice"
-              >
-              <figcaption>Shared healing space</figcaption>
-            </figure>
-            <figure class="hcla-carousel-slide" data-media-slot="ecosystem-carousel-3" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_ECOSYSTEM_IMAGE_3_URL}}"
-                src="../../images/Homepage Images/Healing Ecosystem Carousel/3.webp"
-                alt="Small group conversation around a table"
-              >
-              <figcaption>Guided connection</figcaption>
-            </figure>
-            <figure class="hcla-carousel-slide" data-media-slot="ecosystem-carousel-4" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_ECOSYSTEM_IMAGE_4_URL}}"
-                src="../../images/Homepage Images/Healing Ecosystem Carousel/1.JPG"
-                alt="Heart Center LA group gathering with calligraphy artwork"
-              >
-              <figcaption>Community practice</figcaption>
-            </figure>
-            <figure class="hcla-carousel-slide" data-media-slot="ecosystem-carousel-5" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_ECOSYSTEM_IMAGE_5_URL}}"
-                src="../../images/Homepage Images/Healing Ecosystem Carousel/5.jpeg"
-                alt="Heart Center LA event and community photo"
-              >
-              <figcaption>Living community</figcaption>
-            </figure>
-          </div>
-          <div class="hcla-carousel-controls" aria-label="Healing ecosystem carousel controls">
-            <button class="hcla-carousel-button" type="button" data-carousel-prev aria-label="Previous image"><span aria-hidden="true">&lsaquo;</span></button>
-            <button class="hcla-carousel-button" type="button" data-carousel-next aria-label="Next image"><span aria-hidden="true">&rsaquo;</span></button>
-          </div>
+          <p>Every offering teaches the same Heart Center LA language: become aware of the pattern, release what is held, and choose the next committed step.</p>
         </div>
 
         <div class="hcla-glance-grid">
@@ -1531,7 +1225,7 @@
             <span class="hcla-glance-number">01</span>
             <span>
               <h3>Healing Classes</h3>
-              <p>Refresh, Reset, Restore, and Revitalize classes led through body-based, relational, and breathwork practice.</p>
+              <p>The primary pathway: Refresh, Reset, Restore, and Revitalize classes led through somatic, relational, and energetic practice.</p>
             </span>
             <span>View classes</span>
           </a>
@@ -1549,7 +1243,7 @@
             <span class="hcla-glance-number">03</span>
             <span>
               <h3>Heart Center Connection</h3>
-              <p>A weekly podcast where real listener questions get honest, pattern-level answers.</p>
+              <p>A weekly advice-column podcast where listener letters are walked through the ARC framework on air.</p>
             </span>
             <span>Submit a letter</span>
           </a>
@@ -1560,7 +1254,7 @@
               <h3>Institutional Facilitation</h3>
               <p>Breathwork, trauma-release, and mental wellness facilitation for hospitals, teams, cultural institutions, and communities.</p>
             </span>
-            <span>Start a conversation</span>
+            <span>Inquire</span>
           </a>
         </div>
       </div>
@@ -1572,8 +1266,8 @@
           <p class="hcla-eyebrow">The method</p>
           <h2 id="hcla-arc-title">See the pattern. Name what is held. Change what comes next.</h2>
           <div class="hcla-divider hcla-divider-left"></div>
-          <p class="hcla-large-copy">ARC is the Heart Center LA framework for moving from seeing the pattern to choosing differently.</p>
-          <p>In every class, the same rhythm: notice what's happening, let the body respond, choose what comes next.</p>
+          <p class="hcla-large-copy">ARC is the Heart Center LA framework for moving from awareness into embodied choice.</p>
+          <p>In public language, it is simple: See, Name, Change. In class, students move through Aware, Release, Choose and Commit. In deeper practice, the same arc becomes Excavate, Interpret, Restore.</p>
           <a class="hcla-link" href="/classes">Begin with a class</a>
         </div>
 
@@ -1598,7 +1292,7 @@
           <article class="hcla-arc-step">
             <small>Release</small>
             <h3>Let the body respond</h3>
-            <p>Movement, breathwork, and bodywork help release what the nervous system has been holding.</p>
+            <p>Somatic and energetic practices help discharge what has been held in the nervous system.</p>
           </article>
           <article class="hcla-arc-step">
             <small>Choose</small>
@@ -1615,42 +1309,23 @@
           <p class="hcla-eyebrow">Why it works</p>
           <h2 id="hcla-harmonies-title">The Three Harmonies</h2>
           <div class="hcla-divider"></div>
-          <p class="hcla-harmonies-intro">ARC is how the practice moves. The Three Harmonies are the worldview beneath it: the body, the natural rhythm, and the human relationship.</p>
+          <p>ARC is how the practice moves. The Three Harmonies are the worldview beneath it: the body, the natural rhythm, and the human relationship.</p>
         </div>
 
         <div class="hcla-harmonies">
           <article class="hcla-harmony">
-            <svg class="hcla-harmony-art" viewBox="0 0 86 68" aria-hidden="true" focusable="false">
-              <path d="M15 51c12-20 28-28 43-24 9 3 14 10 13 18-1 9-9 15-19 15-17 0-31-14-29-30 1-9 8-17 18-19 11-2 22 3 29 13" />
-              <path d="M22 43c9-2 18-1 27 4 6 3 12 4 18 1" />
-              <circle cx="43" cy="34" r="3" />
-            </svg>
             <h3>Self Harmony</h3>
-            <p>Alignment within the body, including the jaw, gut, and pelvis. This is the body-level foundation Dr. Winnie Chan Wang brings to every class.</p>
+            <p>Alignment within the body, including the jaw, gut, and pelvis. This is the somatic foundation of the work Dr. Winnie Chan Wang brings to Heart Center LA.</p>
           </article>
 
           <article class="hcla-harmony">
-            <svg class="hcla-harmony-art" viewBox="0 0 86 68" aria-hidden="true" focusable="false">
-              <path d="M12 45c12-16 23-24 33-24s19 8 29 24" />
-              <path d="M18 52c16-8 34-8 50 0" />
-              <path d="M43 11c5 7 5 14 0 21-5-7-5-14 0-21Z" />
-              <path d="M43 32v22" />
-              <circle cx="43" cy="34" r="26" />
-            </svg>
             <h3>Heaven + Earth + Human Harmony</h3>
-            <p>Daily sacred breathwork and practice that reconnect you with timing, conditions, and a larger field of support.</p>
+            <p>Daily sacred breathwork and practice that reconnect participants with timing, conditions, and a larger field of support.</p>
           </article>
 
           <article class="hcla-harmony">
-            <svg class="hcla-harmony-art" viewBox="0 0 86 68" aria-hidden="true" focusable="false">
-              <path d="M19 45c9-18 25-20 34-7 5 8 1 18-8 18-8 0-14-8-10-17 5-13 23-19 35 4" />
-              <path d="M18 27c6-7 13-10 21-8" />
-              <path d="M68 27c-6-7-13-10-21-8" />
-              <circle cx="31" cy="22" r="4" />
-              <circle cx="55" cy="22" r="4" />
-            </svg>
             <h3>Harmony with Other Humans</h3>
-            <p>Healing in relationship — naming relational patterns, practicing honest exchange, and learning to stay present with another person.</p>
+            <p>Healing in relationship, naming patterns in community, and practicing a different way of being with one another.</p>
           </article>
         </div>
       </div>
@@ -1662,7 +1337,7 @@
           <p class="hcla-eyebrow">Healing classes</p>
           <h2 id="hcla-classes-title">Choose the depth of support your system is ready for</h2>
           <div class="hcla-divider"></div>
-          <p>Start with light renewal or enter a deeper month of practice. Each level meets a different need.</p>
+          <p>Start with light renewal or enter a deeper month of practice. The ladder is designed to meet you where you are.</p>
         </div>
 
         <div class="hcla-class-grid">
@@ -1705,7 +1380,7 @@
           <article class="hcla-class-card">
             <h3>Revitalize</h3>
             <div class="hcla-class-price">$238/mo</div>
-            <p>A full month of classes for the kind of renewal that changes how you see yourself.</p>
+            <p>A full month of classes for renewal at a higher level than before.</p>
             <ul>
               <li>Identity shifts</li>
               <li>Purpose becomes clearer</li>
@@ -1721,42 +1396,18 @@
       <div class="hcla-wrap hcla-award-layout">
         <div>
           <p class="hcla-eyebrow">Recognition</p>
-          <h2 id="hcla-award-title">World Cultural Harmony Award, 2026</h2>
+          <h2 id="hcla-award-title">World Cultural Harmony Award recipients</h2>
           <div class="hcla-divider hcla-divider-left"></div>
           <p>Dr. Winnie Chan Wang and Dr. Jay Dubois, PhD received the World Cultural Harmony Award on May 21, 2026 from the World Cultural Harmony Council and the International Alliance of Civilization.</p>
-          <p>The award recognizes what the practice has always been about — healing that starts in the body and reaches into communities, cultures, and the spaces between people.</p>
+          <p>The recognition reflects their work fostering intercultural dialogue, building inclusive communities, and advancing a culture of peace through healing-centered practice.</p>
           <a class="hcla-button hcla-button-light" href="/teachers">Meet the Teachers</a>
         </div>
 
-        <div class="hcla-award-gallery" aria-label="World Cultural Harmony Award photos and certificates">
-          <figure class="hcla-award-photo hcla-award-photo-large" data-media-slot="award-group-photo" data-media-state="local-preview">
-            <span class="hcla-award-year">2026</span>
-            <img
-              data-media-img
-              data-ghl-src="{{HCLA_AWARD_GROUP_IMAGE_URL}}"
-              src="../../images/Homepage Images/UN Award/UN Group Photo.jpeg"
-              alt="World Cultural Harmony Award group photo with Dr. Jay Dubois and Dr. Winnie Chan Wang"
-            >
-            <figcaption>World Cultural Harmony Award ceremony</figcaption>
-          </figure>
-          <figure class="hcla-award-photo" data-media-slot="award-jay-certificate" data-media-state="local-preview">
-            <img
-              data-media-img
-              data-ghl-src="{{HCLA_AWARD_JAY_CERTIFICATE_URL}}"
-              src="../../images/Homepage Images/UN Award/UN Award Jay.jpg"
-              alt="World Cultural Harmony Award certificate for Jonathan Jay Dubois, PhD"
-            >
-            <figcaption>Jay Dubois, PhD</figcaption>
-          </figure>
-          <figure class="hcla-award-photo" data-media-slot="award-winnie-certificate" data-media-state="local-preview">
-            <img
-              data-media-img
-              data-ghl-src="{{HCLA_AWARD_WINNIE_CERTIFICATE_URL}}"
-              src="../../images/Homepage Images/UN Award/UN Award Winnie.jpg"
-              alt="World Cultural Harmony Award certificate for Dr. Winnie Chan Wang"
-            >
-            <figcaption>Winnie Chan Wang</figcaption>
-          </figure>
+        <div class="hcla-award-mark" aria-label="World Cultural Harmony Award May 21 2026">
+          <div>
+            <strong>2026</strong>
+            <span>World Cultural Harmony Award<br>May 21, 2026</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1771,41 +1422,25 @@
 
         <div class="hcla-founder-grid">
           <article class="hcla-founder-card">
-            <figure class="hcla-founder-portrait hcla-founder-portrait-winnie" data-media-slot="winnie-profile" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_WINNIE_PROFILE_IMAGE_URL}}"
-                src="../../images/Homepage Images/Winnie Profile Picture/Replace Winnie Profile Picture.jpeg"
-                alt="Dr. Winnie Chan Wang"
-              >
-            </figure>
             <h3>Dr. Winnie Chan Wang</h3>
             <p class="hcla-founder-role">Clinical anchor and class facilitator</p>
-            <p>Winnie leads the healing classes, daily sacred breathwork, private somatic sessions, and the somatic depth of Heart Center LA's practice.</p>
+            <p>Winnie leads the healing classes, daily sacred breathwork, private somatic sessions, and the energetic depth of Heart Center LA.</p>
             <ul>
               <li>Licensed acupuncturist</li>
               <li>Creator of the Jaw-Gut-Pelvis method</li>
-              <li>MIT (dual BS), NYU (MS), Master of Science in Oriental Medicine</li>
+              <li>MIT dual BS, NYU MS, MS Oriental Medicine</li>
               <li>Founder, Compassionate Transformation Community</li>
             </ul>
           </article>
 
           <article class="hcla-founder-card">
-            <figure class="hcla-founder-portrait hcla-founder-portrait-jay" data-media-slot="jay-profile" data-media-state="local-preview">
-              <img
-                data-media-img
-                data-ghl-src="{{HCLA_JAY_PROFILE_IMAGE_URL}}"
-                src="../../images/Homepage Images/Jay Profile Picture/Jay Profile Picture.png"
-                alt="Dr. Jay Dubois, PhD"
-              >
-            </figure>
             <h3>Dr. Jay Dubois, PhD</h3>
             <p class="hcla-founder-role">Public voice and relational facilitator</p>
-            <p>Jay hosts Conscious Connections, leads the podcast, teaches people to recognize relational patterns, and facilitates institutional healing experiences.</p>
+            <p>Jay hosts Conscious Connections, leads the podcast, teaches relational patterns, and facilitates institutional healing experiences.</p>
             <ul>
-              <li>PhD in Anthropology, specializing in human interaction</li>
+              <li>PhD, Anthropology focus on human interaction</li>
               <li>Professor at CSU San Bernardino and CSU Northridge</li>
-              <li>Author of <em>Stop Leaking Power</em></li>
+              <li>Author of Stop Leaking Power</li>
               <li>Executive Director, Compassionate Transformation Community</li>
             </ul>
           </article>
@@ -1819,9 +1454,9 @@
           <p class="hcla-eyebrow">Trusted spaces</p>
           <h2 id="hcla-proof-title">Community and institutional relationships</h2>
           <div class="hcla-divider hcla-divider-left"></div>
-          <p>Heart Center LA works alongside healthcare systems, cultural institutions, and community organizations across Los Angeles.</p>
+          <p>Heart Center LA's credibility is built through practice, nonprofit work, and facilitation relationships across Los Angeles healthcare, cultural, and community spaces.</p>
           <div class="hcla-proof-note">
-            <p>Student stories are shared only with explicit permission, with privacy, context, and dignity protected at every step.</p>
+            <p>Student stories are collected only with permission. As the first class cohorts complete the work, video testimonials can be added here with clear consent.</p>
           </div>
         </div>
 
@@ -1874,7 +1509,7 @@
         <a href="/contact">Contact</a>
       </nav>
 
-      <p class="hcla-footer-copy">&copy; 2026 Heart Center LA. All rights reserved.</p>
+      <p class="hcla-footer-copy">Copyright 2026 Heart Center LA. All rights reserved.</p>
     </div>
   </footer>
 </section>
@@ -1934,35 +1569,6 @@
           tierDescription.textContent = use;
         }
       });
-    });
-
-    var carousels = Array.prototype.slice.call(root.querySelectorAll('[data-carousel]'));
-
-    carousels.forEach(function (carousel) {
-      var track = carousel.querySelector('[data-carousel-track]');
-      var previous = carousel.querySelector('[data-carousel-prev]');
-      var next = carousel.querySelector('[data-carousel-next]');
-
-      function scrollCarousel(direction) {
-        if (!track) return;
-        var distance = Math.max(track.clientWidth * 0.82, 260);
-        track.scrollBy({
-          left: direction * distance,
-          behavior: 'smooth'
-        });
-      }
-
-      if (previous) {
-        previous.addEventListener('click', function () {
-          scrollCarousel(-1);
-        });
-      }
-
-      if (next) {
-        next.addEventListener('click', function () {
-          scrollCarousel(1);
-        });
-      }
     });
 
     var mediaImages = Array.prototype.slice.call(root.querySelectorAll('[data-media-img]'));

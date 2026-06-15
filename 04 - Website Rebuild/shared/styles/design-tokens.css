@@ -1,0 +1,85 @@
+/*
+Source snippet only. Copy into each production page file.
+Do not import this file from GHL pages.
+*/
+
+:root {
+  --hcla-ink: #212121;
+  --hcla-navy: #1e2a64;
+  --hcla-deep-green: #395b52;
+  --hcla-green: #88987d;
+  --hcla-gold: #8c7342;
+  --hcla-champagne: #e6dac1;
+  --hcla-ivory: #f2f2ed;
+  --hcla-muted: #757575;
+  --hcla-soft: #f2f2ed;
+  --hcla-border: #dddddd;
+  --hcla-bg: #fff;
+  --hcla-white: #fff;
+  --hcla-max: 1180px;
+  --hcla-content: 720px;
+  --hcla-radius: 4px;
+  --hcla-shadow: 0 8px 18px rgba(17, 17, 17, 0.08);
+  --hcla-font-headline: Cardo, Palatino, Georgia, serif;
+  --hcla-font-body: "Source Sans 3", Arial, sans-serif;
+  --hcla-font-ui: "Source Sans 3", Arial, sans-serif;
+}
+
+.hcla-page {
+  color: var(--hcla-ink);
+  background: var(--hcla-bg);
+  font-family: var(--hcla-font-body);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.hcla-page h1,
+.hcla-page h2,
+.hcla-page h3 {
+  color: var(--hcla-navy);
+  font-family: var(--hcla-font-headline);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.hcla-page a {
+  color: inherit;
+}
+
+.hcla-page .hcla-wrap {
+  width: min(var(--hcla-max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hcla-page .hcla-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--hcla-navy);
+  border-radius: var(--hcla-radius);
+  background: var(--hcla-gold);
+  color: var(--hcla-white);
+  font-family: var(--hcla-font-headline);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hcla-page .hcla-button-secondary {
+  background: var(--hcla-white);
+  color: var(--hcla-gold);
+}
+
+.hcla-page .hcla-eyebrow {
+  color: var(--hcla-muted);
+  font-family: var(--hcla-font-ui);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}

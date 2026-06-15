@@ -1,0 +1,445 @@
+<!-- Heart Center LA | Testimonials | Route: /testimonials | GHL custom-code block -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Sora:wght@200;300;400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  #hcla-testimonials {
+    --hcla-ink: #212121;
+    --hcla-navy: #1e2a64;
+    --hcla-deep-green: #395b52;
+    --hcla-gold: #8c7342;
+    --hcla-champagne: #e6dac1;
+    --hcla-ivory: #f2f2ed;
+    --hcla-muted: #757575;
+    --hcla-border: #dddddd;
+    --hcla-bg: #ffffff;
+    --hcla-white: #ffffff;
+    --hcla-wide: 1200px;
+    --hcla-content: 760px;
+    --hcla-page-pad: clamp(20px, 4vw, 56px);
+    --hcla-space-md: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
+    --hcla-space-lg: clamp(2rem, 3.2vw + 1rem, 3rem);
+    --hcla-space-xl: clamp(3.25rem, 4vw + 2rem, 4.5rem);
+    --hcla-space-xxl: clamp(5.25rem, 7.2vw + 3rem, 7.5rem);
+    --hcla-font-headline: Cardo, Palatino, Georgia, serif;
+    --hcla-font-body: "Source Sans 3", Arial, sans-serif;
+    --hcla-hero-bg: url("../../images/generated/hcla-homepage-hero-placeholder.png");
+    color: var(--hcla-ink);
+    background: var(--hcla-bg);
+    font-family: var(--hcla-font-body);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  #hcla-testimonials, #hcla-testimonials * { box-sizing: border-box; }
+  #hcla-testimonials a { color: inherit; }
+  #hcla-testimonials img { display: block; max-width: 100%; }
+  #hcla-testimonials h1, #hcla-testimonials h2, #hcla-testimonials h3, #hcla-testimonials p { margin-top: 0; }
+  #hcla-testimonials h1, #hcla-testimonials h2, #hcla-testimonials h3 { font-family: var(--hcla-font-headline); font-weight: 400; line-height: 1.16; overflow-wrap: break-word; }
+  #hcla-testimonials h1 {
+    max-width: 980px;
+    margin-bottom: 20px;
+    color: var(--hcla-white);
+    font-family: Sora, var(--hcla-font-body);
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 200;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  #hcla-testimonials h2 { color: var(--hcla-ink); font-size: clamp(34px, 4.5vw, 56px); }
+  #hcla-testimonials h3 { color: var(--hcla-ink); font-size: clamp(24px, 2.5vw, 34px); }
+
+  #hcla-testimonials .hcla-wrap { width: min(var(--hcla-wide), calc(100% - (var(--hcla-page-pad) * 2))); margin: 0 auto; }
+  #hcla-testimonials .hcla-content { width: min(var(--hcla-content), calc(100% - (var(--hcla-page-pad) * 2))); margin: 0 auto; }
+  #hcla-testimonials .hcla-eyebrow {
+    margin-bottom: 12px;
+    color: var(--hcla-muted);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  #hcla-testimonials .hcla-hero .hcla-eyebrow { color: rgba(255,255,255,0.86); }
+  #hcla-testimonials .hcla-button, #hcla-testimonials .hcla-button:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 11px 22px 9px;
+    border: 1px solid var(--hcla-gold);
+    border-radius: 0;
+    background: var(--hcla-gold);
+    color: var(--hcla-white);
+    font-family: var(--hcla-font-headline);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+  #hcla-testimonials .hcla-button:hover, #hcla-testimonials .hcla-button:focus { background: #735d31; border-color: #735d31; }
+  #hcla-testimonials .hcla-button-secondary, #hcla-testimonials .hcla-button-secondary:visited { background: transparent; color: var(--hcla-gold); }
+  #hcla-testimonials .hcla-button-secondary:hover, #hcla-testimonials .hcla-button-secondary:focus { background: var(--hcla-gold); color: var(--hcla-white); }
+  #hcla-testimonials .hcla-button-light, #hcla-testimonials .hcla-button-light:visited { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.94); color: var(--hcla-ink); }
+  #hcla-testimonials .hcla-button-light:hover, #hcla-testimonials .hcla-button-light:focus { border-color: var(--hcla-white); background: var(--hcla-white); color: var(--hcla-gold); }
+  #hcla-testimonials .hcla-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hcla-gold);
+    font-family: var(--hcla-font-headline);
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  #hcla-testimonials .hcla-link::after { content: ""; width: 36px; height: 1px; background: currentColor; }
+  #hcla-testimonials .hcla-divider { width: 150px; height: 1px; margin: 22px auto 26px; background: var(--hcla-gold); }
+  #hcla-testimonials .hcla-divider-left { margin-right: 0; margin-left: 0; }
+
+  #hcla-testimonials .hcla-site-header { position: absolute; z-index: 10; top: 0; left: 0; width: 100%; color: var(--hcla-white); }
+  #hcla-testimonials .hcla-header-inner { display: grid; grid-template-columns: minmax(110px,1fr) auto minmax(110px,1fr); align-items: center; gap: 20px; min-height: 82px; padding: 12px 0; }
+  #hcla-testimonials .hcla-menu-button { display: inline-flex; align-items: center; justify-self: start; gap: 10px; width: auto; min-height: 42px; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font-family: var(--hcla-font-headline); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #hcla-testimonials .hcla-menu-icon { position: relative; width: 28px; height: 12px; }
+  #hcla-testimonials .hcla-menu-icon::before, #hcla-testimonials .hcla-menu-icon::after { content: ""; position: absolute; left: 0; width: 100%; height: 1px; background: currentColor; }
+  #hcla-testimonials .hcla-menu-icon::before { top: 0; }
+  #hcla-testimonials .hcla-menu-icon::after { bottom: 0; }
+  #hcla-testimonials .hcla-brand, #hcla-testimonials .hcla-brand:visited { justify-self: center; color: inherit; font-family: var(--hcla-font-headline); font-size: clamp(22px,3vw,34px); letter-spacing: 0.18em; line-height: 1; text-align: center; text-decoration: none; text-transform: uppercase; }
+  #hcla-testimonials .hcla-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
+  #hcla-testimonials .hcla-header-phone { color: rgba(255,255,255,0.9); font-family: var(--hcla-font-headline); font-size: 15px; letter-spacing: 0.12em; text-decoration: none; white-space: nowrap; }
+  #hcla-testimonials .hcla-header-actions .hcla-button { min-height: 40px; padding: 9px 16px 7px; font-size: 12px; }
+  #hcla-testimonials .hcla-nav-panel { position: absolute; top: 82px; left: var(--hcla-page-pad); width: min(360px, calc(100vw - (var(--hcla-page-pad) * 2))); padding: 24px; border: 1px solid rgba(230,218,193,0.72); background: rgba(242,242,237,0.98); box-shadow: 0 12px 30px rgba(33,33,33,0.12); color: var(--hcla-ink); opacity: 0; transform: translateY(-8px); visibility: hidden; transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease; }
+  #hcla-testimonials .hcla-nav-panel.is-open { opacity: 1; transform: translateY(0); visibility: visible; }
+  #hcla-testimonials .hcla-nav-panel a { display: block; padding: 12px 0 10px; border-bottom: 1px solid rgba(140,115,66,0.18); color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 17px; letter-spacing: 0.13em; text-decoration: none; text-transform: uppercase; }
+  #hcla-testimonials .hcla-nav-panel a:hover, #hcla-testimonials .hcla-nav-panel a:focus { color: var(--hcla-gold); }
+  #hcla-testimonials .hcla-nav-phone { margin: 20px 0 0; color: var(--hcla-muted); font-size: 15px; }
+
+  #hcla-testimonials .hcla-hero { position: relative; min-height: clamp(440px, 58vh, 640px); overflow: hidden; color: var(--hcla-white); background: #1d1b17; }
+  #hcla-testimonials .hcla-hero::before { content: ""; position: absolute; inset: 0; background-image: var(--hcla-hero-bg); background-position: center; background-size: cover; opacity: 0.62; }
+  #hcla-testimonials .hcla-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.52), rgba(0,0,0,0.32) 42%, rgba(0,0,0,0.56)); }
+  #hcla-testimonials .hcla-hero-content { position: relative; z-index: 2; display: flex; min-height: clamp(440px, 58vh, 640px); align-items: flex-end; padding: 132px 0 var(--hcla-space-xl); }
+  #hcla-testimonials .hcla-hero-copy { width: min(920px, 100%); }
+  #hcla-testimonials .hcla-hero-copy p:not(.hcla-eyebrow) { max-width: 680px; margin-bottom: 28px; color: rgba(255,255,255,0.92); font-size: clamp(19px,2vw,24px); }
+  #hcla-testimonials .hcla-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  #hcla-testimonials .hcla-section { padding: var(--hcla-space-xxl) 0; }
+  #hcla-testimonials .hcla-section-soft { background: var(--hcla-ivory); }
+  #hcla-testimonials .hcla-section-green { background: var(--hcla-deep-green); color: var(--hcla-white); }
+  #hcla-testimonials .hcla-section-green h2, #hcla-testimonials .hcla-section-green h3, #hcla-testimonials .hcla-section-green .hcla-eyebrow { color: var(--hcla-white); }
+  #hcla-testimonials .hcla-section-green p, #hcla-testimonials .hcla-section-green li { color: rgba(255,255,255,0.92); }
+  #hcla-testimonials .hcla-section-green .hcla-centered p { color: rgba(255,255,255,0.92); }
+  #hcla-testimonials .hcla-centered { text-align: center; }
+  #hcla-testimonials .hcla-centered p { max-width: 760px; margin-right: auto; margin-left: auto; color: var(--hcla-muted); font-size: 20px; }
+  #hcla-testimonials .hcla-section-green .hcla-centered p, #hcla-testimonials .hcla-section-green .hcla-content p { color: rgba(255,255,255,0.92); }
+  #hcla-testimonials .hcla-section-green .hcla-link, #hcla-testimonials .hcla-section-green .hcla-price { color: var(--hcla-champagne); }
+  #hcla-testimonials .hcla-grid-2, #hcla-testimonials .hcla-grid-3, #hcla-testimonials .hcla-grid-4 { display: grid; gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-testimonials .hcla-grid-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #hcla-testimonials .hcla-grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #hcla-testimonials .hcla-grid-4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  #hcla-testimonials .hcla-card { display: flex; flex-direction: column; padding: clamp(28px,4vw,44px); background: var(--hcla-white); }
+  #hcla-testimonials .hcla-card p, #hcla-testimonials .hcla-card li { color: var(--hcla-muted); }
+  #hcla-testimonials .hcla-card ul { display: grid; gap: 9px; margin: 18px 0 0; padding: 0; list-style: none; }
+  #hcla-testimonials .hcla-card li { position: relative; padding-left: 18px; }
+  #hcla-testimonials .hcla-card li::before { content: ""; position: absolute; top: 0.75em; left: 0; width: 8px; height: 1px; background: var(--hcla-gold); }
+  #hcla-testimonials .hcla-testimonial-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-testimonials .hcla-testimonial-grid-wide { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #hcla-testimonials .hcla-testimonial-card { display: flex; flex-direction: column; min-width: 0; min-height: 100%; background: var(--hcla-white); }
+  #hcla-testimonials .hcla-testimonial-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(28px,4vw,44px); }
+  #hcla-testimonials .hcla-testimonial-media { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: var(--hcla-ivory); color: inherit; text-decoration: none; }
+  #hcla-testimonials .hcla-testimonial-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 220ms ease; }
+  #hcla-testimonials .hcla-testimonial-media:hover img, #hcla-testimonials .hcla-testimonial-media:focus img { transform: scale(1.03); }
+  #hcla-testimonials .hcla-testimonial-quote { margin-bottom: 18px; color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: clamp(24px,2.4vw,34px); line-height: 1.18; }
+  #hcla-testimonials .hcla-testimonial-body { color: var(--hcla-muted); }
+  #hcla-testimonials .hcla-testimonial-person { margin: 0 0 3px; color: var(--hcla-ink); font-weight: 600; }
+  #hcla-testimonials .hcla-testimonial-title { margin: 0 0 20px; color: var(--hcla-gold); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  #hcla-testimonials .hcla-testimonial-card .hcla-link { margin-top: auto; padding-top: 22px; }
+  #hcla-testimonials .hcla-section-green .hcla-grid-2, #hcla-testimonials .hcla-section-green .hcla-grid-3, #hcla-testimonials .hcla-section-green .hcla-grid-4 { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.22); }
+  #hcla-testimonials .hcla-section-green .hcla-card { background: rgba(0,0,0,0.12); }
+  #hcla-testimonials .hcla-section-green .hcla-card p, #hcla-testimonials .hcla-section-green .hcla-card li { color: rgba(255,255,255,0.9); }
+  #hcla-testimonials .hcla-section-green .hcla-card li::before { background: var(--hcla-champagne); }
+  #hcla-testimonials .hcla-price { margin: 2px 0 18px; color: var(--hcla-gold); font-family: var(--hcla-font-headline); font-size: 24px; }
+  #hcla-testimonials .hcla-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,0.78fr); align-items: center; gap: clamp(36px,6vw,86px); }
+  #hcla-testimonials .hcla-editorial p { color: var(--hcla-muted); }
+  #hcla-testimonials .hcla-media-frame { position: relative; overflow: hidden; min-height: 430px; background: var(--hcla-ivory); }
+  #hcla-testimonials .hcla-media-frame img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; }
+  #hcla-testimonials .hcla-band { border-top: 1px solid var(--hcla-border); border-bottom: 1px solid var(--hcla-border); background: var(--hcla-ivory); }
+  #hcla-testimonials .hcla-band-inner { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: var(--hcla-border); }
+  #hcla-testimonials .hcla-band-item { min-height: 112px; padding: 24px; background: var(--hcla-ivory); }
+  #hcla-testimonials .hcla-band-item strong { display: block; color: var(--hcla-gold); font-family: var(--hcla-font-headline); font-size: 22px; font-weight: 400; }
+  #hcla-testimonials .hcla-band-item span { display: block; margin-top: 6px; color: var(--hcla-muted); font-size: 15px; }
+  #hcla-testimonials .hcla-placeholder { padding: clamp(28px,4vw,44px); border: 1px dashed rgba(140,115,66,0.52); background: rgba(255,255,255,0.58); color: var(--hcla-muted); }
+  #hcla-testimonials .hcla-placeholder strong { display: block; color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 24px; font-weight: 400; }
+  #hcla-testimonials .hcla-section-green .hcla-placeholder { border-color: rgba(230,218,193,0.52); background: rgba(0,0,0,0.14); color: rgba(255,255,255,0.9); }
+  #hcla-testimonials .hcla-section-green .hcla-placeholder strong { color: var(--hcla-white); }
+  #hcla-testimonials .hcla-accordion { display: grid; gap: 12px; margin-top: var(--hcla-space-lg); }
+  #hcla-testimonials .hcla-accordion-item { border: 1px solid var(--hcla-border); background: var(--hcla-white); }
+  #hcla-testimonials .hcla-accordion-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 64px; padding: 18px 22px; border: 0; background: transparent; color: var(--hcla-ink); cursor: pointer; font-family: var(--hcla-font-headline); font-size: 22px; text-align: left; }
+  #hcla-testimonials .hcla-accordion-button::after { content: "+"; color: var(--hcla-gold); font-family: var(--hcla-font-body); }
+  #hcla-testimonials .hcla-accordion-button[aria-expanded="true"]::after { content: "-"; }
+  #hcla-testimonials .hcla-accordion-panel { display: none; padding: 0 22px 22px; color: var(--hcla-muted); }
+  #hcla-testimonials .hcla-accordion-panel.is-open { display: block; }
+  #hcla-testimonials .hcla-logo-wall { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1px; margin-top: var(--hcla-space-lg); background: var(--hcla-border); border: 1px solid var(--hcla-border); }
+  #hcla-testimonials .hcla-logo-item { display: grid; place-items: center; min-height: 112px; padding: 22px; background: var(--hcla-white); }
+  #hcla-testimonials .hcla-logo-item img { max-width: 155px; max-height: 58px; object-fit: contain; filter: grayscale(1); opacity: 0.78; }
+  #hcla-testimonials .hcla-final-cta { position: relative; overflow: hidden; background: #1b1b18; color: var(--hcla-white); }
+  #hcla-testimonials .hcla-final-cta::before { content: ""; position: absolute; inset: 0; background-image: url("../../images/generated/hcla-homepage-class-detail-placeholder.png"); background-position: center; background-size: cover; opacity: 0.22; }
+  #hcla-testimonials .hcla-final-cta::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.52); }
+  #hcla-testimonials .hcla-final-cta .hcla-wrap { position: relative; z-index: 2; }
+  #hcla-testimonials .hcla-final-cta h2 { color: var(--hcla-white); }
+  #hcla-testimonials .hcla-final-cta p { color: rgba(255,255,255,0.82); }
+  #hcla-testimonials .hcla-site-footer { padding: 44px 0; background: var(--hcla-ivory); color: var(--hcla-muted); font-size: 15px; }
+  #hcla-testimonials .hcla-footer-grid { display: grid; grid-template-columns: minmax(220px,0.8fr) minmax(0,1.2fr); gap: 30px; }
+  #hcla-testimonials .hcla-footer-brand { color: var(--hcla-ink); font-family: var(--hcla-font-headline); font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #hcla-testimonials .hcla-footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px 20px; }
+  #hcla-testimonials .hcla-footer-links a { color: var(--hcla-muted); text-decoration-color: rgba(140,115,66,0.42); text-underline-offset: 3px; }
+  #hcla-testimonials .hcla-footer-copy { grid-column: 1 / -1; margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--hcla-border); font-size: 13px; }
+
+  @media (max-width: 1040px) {
+    #hcla-testimonials .hcla-grid-4, #hcla-testimonials .hcla-band-inner, #hcla-testimonials .hcla-logo-wall { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #hcla-testimonials .hcla-testimonial-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #hcla-testimonials .hcla-editorial { grid-template-columns: 1fr; }
+    #hcla-testimonials .hcla-media-frame { min-height: 360px; }
+  }
+  @media (max-width: 780px) {
+    #hcla-testimonials { font-size: 17px; }
+    #hcla-testimonials h1 { max-width: 10.5ch; font-size: clamp(34px,8.8vw,44px); }
+    #hcla-testimonials h2 { font-size: clamp(30px,8vw,38px); }
+    #hcla-testimonials h3 { font-size: clamp(23px,6.6vw,30px); }
+    #hcla-testimonials .hcla-centered p { max-width: 32ch; font-size: 18px; }
+    #hcla-testimonials .hcla-header-inner { grid-template-columns: auto 1fr; min-height: 72px; gap: 12px; }
+    #hcla-testimonials .hcla-brand { font-size: 20px; letter-spacing: 0.1em; }
+    #hcla-testimonials .hcla-header-actions, #hcla-testimonials .hcla-menu-button span:last-child { display: none; }
+    #hcla-testimonials .hcla-nav-panel { top: 72px; }
+    #hcla-testimonials .hcla-hero, #hcla-testimonials .hcla-hero-content { min-height: 540px; }
+    #hcla-testimonials .hcla-hero-content { padding-top: 110px; padding-bottom: 48px; }
+    #hcla-testimonials .hcla-hero-actions { align-items: flex-start; flex-direction: column; }
+    #hcla-testimonials .hcla-hero-actions .hcla-button { width: min(100%,260px); }
+    #hcla-testimonials .hcla-grid-2, #hcla-testimonials .hcla-grid-3, #hcla-testimonials .hcla-grid-4, #hcla-testimonials .hcla-testimonial-grid, #hcla-testimonials .hcla-band-inner, #hcla-testimonials .hcla-logo-wall, #hcla-testimonials .hcla-footer-grid { grid-template-columns: 1fr; }
+    #hcla-testimonials .hcla-footer-links { justify-content: flex-start; }
+  }
+  @media (max-width: 480px) {
+    #hcla-testimonials { --hcla-page-pad: 18px; }
+    #hcla-testimonials .hcla-brand { display: block; max-width: 150px; font-size: 16px; letter-spacing: 0.08em; line-height: 1.1; }
+    #hcla-testimonials .hcla-hero-copy p:not(.hcla-eyebrow) { max-width: 32ch; }
+  }
+</style>
+
+<section id="hcla-testimonials" class="hcla-page hcla-testimonials" data-hcla-page="testimonials">
+  <header class="hcla-site-header" aria-label="Heart Center LA site header">
+    <div class="hcla-wrap hcla-header-inner">
+      <button class="hcla-menu-button" type="button" aria-expanded="false" aria-controls="hcla-testimonials-nav">
+        <span class="hcla-menu-icon" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+      <a class="hcla-brand" href="/" aria-label="Heart Center LA homepage">Heart Center LA</a>
+      <div class="hcla-header-actions">
+        <a class="hcla-header-phone" href="tel:+12138561293">(213) 856-1293</a>
+        <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
+      </div>
+    </div>
+    <nav id="hcla-testimonials-nav" class="hcla-nav-panel" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/new-student">New Student</a>
+      <a href="/classes">Classes</a>
+      <a href="/teachers">Teachers</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact">Contact</a>
+      <p class="hcla-nav-phone">heartcenterla1@gmail.com<br>(213) 856-1293</p>
+    </nav>
+  </header>
+  <main>
+    <section class="hcla-hero" aria-label="Student stories, collected with care">
+      <div class="hcla-wrap hcla-hero-content">
+        <div class="hcla-hero-copy">
+          <p class="hcla-eyebrow">Testimonials</p>
+          <h1>Student stories, collected with care</h1>
+          <p>Proof belongs here only when people have clearly consented to share it.</p>
+          <div class="hcla-hero-actions">
+            <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
+            <a class="hcla-button hcla-button-secondary" href="#share-feedback">Share Feedback</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hcla-section" aria-labelledby="testimonial-stories">
+      <div class="hcla-wrap">
+        <div class="hcla-centered">
+          <p class="hcla-eyebrow">Student voices</p>
+          <h2 id="testimonial-stories">What people say after the room has held them</h2>
+          <div class="hcla-divider"></div>
+          <p>Collected from previous Heart Center LA testimonial materials, including video comments and written reflections.</p>
+        </div>
+
+        <div class="hcla-testimonial-grid" aria-label="Video testimonials">
+          <article class="hcla-testimonial-card">
+            <a class="hcla-testimonial-media" href="https://www.youtube.com/watch?v=twcIh-b1ol8" target="_blank" rel="noopener" aria-label="Watch Rob Kalwarowsky's testimonial on YouTube">
+              <img src="https://img.youtube.com/vi/twcIh-b1ol8/hqdefault.jpg" alt="Rob Kalwarowsky video testimonial thumbnail">
+            </a>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;It&rsquo;s a good way to start off the day.&rdquo;</h3>
+              <p class="hcla-testimonial-body">Sometimes when I wake up and feel upset, it&rsquo;s a great way to get back to inner peace.</p>
+              <p class="hcla-testimonial-person">Rob Kalwarowsky</p>
+              <p class="hcla-testimonial-title">International Speaker, Entrepreneur and Executive Coach</p>
+              <a class="hcla-link" href="https://www.youtube.com/watch?v=twcIh-b1ol8" target="_blank" rel="noopener">Watch video</a>
+            </div>
+          </article>
+
+          <article class="hcla-testimonial-card">
+            <a class="hcla-testimonial-media" href="https://www.youtube.com/watch?v=fJvBm5R_xzo" target="_blank" rel="noopener" aria-label="Watch Dr. Nicole Tetreault's testimonial on YouTube">
+              <img src="https://img.youtube.com/vi/fJvBm5R_xzo/hqdefault.jpg" alt="Dr. Nicole Tetreault video testimonial thumbnail">
+            </a>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;Hip feels good, it doesn&rsquo;t have a (pain) number.&rdquo;</h3>
+              <p class="hcla-testimonial-person">Dr. Nicole Tetreault</p>
+              <p class="hcla-testimonial-title">Neuroscientist and Meditation Teacher</p>
+              <a class="hcla-link" href="https://www.youtube.com/watch?v=fJvBm5R_xzo" target="_blank" rel="noopener">Watch video</a>
+            </div>
+          </article>
+
+          <article class="hcla-testimonial-card">
+            <a class="hcla-testimonial-media" href="https://www.youtube.com/watch?v=5252cz1yQgY" target="_blank" rel="noopener" aria-label="Watch Diliana Joy's testimonial on YouTube">
+              <img src="https://img.youtube.com/vi/5252cz1yQgY/hqdefault.jpg" alt="Diliana Joy video testimonial thumbnail">
+            </a>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;You made me laugh which is not an easy feat for those who may know me!&rdquo;</h3>
+              <p class="hcla-testimonial-person">Diliana Joy</p>
+              <p class="hcla-testimonial-title">Former Coordinator, Refugee Mental Health Project at CAMH</p>
+              <a class="hcla-link" href="https://www.youtube.com/watch?v=5252cz1yQgY" target="_blank" rel="noopener">Watch video</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="hcla-testimonial-grid hcla-testimonial-grid-wide" aria-label="Written testimonials">
+          <article class="hcla-testimonial-card">
+            <div class="hcla-testimonial-media">
+              <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2QHwBS5pAPsicJG2LXIP/media/67ce83ef04d659b37a3754fc.jpeg" alt="Nicole testimonial image">
+            </div>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;A lovely gem of a space&rdquo;</h3>
+              <p class="hcla-testimonial-person">Nicole</p>
+              <p class="hcla-testimonial-title">VP at Trans Astronautica Corporation</p>
+              <p class="hcla-testimonial-body">A lovely gem of a space for connection and soulful support. Winnie is so knowledgeable so strongly tapped into her heart. She is authentically loving, and her intuition is on fire - she is SO quick to grasp and articulate deep insights about me and the people around her. I joined the community for the first time at a lunar new year event and also joined several of the Tao calligraphy sessions. The partnership with Jay beautifully balance the masculine and feminine form and energies. They each have profound insights and attunement that create a powerfully healing space that is accessible and inviting to All. It is a community service at the highest level.</p>
+            </div>
+          </article>
+
+          <article class="hcla-testimonial-card">
+            <div class="hcla-testimonial-media">
+              <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2QHwBS5pAPsicJG2LXIP/media/67ce839c04d6597d0e3754ae.jpeg" alt="Melea testimonial image">
+            </div>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;Walked out pain free!&rdquo;</h3>
+              <p class="hcla-testimonial-person">Melea</p>
+              <p class="hcla-testimonial-title">Speech Pathologist</p>
+              <p class="hcla-testimonial-body">Heart Center LA has given me hope &amp; compassionate learning opportunities to push myself forward in my healing journey. Winnie Wang is amazing, full of bright light &amp; extraordinary healing skills. After my 1st individual session, I walked out pain free with an open mindset of resiliency &amp; hope. In only a few individual sessions I&rsquo;ve shifted even more to an open heart with less fear in taking risks &amp; understanding my pain. The group sessions at the HEART CENTER LA are oh so special &amp; genuinely unique, while offering compassion &amp; a collective unity. Love love love, thank you, thank you, thank you.</p>
+            </div>
+          </article>
+
+          <article class="hcla-testimonial-card">
+            <div class="hcla-testimonial-media">
+              <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2QHwBS5pAPsicJG2LXIP/media/68f1835ed82b8e38cef4143b.jpeg" alt="Addison testimonial image">
+            </div>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;Beautiful Location&rdquo;</h3>
+              <p class="hcla-testimonial-person">Addison</p>
+              <p class="hcla-testimonial-title">Licensed Acupuncturist</p>
+              <p class="hcla-testimonial-body">Heart Center is a beautiful location where I can go to escape the noise of city life and find peace of mind. The acupuncture room feels like a cove one million miles away.</p>
+            </div>
+          </article>
+
+          <article class="hcla-testimonial-card">
+            <div class="hcla-testimonial-media">
+              <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2QHwBS5pAPsicJG2LXIP/media/6870a1c750e32668e0a83dd9.jpeg" alt="Pamela testimonial image">
+            </div>
+            <div class="hcla-testimonial-card-content">
+              <h3 class="hcla-testimonial-quote">&ldquo;Healing feels real&rdquo;</h3>
+              <p class="hcla-testimonial-person">Pamela</p>
+              <p class="hcla-testimonial-title">High School Instructor</p>
+              <p class="hcla-testimonial-body">The Heart Center is where healing feels real. Winnie and Jay hold a sacred space where mind, body, and soul remember harmony. Winnie&rsquo;s intuition, Tao calligraphy, and song awaken love that melts blockages. Jay&rsquo;s 3rd-eye insights bring clarity and deep peace. Through breath, tracing, and gentle conversation, they reveal the root causes of pain and guide healing from within. I came to Winnie with osteoporosis - six months later, my bones improved beyond the diagnosis. Every session uplifts, transforms, and reminds us: love is the safest medicine.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="hcla-section hcla-section-green" aria-labelledby="verified-proof"><div class="hcla-wrap"><div class="hcla-centered"><p class="hcla-eyebrow">Verified proof</p><h2 id="verified-proof">Recognition and relationships</h2><div class="hcla-divider"></div><p>Dr. Winnie Chan Wang and Dr. Jay Dubois, PhD received the World Cultural Harmony Award on May 21, 2026. Heart Center LA also works alongside healthcare, cultural, and community organizations across Los Angeles.</p></div>
+        <div class="hcla-logo-wall" aria-label="Partner logos">
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Los Angeles County Department of Mental Health.png" alt="Los Angeles County Department of Mental Health"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Los Angeles General Medical Center.png" alt="Los Angeles General Medical Center"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/USC Pacific Asia Museum.png" alt="USC Pacific Asia Museum"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Autry Museum.png" alt="Autry Museum"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Earthstock.png" alt="Earthstock"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/EO.png" alt="Entrepreneurs' Organization"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Sanctuary.png" alt="Sanctuary"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/The Real Mental Health.png" alt="The Real Mental Health"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Uprising Together.png" alt="Uprising Together"></div>
+          <div class="hcla-logo-item"><img src="../../images/All Partner Logos/Zula Den.png" alt="Zula Den"></div>
+        </div></div></section>
+    <section id="share-feedback" class="hcla-section hcla-section-soft" aria-labelledby="feedback-form"><div class="hcla-wrap hcla-editorial"><div><p class="hcla-eyebrow">Share feedback</p><h2 id="feedback-form">Collect stories with consent</h2><div class="hcla-divider hcla-divider-left"></div><p>Use this form slot for post-class or post-event feedback. GHL should include a consent checkbox before any quote is used publicly.</p></div><div class="hcla-placeholder"><strong>Testimonial form</strong><p>{{HCLA_TESTIMONIAL_FORM_EMBED}}</p></div></div></section>
+    <section class="hcla-section hcla-final-cta" aria-labelledby="hcla-final-title">
+      <div class="hcla-wrap">
+        <div class="hcla-content hcla-centered">
+          <p class="hcla-eyebrow">Begin here</p>
+          <h2 id="hcla-final-title">Reserve a class and give the pattern a place to move</h2>
+          <div class="hcla-divider"></div>
+          <p>Choose the class tier that matches your capacity today. If you are new, start with Refresh or Reset and let the practice show you what comes next.</p>
+          <div class="hcla-hero-actions" style="justify-content:center;">
+            <a class="hcla-button hcla-button-light" href="/find-a-class">Book a Class</a>
+            <a class="hcla-button hcla-button-secondary" href="/new-student">New Student</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="hcla-site-footer">
+    <div class="hcla-wrap hcla-footer-grid">
+      <div>
+        <div class="hcla-footer-brand">Heart Center LA</div>
+        <p>heartcenterla1@gmail.com<br>(213) 856-1293<br>2801 E. Foothill Blvd., Pasadena CA 91107</p>
+      </div>
+      <nav class="hcla-footer-links" aria-label="Footer navigation">
+        <a href="/">Home</a><a href="/new-student">New Student</a><a href="/classes">Classes</a><a href="/teachers">Teachers</a><a href="/testimonials">Testimonials</a><a href="/faq">FAQ</a><a href="/contact">Contact</a>
+      </nav>
+      <p class="hcla-footer-copy">&copy; 2026 Heart Center LA. All rights reserved.</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('hcla-testimonials');
+    if (!root) return;
+    var menuButton = root.querySelector('.hcla-menu-button');
+    var navPanel = root.querySelector('#hcla-testimonials-nav');
+    if (menuButton && navPanel) {
+      menuButton.addEventListener('click', function () {
+        var expanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!expanded));
+        navPanel.classList.toggle('is-open', !expanded);
+      });
+      navPanel.addEventListener('click', function (event) {
+        if (event.target && event.target.tagName === 'A') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          navPanel.classList.remove('is-open');
+        }
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          navPanel.classList.remove('is-open');
+        }
+      });
+    }
+    Array.prototype.slice.call(root.querySelectorAll('.hcla-accordion-button')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        var panel = button.nextElementSibling;
+        button.setAttribute('aria-expanded', String(!expanded));
+        if (panel) panel.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
