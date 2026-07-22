@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Heart Center LA Deployment Control Board</title>
+  <title>HCLA Website 2026</title>
   <style>
     :root {
       --bg:#f7f2e7; --surface:#fffdf7; --surface-2:#efe8d8; --ink:#203a32;
@@ -88,6 +88,18 @@
     .automation-item p { margin:0; color:var(--muted); }
     .human-review { margin:12px 0 28px; padding:18px 20px; border-left:4px solid var(--accent); background:var(--surface-2); }
     .human-review strong { color:var(--ink); }
+    .effort-panel { margin:0 0 28px; padding:clamp(22px,4vw,34px); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); }
+    .effort-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:20px; }
+    .effort-head h2 { margin:0 0 8px; }
+    .effort-head p { max-width:720px; margin:0; color:var(--muted); }
+    .effort-total { min-width:200px; text-align:right; }
+    .effort-total strong { display:block; color:var(--accent-strong); font-family:Georgia,serif; font-size:clamp(30px,4vw,44px); line-height:1; }
+    .effort-total span { color:var(--muted); font-size:13px; font-weight:800; }
+    .effort-table { width:100%; border-collapse:collapse; }
+    .effort-table th,.effort-table td { padding:11px 0; border-top:1px solid var(--line); text-align:left; }
+    .effort-table th { padding-right:18px; color:var(--ink); font-size:14px; }
+    .effort-table td { width:130px; color:var(--accent-strong); font-weight:900; text-align:right; white-space:nowrap; }
+    .effort-note { margin:12px 0 0; color:var(--muted); font-size:12px; }
     .owner-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
     .owner-card { padding:22px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
     .owner-card h3 { margin-bottom:8px; font-family:Arial,Helvetica,sans-serif; }
@@ -177,6 +189,8 @@
       .start-grid,.status-board,.phase-list,.tab-guide { grid-template-columns:1fr; }
       .system-flow { grid-template-columns:1fr; }
       .flow-step { min-height:0; }
+      .effort-head { display:block; }
+      .effort-total { margin-top:18px; text-align:left; }
       .metric { padding:14px; }
       .metric strong { font-size:29px; }
       .tabs { top:76px; border-radius:12px; }
@@ -207,7 +221,7 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <div class="brand">Heart Center LA Deployment</div>
+      <div class="brand">HCLA Website 2026</div>
       <div class="top-actions">
         <button class="button" id="printButton" type="button">Print</button>
         <button class="button" id="exportButton" type="button">Export</button>
@@ -218,11 +232,11 @@
     <main>
       <section class="hero" aria-labelledby="pageTitle">
         <div>
-          <p class="eyebrow">Owner deployment board</p>
-          <h1 id="pageTitle">See what is ready, what is pending, and what launches last.</h1>
-          <p class="lede">A plain-language map from finished page files to a safe Heart Center LA launch.</p>
+          <p class="eyebrow">HCLA Website 2026</p>
+          <h1 id="pageTitle">See what is ready, what still needs work, and what happens next.</h1>
+          <p class="lede">A simple guide to the new Heart Center LA website and the systems that will support it.</p>
         </div>
-        <div class="warning"><strong>Do not send traffic to new booking or checkout pages until their matching workflows pass.</strong> Uploading them as drafts first is safe. Publishing an unfinished payment path is not.</div>
+        <div class="warning"><strong>Do not send visitors to new booking or checkout pages until their automations have been tested.</strong> The pages can be uploaded as drafts while the rest of the system is built.</div>
         <div class="progress-grid" aria-label="Deployment progress">
           <div class="metric"><strong id="overallPct">0%</strong><span>overall completion</span></div>
           <div class="metric"><strong id="pagePct">0%</strong><span>page tasks</span></div>
@@ -238,91 +252,113 @@
       </section>
 
       <nav class="tabs" role="tablist" aria-label="Control board sections">
-        <button class="tab active" id="tab-owner" type="button" role="tab" aria-selected="true" aria-controls="panel-owner" data-tab="owner">Owner Brief</button>
+        <button class="tab active" id="tab-owner" type="button" role="tab" aria-selected="true" aria-controls="panel-owner" data-tab="owner">HCLA Website 2026</button>
         <button class="tab" id="tab-pages" type="button" role="tab" aria-selected="false" aria-controls="panel-pages" data-tab="pages" tabindex="-1">Pages</button>
         <button class="tab" id="tab-setup" type="button" role="tab" aria-selected="false" aria-controls="panel-setup" data-tab="setup" tabindex="-1">GHL Setup</button>
         <button class="tab" id="tab-workflows" type="button" role="tab" aria-selected="false" aria-controls="panel-workflows" data-tab="workflows" tabindex="-1">Workflows</button>
         <button class="tab" id="tab-redirects" type="button" role="tab" aria-selected="false" aria-controls="panel-redirects" data-tab="redirects" tabindex="-1">Redirects</button>
-        <button class="tab" id="tab-launch" type="button" role="tab" aria-selected="false" aria-controls="panel-launch" data-tab="launch" tabindex="-1">Launch QA</button>
+        <button class="tab" id="tab-launch" type="button" role="tab" aria-selected="false" aria-controls="panel-launch" data-tab="launch" tabindex="-1">Launch Checks</button>
       </nav>
 
       <section class="panel active" id="panel-owner" role="tabpanel" aria-labelledby="tab-owner">
         <div class="owner-summary">
           <div class="owner-lede">
             <p class="eyebrow">What this board means</p>
-            <h2>The website files are not the live system.</h2>
-            <p>The pages can be uploaded as drafts now. Customer traffic waits until the matching GHL fulfillment and safety checks pass.</p>
+            <h2>The new pages are ready to build, but the full system is not live yet.</h2>
+            <p>The website also needs working forms, calendars, payments, messages, access rules, and testing. This board keeps all of that work in one place.</p>
           </div>
           <aside class="owner-decisions" aria-labelledby="ownerDecisionTitle">
-            <h3 id="ownerDecisionTitle">Owners need to approve</h3>
+            <h3 id="ownerDecisionTitle">The big picture</h3>
             <ul>
-              <li>Final routes and which existing pages will be replaced.</li>
-              <li>The person responsible for workflow testing and launch sign-off.</li>
-              <li>The attendance-duration threshold, protected replay method, and internal recording-retention period.</li>
-              <li>The staff owner for the post-purchase Light Treasure explanation and fulfillment.</li>
+              <li>The new page designs and copy are prepared locally.</li>
+              <li>GHL will connect forms, calendars, payments, access, and messages.</li>
+              <li>Zoom and Pabbly will handle daily class links, attendance, and recordings.</li>
+              <li>The website will launch in small steps so each part can be checked.</li>
             </ul>
           </aside>
         </div>
 
         <div class="status-board" aria-label="Current program status">
-          <div class="status-item"><span class="status-label">Built locally</span><strong>Page sources</strong><p>New marketing, checkout, confirmation, and weekday files are prepared for GHL assembly and review.</p></div>
-          <div class="status-item"><span class="status-label">Owner build</span><strong>GHL automation</strong><p>Products, calendars, fields, workflows, and live integrations still need to be created and tested in GHL.</p></div>
-          <div class="status-item"><span class="status-label">Final phase</span><strong>Zoom and Pabbly</strong><p>Meeting publishing, registrant mapping, attendance, recordings, and replay cleanup are intentionally last.</p></div>
-          <div class="status-item"><span class="status-label">Ready to build</span><strong>$499 expansion</strong><p>The offer language is approved. GHL product, destinations, post-purchase Light Treasure message, fulfillment ownership, and tests remain.</p></div>
+          <div class="status-item"><span class="status-label">Built locally</span><strong>Website pages</strong><p>The new marketing, checkout, confirmation, and weekday pages are ready to upload into GHL.</p></div>
+          <div class="status-item"><span class="status-label">Needs setup</span><strong>GHL system</strong><p>Products, calendars, contact fields, and automations still need to be built and tested.</p></div>
+          <div class="status-item"><span class="status-label">Built last</span><strong>Zoom and Pabbly</strong><p>Daily meeting links, attendance records, recordings, and replays will be connected after the main system works.</p></div>
+          <div class="status-item"><span class="status-label">Ready to build</span><strong>$499 expansion</strong><p>The offer is defined. Its checkout, messages, intake, appointment, and fulfillment tracking still need to be connected.</p></div>
         </div>
 
-        <div class="section-head" id="upgradeOutcomes"><div><p class="eyebrow">What changes</p><h2>What this upgrade will automate</h2></div><p>It turns the current meeting-link handoff into a tracked customer system, while keeping uncertain cases visible to staff.</p></div>
+        <div class="section-head" id="upgradeOutcomes"><div><p class="eyebrow">What changes</p><h2>What this upgrade will automate</h2></div><p>The new system will handle routine work, keep better records, and ask staff to check anything unclear.</p></div>
         <div class="system-change" aria-label="Current system compared with the completed upgrade">
-          <article class="system-column"><h3>Current system</h3><ul><li>Pabbly creates each weekday Zoom meeting shortly before class.</li><li>It cleans the join link and sends that link to a GHL inbound webhook.</li><li>The receiving GHL actions still need inspection before the link update is treated as verified.</li><li>The current publisher does not collect attendance or archive recordings.</li><li>Most access, credit, follow-up, and exception handling still depends on manual work.</li></ul></article>
-          <article class="system-column future"><h3>After the upgrade</h3><ul><li>GHL owns each contact's purchase, access, credits, benefits, messages, and review state.</li><li>Zoom supplies meeting and participant evidence; Pabbly transports and normalizes it.</li><li>Drive holds verified recording copies before Zoom cleanup occurs.</li><li>Automations act on verified events and stop for staff review when records disagree.</li></ul></article>
+          <article class="system-column"><h3>Today</h3><ul><li>Pabbly creates each Zoom meeting shortly before class.</li><li>It cleans the join link and sends it to GHL.</li><li>We still need to confirm that GHL received the correct link.</li><li>The current setup does not record attendance or save recordings.</li><li>Most access, credits, and follow-up are handled by hand.</li></ul></article>
+          <article class="system-column future"><h3>After the upgrade</h3><ul><li>GHL keeps each person's purchase, access, credits, and messages in one place.</li><li>Zoom reports who joined each class.</li><li>Pabbly passes information between Zoom and GHL.</li><li>Google Drive stores a checked copy of each recording before Zoom removes it.</li><li>If information does not match, the automation pauses and asks staff to check it.</li></ul></article>
         </div>
 
-        <h3 class="flow-heading">How one live class will move through the upgraded system</h3>
+        <h3 class="flow-heading">How one live class will work</h3>
         <ol class="system-flow" aria-label="Planned Light Shower class automation flow">
-          <li class="flow-step"><strong>Register or purchase</strong><p>GHL records the contact, selected class, consent, source, and paid offer.</p></li>
-          <li class="flow-step"><strong>Build the roster</strong><p>The contact ID and class occurrence are queued before the Zoom meeting exists.</p></li>
-          <li class="flow-step"><strong>Create Zoom at T-50</strong><p>Pabbly keeps the current under-one-hour rule and publishes the fresh link.</p></li>
-          <li class="flow-step"><strong>Collect evidence</strong><p>Zoom returns the occurrence, participant joins and leaves, and recording event.</p></li>
-          <li class="flow-step"><strong>Normalize and verify</strong><p>Pabbly combines repeat joins; the archive path verifies the private Drive copy.</p></li>
-          <li class="flow-step"><strong>Update GHL safely</strong><p>GHL logs attendance, adjusts access, sends follow-up, or creates a staff task.</p></li>
+          <li class="flow-step"><strong>Sign up or pay</strong><p>GHL saves the person's details, chosen class, and purchase.</p></li>
+          <li class="flow-step"><strong>Prepare the class list</strong><p>GHL holds the list of people who should receive that day's Zoom link.</p></li>
+          <li class="flow-step"><strong>Create Zoom</strong><p>Pabbly creates the meeting about 50 minutes before class and sends the fresh link to GHL.</p></li>
+          <li class="flow-step"><strong>Check attendance</strong><p>After class, Zoom reports who joined and how long they stayed.</p></li>
+          <li class="flow-step"><strong>Save the recording</strong><p>The system checks that a private copy is safe in Google Drive.</p></li>
+          <li class="flow-step"><strong>Update each person</strong><p>GHL records attendance, updates access or credits, and sends the right follow-up.</p></li>
         </ol>
 
         <div class="automation-grid" aria-label="Planned automation outcomes">
-          <article class="automation-item"><strong>Capture registrations and route payments</strong><p>Create or update one GHL contact, preserve consent and attribution, record the selected class or appointment, and route each buyer to the correct checkout and confirmation path.</p></article>
-          <article class="automation-item"><strong>Deliver the correct daily class link</strong><p>Preserve the intentional T-50 Zoom creation window, verify the fresh meeting data, send reminders only after preflight, and alert staff when the link is missing or stale.</p></article>
-          <article class="automation-item"><strong>Log and reconcile attendance</strong><p>Match the GHL contact to the Zoom occurrence, combine repeat joins, prevent duplicate attendance, record verified attendance or no-show, and send uncertain identities to manual review.</p></article>
-          <article class="automation-item"><strong>Manage $99 credits and three-day access</strong><p>Deduct one of three credits only after verified attendance, leave credits unchanged for no-shows, grant the matching replay, and revoke it exactly 72 hours after the scheduled class ends.</p></article>
-          <article class="automation-item"><strong>Manage the $199 Unlimited Month</strong><p>Start exactly 30 consecutive days at payment, enroll daily reminders, track the 11 verified attendances used by the satisfaction policy, preserve the no-expiration 15-minute benefit, and end live access automatically.</p></article>
-          <article class="automation-item"><strong>Archive recordings and control replay</strong><p>Copy completed Zoom recordings to restricted Drive, verify the copy, grant only the correct replay window, and delete the Zoom copy after 72 hours only when the archive is confirmed.</p></article>
-          <article class="automation-item"><strong>Run follow-up, benefits, refunds, and support</strong><p>Send confirmations and reminders, stop incompatible nurture, track benefit use and policy eligibility, separate payment failures, and create staff tasks when a decision is needed.</p></article>
-          <article class="automation-item"><strong>Protect private and premium fulfillment</strong><p>For $399, require a confirmed Winnie or Jay appointment before payment and enforce the 24-hour reschedule rule. For $499, track payment, intake, the combined session, and all three Light Treasures.</p></article>
+          <article class="automation-item"><strong>Keep sign-ups and payments organized</strong><p>Save each person once in GHL, record what they chose, and send them to the correct checkout and confirmation page.</p></article>
+          <article class="automation-item"><strong>Send the correct daily class link</strong><p>Create a fresh Zoom link about 50 minutes before class, check it, send reminders, and alert staff if the link is missing.</p></article>
+          <article class="automation-item"><strong>Record attendance</strong><p>Match each Zoom guest to the right GHL contact, combine repeat joins, prevent duplicate records, and flag names that cannot be matched safely.</p></article>
+          <article class="automation-item"><strong>Manage the $99 plan</strong><p>Use one of the three class credits only after confirmed attendance. A no-show keeps the credit. The matching replay ends exactly 72 hours after class.</p></article>
+          <article class="automation-item"><strong>Manage the $199 Unlimited Month</strong><p>Start 30 days of access when payment succeeds, send reminders, count the 11 attendances used by the satisfaction policy, and end live access on time.</p></article>
+          <article class="automation-item"><strong>Save recordings and control replays</strong><p>Copy recordings to a private Google Drive folder, check the copy, give access only to the right people, and remove the Zoom copy after 72 hours when safe.</p></article>
+          <article class="automation-item"><strong>Send follow-up and support messages</strong><p>Send confirmations, reminders, and help messages. Track benefits and refund requests, and create a staff task when a person needs help.</p></article>
+          <article class="automation-item"><strong>Track private and $499 services</strong><p>For $399, confirm the Winnie or Jay appointment before payment. For $499, track payment, intake, the combined session, and all three Light Treasures.</p></article>
         </div>
-        <div class="human-review"><strong>People remain in control.</strong> Staff still resolve ambiguous attendance, identity mismatches, exceptions, refunds, in-person requests, failed integrations, and sensitive support cases.</div>
+        <div class="human-review"><strong>People remain in control.</strong> Staff still handle unclear attendance, identity problems, special requests, refunds, failed connections, and sensitive support.</div>
 
-        <div class="section-head"><div><h2>What each tab is for</h2></div><p>Open a tab when the team reaches that part of the work. The checkboxes record progress only in this browser.</p></div>
+        <section class="effort-panel" aria-labelledby="effortTitle">
+          <div class="effort-head">
+            <div>
+              <p class="eyebrow">Typical build effort</p>
+              <h2 id="effortTitle">A project of this size usually takes 4–7 weeks full-time.</h2>
+              <p>This estimate is for an experienced GHL and web automation specialist using AI support. It covers the website, customer journeys, integrations, and launch testing.</p>
+            </div>
+            <div class="effort-total"><strong>160–280</strong><span>estimated hours overall</span></div>
+          </div>
+          <table class="effort-table">
+            <tbody>
+              <tr><th scope="row">Funnel strategy, offer rules, and copy</th><td>20–35 hours</td></tr>
+              <tr><th scope="row">Website and Light Shower page buildout</th><td>45–75 hours</td></tr>
+              <tr><th scope="row">Checkouts, confirmations, and calendars</th><td>15–30 hours</td></tr>
+              <tr><th scope="row">GHL fields, tags, products, and workflows</th><td>35–65 hours</td></tr>
+              <tr><th scope="row">Zoom and Pabbly attendance and recordings</th><td>25–50 hours</td></tr>
+              <tr><th scope="row">Production launch, testing, and bug fixing</th><td>20–35 hours</td></tr>
+            </tbody>
+          </table>
+          <p class="effort-note">The work areas overlap, so these planning ranges do not need to add up exactly to the overall estimate.</p>
+        </section>
+
+        <div class="section-head"><div><h2>What each tab does</h2></div><p>Each tab covers one part of the rebuild. Checkboxes and edited URLs are saved only in this browser.</p></div>
         <div class="owner-grid">
-          <article class="owner-card"><h3>Pages</h3><p>The complete upload map for every page, checkout, confirmation, and held campaign.</p><dl><dt>Owners do</dt><dd>Approve routes, offers, and which pages replace current ones.</dd><dt>Complete when</dt><dd>Every chosen page renders correctly in GHL and is published or deliberately held.</dd></dl><button class="button" type="button" data-open-tab="pages">Open Pages</button></article>
-          <article class="owner-card"><h3>GHL Setup</h3><p>The shared products, calendars, fields, tags, forms, and test records needed before workflows.</p><dl><dt>Owners do</dt><dd>Provide access, approve names and policies, and assign the builder.</dd><dt>Complete when</dt><dd>Each shared asset exists, has a recorded ID, and passes an isolated test.</dd></dl><button class="button" type="button" data-open-tab="setup">Open GHL Setup</button></article>
-          <article class="owner-card"><h3>Workflows</h3><p>The automation recipes for registration, payment, access, reminders, private sessions, and support.</p><dl><dt>Owners do</dt><dd>Approve message logic, exceptions, and who handles manual-review alerts.</dd><dt>Complete when</dt><dd>Every required workflow passes success, failure, re-entry, and stop-condition tests.</dd></dl><button class="button" type="button" data-open-tab="workflows">Open Workflows</button></article>
-          <article class="owner-card"><h3>Redirects</h3><p>The old URLs that may still receive traffic from bookmarks, ads, emails, or search engines.</p><dl><dt>Owners do</dt><dd>Confirm which old campaigns still matter before anything is redirected.</dd><dt>Complete when</dt><dd>Every approved old URL reaches the correct tested replacement.</dd></dl><button class="button" type="button" data-open-tab="redirects">Open Redirects</button></article>
-          <article class="owner-card"><h3>Launch QA</h3><p>The final approval gate covering money, links, legal copy, mobile layout, data, and rollback.</p><dl><dt>Owners do</dt><dd>Review evidence, accept the remaining risk, and approve each launch wave.</dd><dt>Complete when</dt><dd>Every applicable item is checked and a named person is monitoring production.</dd></dl><button class="button" type="button" data-open-tab="launch">Open Launch QA</button></article>
-          <article class="owner-card"><h3>Progress and Export</h3><p>The percentages summarize the checkboxes. Export creates a portable JSON record of routes and progress.</p><dl><dt>Owners do</dt><dd>Use one browser profile or export progress before moving to another computer.</dd><dt>Complete when</dt><dd>The saved record matches the actual GHL state, not just intended work.</dd></dl><button class="button" type="button" id="ownerExportButton">Export Progress</button></article>
+          <article class="owner-card"><h3>Pages</h3><p>Shows every page to upload, replace, create, or keep on hold. It also lists the recommended web address and source file.</p><button class="button" type="button" data-open-tab="pages">Open Pages</button></article>
+          <article class="owner-card"><h3>GHL Setup</h3><p>Shows the products, calendars, forms, fields, tags, and test contacts needed to make the pages work.</p><button class="button" type="button" data-open-tab="setup">Open GHL Setup</button></article>
+          <article class="owner-card"><h3>Workflows</h3><p>Shows the automations that send messages, track payments and access, record attendance, and create follow-up tasks.</p><button class="button" type="button" data-open-tab="workflows">Open Workflows</button></article>
+          <article class="owner-card"><h3>Redirects</h3><p>Shows where old web links should send visitors after a page is replaced.</p><button class="button" type="button" data-open-tab="redirects">Open Redirects</button></article>
+          <article class="owner-card"><h3>Launch Checks</h3><p>Checks payments, bookings, links, phones, privacy, and backup plans before visitors use the new pages.</p><button class="button" type="button" data-open-tab="launch">Open Launch Checks</button></article>
+          <article class="owner-card"><h3>Progress and Export</h3><p>Shows how much is finished. Export saves the checklist and web addresses in a file that can be moved to another computer.</p><button class="button" type="button" id="ownerExportButton">Export Progress</button></article>
         </div>
 
-        <div class="section-head"><div><h2>The agreed implementation order</h2></div><p>The last phase is intentionally the most technical. Light Shower does not receive paid traffic until it passes.</p></div>
+        <div class="section-head"><div><h2>The build order</h2></div><p>The Zoom connection comes last because it is the most time-sensitive part of the Light Shower system.</p></div>
         <ol class="phase-list">
-          <li class="phase-step"><span class="phase-marker">1</span><strong>Approve</strong><p>Confirm routes, offer truth, policies, owners, and held items.</p></li>
-          <li class="phase-step"><span class="phase-marker">2</span><strong>Assemble</strong><p>Upload page drafts and create stable GHL products, calendars, fields, and forms.</p></li>
-          <li class="phase-step"><span class="phase-marker">3</span><strong>Automate</strong><p>Build GHL foundation, payment, access, and private-session workflows.</p></li>
-          <li class="phase-step"><span class="phase-marker">4</span><strong>Build the $499 expansion</strong><p>Connect its checkout, protected post-purchase explanation, intake, appointment, and fulfillment tracking.</p></li>
-          <li class="phase-step"><span class="phase-marker">5</span><strong>Release stable pages</strong><p>Launch information pages and private sessions in controlled waves.</p></li>
-          <li class="phase-step"><span class="phase-marker">6</span><strong>Connect Zoom last</strong><p>Implement T-50 publishing, registrants, attendance, replay storage, and final Light Shower QA.</p></li>
+          <li class="phase-step"><span class="phase-marker">1</span><strong>Confirm the plan</strong><p>Set the final web addresses, offers, policies, and pages that will stay on hold.</p></li>
+          <li class="phase-step"><span class="phase-marker">2</span><strong>Build the base</strong><p>Upload page drafts and create the GHL products, calendars, fields, and forms.</p></li>
+          <li class="phase-step"><span class="phase-marker">3</span><strong>Add automations</strong><p>Build the payment, access, reminder, and private-session workflows.</p></li>
+          <li class="phase-step"><span class="phase-marker">4</span><strong>Connect the $499 offer</strong><p>Add its checkout, follow-up message, intake, appointment, and fulfillment tracking.</p></li>
+          <li class="phase-step"><span class="phase-marker">5</span><strong>Launch stable pages</strong><p>Release the main information pages and private sessions in small groups.</p></li>
+          <li class="phase-step"><span class="phase-marker">6</span><strong>Connect Zoom last</strong><p>Add daily meeting links, attendance, recording storage, replays, and final testing.</p></li>
         </ol>
       </section>
 
       <section class="panel" id="panel-pages" role="tabpanel" aria-labelledby="tab-pages" hidden>
         <div class="section-head"><div><p class="eyebrow">Page upload map</p><h2>Recommended routes and exact sources</h2></div><p>Edit any URL directly and Export your route map. If you change one, update that page's buttons, canonical URL, schema, workflows, messages, and redirects before launch.</p></div>
-        <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>Every proposed route, source file, GHL assembly method, and publication warning.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Approve each URL and whether the page replaces, creates, or holds a public route.</p></div><div class="guide-block"><strong>Done means</strong><p>The page is assembled in GHL, checked on mobile and desktop, then published or deliberately held.</p></div></div>
+        <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>Each planned page, its web address, source file, and any warning before it goes live.</p></div><div class="guide-block"><strong>How to use it</strong><p>Choose the final address, upload the listed file to GHL, and update every link that points to it.</p></div><div class="guide-block"><strong>Finished when</strong><p>The page works on phones and computers, then is published or kept on hold.</p></div></div>
         <div class="toolbar">
           <input class="input" id="pageSearch" type="search" placeholder="Search pages, routes, or sources" aria-label="Search pages">
           <select class="select" id="pageDomain" aria-label="Filter pages by domain"><option value="all">All domains</option><option value="heartcenter.la">heartcenter.la</option><option value="breathing.heartcenter.la">breathing.heartcenter.la</option></select>
@@ -333,13 +369,13 @@
 
       <section class="panel" id="panel-setup" role="tabpanel" aria-labelledby="tab-setup" hidden>
         <div class="section-head"><div><p class="eyebrow">Before workflows</p><h2>Create the shared GHL assets</h2></div><p>Complete stable GHL setup first. Zoom, Pabbly, attendance, and recording setup appear last by design.</p></div>
-        <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>The reusable building blocks that multiple pages and workflows depend on.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Approve products, calendars, policies, access, responsible staff, and final integration timing.</p></div><div class="guide-block"><strong>Done means</strong><p>Each asset has a recorded ID, passes an isolated test, and is ready for dependent workflows.</p></div></div>
+        <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>The shared GHL pieces that the pages and automations need.</p></div><div class="guide-block"><strong>How to use it</strong><p>Create each product, calendar, field, form, tag, and test record before building dependent workflows.</p></div><div class="guide-block"><strong>Finished when</strong><p>Each item has an ID, passes its own test, and is ready to connect.</p></div></div>
         <div class="cards" id="setupCards"></div>
       </section>
 
       <section class="panel" id="panel-workflows" role="tabpanel" aria-labelledby="tab-workflows" hidden>
         <div class="section-head"><div><p class="eyebrow">One by one</p><h2>Workflow construction order</h2></div><p>Build by phase, then by ID. The `$499` premium expansion follows the stable customer journeys. Zoom and Pabbly remain the final phase.</p></div>
-        <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>Each automation's trigger, core actions, status, construction phase, and test checklist.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Approve messages, exception policies, manual-review ownership, and when each phase may activate.</p></div><div class="guide-block"><strong>Done means</strong><p>The trigger, success path, failure path, re-entry, and stop conditions all pass with test contacts.</p></div></div>
+        <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>Every automation, what starts it, what it does, and how it should be tested.</p></div><div class="guide-block"><strong>How to use it</strong><p>Build workflows in the listed order and test normal cases, mistakes, repeat entries, and stop rules.</p></div><div class="guide-block"><strong>Finished when</strong><p>Every required workflow passes with test contacts before real customers enter it.</p></div></div>
         <div class="toolbar">
           <input class="input" id="workflowSearch" type="search" placeholder="Search workflow names, triggers, or actions" aria-label="Search workflows">
           <select class="select" id="workflowSystem" aria-label="Filter workflows by system"><option value="all">All systems</option><option value="Light Shower">Light Shower</option><option value="Private Sessions">Private Sessions</option></select>
@@ -351,18 +387,18 @@
 
       <section class="panel" id="panel-redirects" role="tabpanel" aria-labelledby="tab-redirects" hidden>
         <div class="section-head"><div><p class="eyebrow">Preserve old traffic</p><h2>Redirect checklist</h2></div><p>Confirm active campaigns before retiring a route. Use permanent redirects only after the replacement is working.</p></div>
-        <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>Old URLs, proposed destinations, timing, and the reason each redirect exists.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Confirm whether ads, emails, QR codes, bookmarks, or search results still use each old route.</p></div><div class="guide-block"><strong>Done means</strong><p>The replacement works first, then the redirect is configured and tested from the old URL.</p></div></div>
+        <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>Old web addresses and the new pages they should open.</p></div><div class="guide-block"><strong>How to use it</strong><p>Check ads, emails, QR codes, bookmarks, and Google results before moving an old address.</p></div><div class="guide-block"><strong>Finished when</strong><p>The new page works and the old address has been tested from start to finish.</p></div></div>
         <div id="redirectTable"></div>
       </section>
 
       <section class="panel" id="panel-launch" role="tabpanel" aria-labelledby="tab-launch" hidden>
-        <div class="section-head"><div><p class="eyebrow">Production gate</p><h2>Final launch and bugfix checklist</h2></div><p>Run this once per launch wave and repeat the affected tests after every production fix.</p></div>
-        <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>The final evidence required before traffic reaches pages, bookings, payments, and fulfillment.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Accept the tested state, assign monitoring, and approve each controlled launch wave.</p></div><div class="guide-block"><strong>Done means</strong><p>Every applicable gate passes, rollback is ready, and a named person watches production.</p></div></div>
+        <div class="section-head"><div><p class="eyebrow">Before launch</p><h2>Final launch and bug-fix checklist</h2></div><p>Use this before each group of pages goes live. Repeat the related checks after every live fix.</p></div>
+        <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>The final checks for pages, bookings, payments, messages, privacy, and customer support.</p></div><div class="guide-block"><strong>How to use it</strong><p>Test each item, save proof that it worked, and prepare a way to turn off a broken path.</p></div><div class="guide-block"><strong>Finished when</strong><p>Every needed check passes and someone is watching the live system for problems.</p></div></div>
         <div class="launch-list" id="launchList"></div>
       </section>
     </main>
 
-    <footer class="footer">Local-only operational tool. No data leaves this browser. Last prepared July 22, 2026.</footer>
+    <footer class="footer">Checkboxes and edited URLs are saved only in this browser. Last updated July 23, 2026.</footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -370,8 +406,66 @@
   (function(){
     "use strict";
     var storageKey="hcla-deployment-board-v1";
-    var state={checks:{},routes:{},theme:"light"};
-    try{state=Object.assign(state,JSON.parse(localStorage.getItem(storageKey)||"{}"));}catch(error){}
+    /* Published baseline from Progress Exports/hcla-deployment-progress July 23-2026 1_54.json. Browser changes are layered on top. */
+    var publishedProgress={
+      exportedAt:"2026-07-22T17:53:56.710Z",
+      routes:{},
+      checks:{
+        "page:home:0":true,
+        "page:home:1":false,
+        "page:services:0":true,
+        "page:services:1":false,
+        "page:teachers:0":true,
+        "page:teachers:1":false,
+        "page:testimonials:0":true,
+        "page:testimonials:1":false,
+        "page:conscious:0":true,
+        "page:conscious:1":false,
+        "page:connection:0":true,
+        "page:connection:1":false,
+        "page:new-student:0":true,
+        "page:new-student:1":false,
+        "page:faq:0":true,
+        "page:faq:1":false,
+        "page:contact:0":true,
+        "page:contact:1":false,
+        "page:privacy:0":true,
+        "page:terms:0":true,
+        "page:midweek:0":true,
+        "page:light-shower:0":true,
+        "page:monday:0":true,
+        "page:tuesday:0":true,
+        "page:wednesday:0":true,
+        "page:thursday:0":true,
+        "page:friday:0":true,
+        "page:free-visit:0":true,
+        "page:three-pack:0":true,
+        "page:three-pack-confirm:0":true,
+        "page:unlimited:0":true,
+        "page:unlimited-confirm:0":true,
+        "page:winnie-sales:0":true,
+        "page:winnie-checkout:0":true,
+        "page:winnie-confirm:0":true,
+        "page:jay-sales:0":true,
+        "page:jay-checkout:0":true,
+        "page:jay-confirm:0":true,
+        "page:private-expansion:0":true,
+        "page:private-expansion-confirm:0":true,
+        "page:rooted:0":false,
+        "page:rooted-bundle:0":false,
+        "setup:setup-backup:0":true,
+        "setup:setup-backup:1":true,
+        "setup:setup-backup:2":true,
+        "setup:setup-backup:3":true
+      }
+    };
+    var state={checks:Object.assign({},publishedProgress.checks),routes:Object.assign({},publishedProgress.routes),theme:"light"};
+    try{
+      var storedState=JSON.parse(localStorage.getItem(storageKey)||"{}");
+      state.checks=Object.assign({},publishedProgress.checks,storedState.checks||{});
+      state.routes=Object.assign({},publishedProgress.routes,storedState.routes||{});
+      state.theme=storedState.theme||state.theme;
+    }catch(error){}
 
     /* Permanent route defaults: edit the url values here if you want the source file itself to carry different recommendations. */
     var pageData=[
@@ -650,7 +744,7 @@
     document.getElementById("themeToggle").onclick=function(){state.theme=state.theme==="dark"?"light":"dark";document.documentElement.classList.toggle("dark",state.theme==="dark");document.getElementById("themeToggle").textContent=state.theme==="dark"?"Light":"Dark";save();};
     document.getElementById("exportButton").onclick=exportProgress;
     document.getElementById("ownerExportButton").onclick=exportProgress;
-    document.getElementById("resetButton").onclick=function(){if(confirm("Reset every saved checkbox and URL change in this browser?")){state={checks:{},routes:{},theme:"light"};localStorage.removeItem(storageKey);document.documentElement.classList.remove("dark");location.reload();}};
+    document.getElementById("resetButton").onclick=function(){if(confirm("Remove this browser's changes and return to the published checklist?")){localStorage.removeItem(storageKey);document.documentElement.classList.remove("dark");location.reload();}};
 
     if(state.theme==="dark"){document.documentElement.classList.add("dark");document.getElementById("themeToggle").textContent="Light";}
     renderPages();renderSetup();renderWorkflows();renderRedirects();renderLaunch();updateProgress();
