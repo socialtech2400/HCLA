@@ -70,6 +70,24 @@
     .status-item strong { display:block; margin:8px 0 5px; color:var(--ink); font-size:19px; }
     .status-item p { margin:0; color:var(--muted); font-size:14px; }
     .status-label { color:var(--success); font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+    .system-change { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:18px 0 28px; }
+    .system-column { padding:24px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+    .system-column.future { background:var(--surface-2); }
+    .system-column h3 { margin-bottom:12px; font-family:Arial,Helvetica,sans-serif; font-size:20px; }
+    .system-column ul { margin:0; padding-left:20px; }
+    .system-column li { margin:8px 0; }
+    .flow-heading { margin:30px 0 14px; font-family:Arial,Helvetica,sans-serif; font-size:20px; }
+    .system-flow { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1px; margin:0 0 28px; padding:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--line); list-style:none; counter-reset:system-flow; }
+    .flow-step { min-height:158px; padding:18px; background:var(--surface); counter-increment:system-flow; }
+    .flow-step::before { content:counter(system-flow); display:flex; width:28px; height:28px; align-items:center; justify-content:center; margin-bottom:17px; border:1px solid var(--accent); border-radius:50%; color:var(--warning); font-size:12px; font-weight:900; }
+    .flow-step strong { display:block; margin-bottom:6px; color:var(--ink); font-size:16px; }
+    .flow-step p { margin:0; color:var(--muted); font-size:13px; }
+    .automation-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .automation-item { padding:22px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+    .automation-item strong { display:block; margin-bottom:7px; color:var(--ink); font-size:18px; }
+    .automation-item p { margin:0; color:var(--muted); }
+    .human-review { margin:12px 0 28px; padding:18px 20px; border-left:4px solid var(--accent); background:var(--surface-2); }
+    .human-review strong { color:var(--ink); }
     .owner-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
     .owner-card { padding:22px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
     .owner-card h3 { margin-bottom:8px; font-family:Arial,Helvetica,sans-serif; }
@@ -78,7 +96,7 @@
     .owner-card dt { color:var(--muted); font-weight:800; }
     .owner-card dd { margin:0; }
     .owner-card .button { margin-top:18px; }
-    .phase-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1px; margin:18px 0 8px; padding:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--line); list-style:none; }
+    .phase-list { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1px; margin:18px 0 8px; padding:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--line); list-style:none; }
     .phase-step { min-height:190px; padding:20px; background:var(--surface); }
     .phase-step:last-child { background:var(--surface-2); }
     .phase-step strong { display:block; margin:16px 0 7px; color:var(--ink); font-size:18px; }
@@ -142,6 +160,8 @@
       .progress-grid,.start-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .owner-summary { grid-template-columns:1fr; }
       .status-board,.phase-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .system-flow { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .system-change,.automation-grid { grid-template-columns:1fr; }
       .owner-grid { grid-template-columns:1fr; }
       .detail-grid { grid-template-columns:1fr; }
       .workflow-meta { grid-template-columns:1fr; }
@@ -155,6 +175,8 @@
       .hero { margin-top:14px; padding:24px 18px; }
       .progress-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .start-grid,.status-board,.phase-list,.tab-guide { grid-template-columns:1fr; }
+      .system-flow { grid-template-columns:1fr; }
+      .flow-step { min-height:0; }
       .metric { padding:14px; }
       .metric strong { font-size:29px; }
       .tabs { top:76px; border-radius:12px; }
@@ -209,7 +231,7 @@
         </div>
         <div class="progress-track" aria-label="Overall progress"><div class="progress-fill" id="progressFill"></div></div>
         <div class="hero-actions">
-          <button class="button primary" type="button" data-open-tab="owner">Read the Owner Brief</button>
+          <a class="button primary" href="#upgradeOutcomes">What the Upgrade Automates</a>
           <button class="button" type="button" data-open-tab="workflows">View Workflows</button>
           <button class="button danger" id="resetButton" type="button">Reset Saved Progress</button>
         </div>
@@ -236,8 +258,8 @@
             <ul>
               <li>Final routes and which existing pages will be replaced.</li>
               <li>The person responsible for workflow testing and launch sign-off.</li>
-              <li>Remaining attendance, replay, and 15-minute-session policies.</li>
-              <li>Keeping the $499 expansion held until its open terms are resolved.</li>
+              <li>The attendance-duration threshold, protected replay method, and internal recording-retention period.</li>
+              <li>The staff owner for the post-purchase Light Treasure explanation and fulfillment.</li>
             </ul>
           </aside>
         </div>
@@ -246,8 +268,36 @@
           <div class="status-item"><span class="status-label">Built locally</span><strong>Page sources</strong><p>New marketing, checkout, confirmation, and weekday files are prepared for GHL assembly and review.</p></div>
           <div class="status-item"><span class="status-label">Owner build</span><strong>GHL automation</strong><p>Products, calendars, fields, workflows, and live integrations still need to be created and tested in GHL.</p></div>
           <div class="status-item"><span class="status-label">Final phase</span><strong>Zoom and Pabbly</strong><p>Meeting publishing, registrant mapping, attendance, recordings, and replay cleanup are intentionally last.</p></div>
-          <div class="status-item"><span class="status-label">On hold</span><strong>$499 expansion</strong><p>The local pages exist, but the offer remains unpublished until its remaining fulfillment terms are approved.</p></div>
+          <div class="status-item"><span class="status-label">Ready to build</span><strong>$499 expansion</strong><p>The offer language is approved. GHL product, destinations, post-purchase Light Treasure message, fulfillment ownership, and tests remain.</p></div>
         </div>
+
+        <div class="section-head" id="upgradeOutcomes"><div><p class="eyebrow">What changes</p><h2>What this upgrade will automate</h2></div><p>It turns the current meeting-link handoff into a tracked customer system, while keeping uncertain cases visible to staff.</p></div>
+        <div class="system-change" aria-label="Current system compared with the completed upgrade">
+          <article class="system-column"><h3>Current system</h3><ul><li>Pabbly creates each weekday Zoom meeting shortly before class.</li><li>It cleans the join link and sends that link to a GHL inbound webhook.</li><li>The receiving GHL actions still need inspection before the link update is treated as verified.</li><li>The current publisher does not collect attendance or archive recordings.</li><li>Most access, credit, follow-up, and exception handling still depends on manual work.</li></ul></article>
+          <article class="system-column future"><h3>After the upgrade</h3><ul><li>GHL owns each contact's purchase, access, credits, benefits, messages, and review state.</li><li>Zoom supplies meeting and participant evidence; Pabbly transports and normalizes it.</li><li>Drive holds verified recording copies before Zoom cleanup occurs.</li><li>Automations act on verified events and stop for staff review when records disagree.</li></ul></article>
+        </div>
+
+        <h3 class="flow-heading">How one live class will move through the upgraded system</h3>
+        <ol class="system-flow" aria-label="Planned Light Shower class automation flow">
+          <li class="flow-step"><strong>Register or purchase</strong><p>GHL records the contact, selected class, consent, source, and paid offer.</p></li>
+          <li class="flow-step"><strong>Build the roster</strong><p>The contact ID and class occurrence are queued before the Zoom meeting exists.</p></li>
+          <li class="flow-step"><strong>Create Zoom at T-50</strong><p>Pabbly keeps the current under-one-hour rule and publishes the fresh link.</p></li>
+          <li class="flow-step"><strong>Collect evidence</strong><p>Zoom returns the occurrence, participant joins and leaves, and recording event.</p></li>
+          <li class="flow-step"><strong>Normalize and verify</strong><p>Pabbly combines repeat joins; the archive path verifies the private Drive copy.</p></li>
+          <li class="flow-step"><strong>Update GHL safely</strong><p>GHL logs attendance, adjusts access, sends follow-up, or creates a staff task.</p></li>
+        </ol>
+
+        <div class="automation-grid" aria-label="Planned automation outcomes">
+          <article class="automation-item"><strong>Capture registrations and route payments</strong><p>Create or update one GHL contact, preserve consent and attribution, record the selected class or appointment, and route each buyer to the correct checkout and confirmation path.</p></article>
+          <article class="automation-item"><strong>Deliver the correct daily class link</strong><p>Preserve the intentional T-50 Zoom creation window, verify the fresh meeting data, send reminders only after preflight, and alert staff when the link is missing or stale.</p></article>
+          <article class="automation-item"><strong>Log and reconcile attendance</strong><p>Match the GHL contact to the Zoom occurrence, combine repeat joins, prevent duplicate attendance, record verified attendance or no-show, and send uncertain identities to manual review.</p></article>
+          <article class="automation-item"><strong>Manage $99 credits and three-day access</strong><p>Deduct one of three credits only after verified attendance, leave credits unchanged for no-shows, grant the matching replay, and revoke it exactly 72 hours after the scheduled class ends.</p></article>
+          <article class="automation-item"><strong>Manage the $199 Unlimited Month</strong><p>Start exactly 30 consecutive days at payment, enroll daily reminders, track the 11 verified attendances used by the satisfaction policy, preserve the no-expiration 15-minute benefit, and end live access automatically.</p></article>
+          <article class="automation-item"><strong>Archive recordings and control replay</strong><p>Copy completed Zoom recordings to restricted Drive, verify the copy, grant only the correct replay window, and delete the Zoom copy after 72 hours only when the archive is confirmed.</p></article>
+          <article class="automation-item"><strong>Run follow-up, benefits, refunds, and support</strong><p>Send confirmations and reminders, stop incompatible nurture, track benefit use and policy eligibility, separate payment failures, and create staff tasks when a decision is needed.</p></article>
+          <article class="automation-item"><strong>Protect private and premium fulfillment</strong><p>For $399, require a confirmed Winnie or Jay appointment before payment and enforce the 24-hour reschedule rule. For $499, track payment, intake, the combined session, and all three Light Treasures.</p></article>
+        </div>
+        <div class="human-review"><strong>People remain in control.</strong> Staff still resolve ambiguous attendance, identity mismatches, exceptions, refunds, in-person requests, failed integrations, and sensitive support cases.</div>
 
         <div class="section-head"><div><h2>What each tab is for</h2></div><p>Open a tab when the team reaches that part of the work. The checkboxes record progress only in this browser.</p></div>
         <div class="owner-grid">
@@ -264,8 +314,9 @@
           <li class="phase-step"><span class="phase-marker">1</span><strong>Approve</strong><p>Confirm routes, offer truth, policies, owners, and held items.</p></li>
           <li class="phase-step"><span class="phase-marker">2</span><strong>Assemble</strong><p>Upload page drafts and create stable GHL products, calendars, fields, and forms.</p></li>
           <li class="phase-step"><span class="phase-marker">3</span><strong>Automate</strong><p>Build GHL foundation, payment, access, and private-session workflows.</p></li>
-          <li class="phase-step"><span class="phase-marker">4</span><strong>Release stable pages</strong><p>Launch information pages and private sessions in controlled waves.</p></li>
-          <li class="phase-step"><span class="phase-marker">5</span><strong>Connect Zoom last</strong><p>Implement T-50 publishing, registrants, attendance, replay storage, and final Light Shower QA.</p></li>
+          <li class="phase-step"><span class="phase-marker">4</span><strong>Build the $499 expansion</strong><p>Connect its checkout, protected post-purchase explanation, intake, appointment, and fulfillment tracking.</p></li>
+          <li class="phase-step"><span class="phase-marker">5</span><strong>Release stable pages</strong><p>Launch information pages and private sessions in controlled waves.</p></li>
+          <li class="phase-step"><span class="phase-marker">6</span><strong>Connect Zoom last</strong><p>Implement T-50 publishing, registrants, attendance, replay storage, and final Light Shower QA.</p></li>
         </ol>
       </section>
 
@@ -287,13 +338,13 @@
       </section>
 
       <section class="panel" id="panel-workflows" role="tabpanel" aria-labelledby="tab-workflows" hidden>
-        <div class="section-head"><div><p class="eyebrow">One by one</p><h2>Workflow construction order</h2></div><p>Build by phase, then by ID. Zoom and Pabbly workflows are the final required phase. `$499` remains held.</p></div>
+        <div class="section-head"><div><p class="eyebrow">One by one</p><h2>Workflow construction order</h2></div><p>Build by phase, then by ID. The `$499` premium expansion follows the stable customer journeys. Zoom and Pabbly remain the final phase.</p></div>
         <div class="tab-guide"><div class="guide-block"><strong>What you see</strong><p>Each automation's trigger, core actions, status, construction phase, and test checklist.</p></div><div class="guide-block"><strong>What owners decide</strong><p>Approve messages, exception policies, manual-review ownership, and when each phase may activate.</p></div><div class="guide-block"><strong>Done means</strong><p>The trigger, success path, failure path, re-entry, and stop conditions all pass with test contacts.</p></div></div>
         <div class="toolbar">
           <input class="input" id="workflowSearch" type="search" placeholder="Search workflow names, triggers, or actions" aria-label="Search workflows">
           <select class="select" id="workflowSystem" aria-label="Filter workflows by system"><option value="all">All systems</option><option value="Light Shower">Light Shower</option><option value="Private Sessions">Private Sessions</option></select>
           <select class="select" id="workflowStatus" aria-label="Filter workflows by launch status"><option value="all">All statuses</option><option value="required">Required</option><option value="hold">Hold</option></select>
-          <select class="select" id="workflowPhase" aria-label="Filter workflows by implementation phase"><option value="all">All phases</option><option value="foundation">Foundation</option><option value="customer">Customer journeys</option><option value="private">Private sessions</option><option value="zoom">Zoom and Pabbly last</option><option value="held">Held work</option></select>
+          <select class="select" id="workflowPhase" aria-label="Filter workflows by implementation phase"><option value="all">All phases</option><option value="foundation">Foundation</option><option value="customer">Customer journeys</option><option value="private">Private sessions</option><option value="premium">$499 premium expansion</option><option value="zoom">Zoom and Pabbly last</option><option value="held">Held work</option></select>
         </div>
         <div class="cards" id="workflowCards"></div>
       </section>
@@ -356,8 +407,8 @@
       {id:"jay-checkout",name:"Jay `$399` checkout",domain:"heartcenter.la",action:"create",url:"https://heartcenter.la/private-session-jay-checkout",sources:["pages/private-session-jay-checkout/ghl-private-session-jay-checkout-top-custom-code.html","pages/private-session-jay-checkout/ghl-private-session-jay-checkout-bottom-custom-code.html"],assembly:"Top custom code + native Jay-only `$399` order form + bottom custom code",note:"Noindex. Send only after a confirmed Jay appointment."},
       {id:"jay-confirm",name:"Jay paid confirmation",domain:"heartcenter.la",action:"create",url:"https://heartcenter.la/private-session-jay-confirmation",sources:["pages/private-session-jay-confirmation/ghl-private-session-jay-confirmation-custom-code.html"],assembly:"One custom-code block",note:"Noindex. Redirect only a successful, appointment-matched Jay payment."},
 
-      {id:"private-expansion",name:"$499 Light Shower Private Expansion",domain:"breathing.heartcenter.la",action:"hold",url:"https://breathing.heartcenter.la/light-shower-private-expansion",sources:["pages/light-shower-private-expansion/ghl-light-shower-private-expansion-top-custom-code.html","pages/light-shower-private-expansion/ghl-light-shower-private-expansion-bottom-custom-code.html"],assembly:"Top custom code + native `$499` order form + bottom custom code",note:"Do not publish. Light Treasures and remaining fulfillment policies are unresolved."},
-      {id:"private-expansion-confirm",name:"$499 expansion confirmation",domain:"breathing.heartcenter.la",action:"hold",url:"https://breathing.heartcenter.la/light-shower-private-expansion-confirmation",sources:["pages/light-shower-private-expansion-confirmation/ghl-light-shower-private-expansion-confirmation-custom-code.html"],assembly:"One custom-code block",note:"Do not publish until the `$499` offer and workflows are fully approved."},
+      {id:"private-expansion",name:"$499 Light Shower Private Expansion",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/light-shower-private-expansion",sources:["pages/light-shower-private-expansion/ghl-light-shower-private-expansion-top-custom-code.html","pages/light-shower-private-expansion/ghl-light-shower-private-expansion-bottom-custom-code.html"],assembly:"Top custom code + native `$499` order form + bottom custom code",note:"Noindex post-purchase offer. The Light Treasure wording is approved. Activate only after the product, destinations, protected post-purchase explanation, fulfillment owner, and workflows pass."},
+      {id:"private-expansion-confirm",name:"$499 expansion confirmation",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/light-shower-private-expansion-confirmation",sources:["pages/light-shower-private-expansion-confirmation/ghl-light-shower-private-expansion-confirmation-custom-code.html"],assembly:"One custom-code block",note:"Noindex. Connect intake, appointment, continuation, and the immediate post-purchase Light Treasure explanation before activating the `$499` checkout."},
       {id:"rooted",name:"Rooted in Love campaign",domain:"heartcenter.la",action:"hold",url:"https://heartcenter.la/rooted-in-love",sources:["pages/rooted-in-love/ghl-rooted-in-love-custom-code.html"],assembly:"One custom-code block",note:"Verify the event date, availability, product, and campaign status before reuse."},
       {id:"rooted-bundle",name:"Rooted plus Soul Mind Body Makeover",domain:"heartcenter.la",action:"hold",url:"https://heartcenter.la/rooted-plus-soul-mind-body-makeover",sources:["pages/rooted-plus-soul-mind-body-makeover/ghl-soul-mind-body-makeover-custom-code.html"],assembly:"One custom-code block with GHL popup checkout",note:"Verify the underlying campaign and popup product before reuse."}
     ];
@@ -366,11 +417,12 @@
       {id:"setup-backup",phase:"foundation",name:"Production backup and route inventory",detail:"Duplicate or export every live page before replacement. Record the current URL, page ID, funnel/site location, and active campaigns."},
       {id:"setup-fields",phase:"foundation",name:"Contact fields and state model",detail:"Create Light Shower access, attendance, replay, benefit, attribution, and private-session fields before building workflows."},
       {id:"setup-tags",phase:"foundation",name:"Tag taxonomy",detail:"Create the approved `ls:` and `ps:` tags. Fields and appointment/payment records remain authoritative for mutable state."},
-      {id:"setup-products",phase:"foundation",name:"Products and native order forms",detail:"Create separate `$99`, `$199`, Winnie `$399`, and Jay `$399` products and order forms. Keep `$499` inactive."},
+      {id:"setup-products",phase:"foundation",name:"Products and native order forms",detail:"Create separate `$99`, `$199`, Winnie `$399`, Jay `$399`, and `$499` products and order forms. Keep each inactive until its own test path passes."},
       {id:"setup-calendars",phase:"foundation",name:"Calendars",detail:"Create one five-option Light Shower free-visit calendar plus separate 30-minute remote calendars for Winnie and Jay. Configure the 15-minute benefit calendar only after its policy is approved."},
       {id:"setup-pipeline",phase:"foundation",name:"Customer journey pipeline",detail:"Create stages for lead, registered, attended, paid access, private appointment, review, completed, and alumni. Use it for visibility, not access control."},
       {id:"setup-values",phase:"foundation",name:"Core URLs and destinations",detail:"Create or verify support contacts, access URLs, and approved checkout and confirmation destinations. Defer Zoom-specific values until the final integration phase."},
-      {id:"setup-test",phase:"foundation",name:"Dedicated test contacts and payment method",detail:"Create separate free, `$99`, `$199`, Winnie, Jay, mismatch, no-show, refund, and DND test contacts so histories remain readable."},
+      {id:"setup-test",phase:"foundation",name:"Dedicated test contacts and payment method",detail:"Create separate free, `$99`, `$199`, `$499`, Winnie, Jay, mismatch, no-show, refund, and DND test contacts so histories remain readable."},
+      {id:"setup-premium",phase:"premium",name:"$499 post-purchase fulfillment",detail:"Create the private-expansion pipeline or tasks, immediate Light Treasure definition message, intake, facilitator request, combined appointment tracking, three-item fulfillment count, and named staff owner."},
       {id:"setup-security",phase:"zoom",name:"Rotate the exposed GHL inbound webhook",detail:"Final integration phase: delete and recreate the exposed inbound-webhook trigger, update both Pabbly publisher endpoints, test the new value, and confirm the old URL no longer executes."},
       {id:"setup-zoom",phase:"zoom",name:"Zoom and Pabbly meeting publishing",detail:"Final integration phase: keep the intentional T-50 weekday publishers. Never create these meetings more than one hour before class. Verify the receiving GHL update, register the queued roster after meeting creation when enabled, and complete a staff preflight before customer link sends."},
       {id:"setup-attendance",phase:"zoom",name:"Attendance transport and reconciliation",detail:"Final integration phase: queue bookings by GHL contact ID; after T-50 creation, store contact ID plus meeting UUID plus Zoom registrant ID. Aggregate repeat joins, deduplicate each occurrence, and route missing or ambiguous identities to staff."},
@@ -409,7 +461,7 @@
       ["LS-31","Light Shower","required","Three-day replay entitlement","Attendance and archive both verified",["Grant protected replay","Expire exactly 72 hours after scheduled class end","Revoke and send expiration instructions"]],
       ["LS-32","Light Shower","required","Credit consumption and completion","Verified attendance event",["Prevent duplicate deduction","Subtract one credit only after attendance","Stop active access when credits reach zero"]],
       ["LS-33","Light Shower","required","`$99` continuity follow-up","Credits low or complete",["Present `$199` as broader access","Stop on purchase","Do not pressure a no-show"]],
-      ["LS-34","Light Shower","hold","`$99` private-expansion eligibility","Two or three meaningful attendances",["Record future `$499` eligibility","Do not display the offer yet","Keep inactive until `$499` is fully defined"]],
+      ["LS-34","Light Shower","required","`$99` private-expansion eligibility","Two or three meaningful attendances",["Record `$499` eligibility","Exclude refunded or unresolved contacts","Invite without interrupting current access"]],
 
       ["LS-40","Light Shower","required","`$199` purchase and 30-day activation","Successful `$199` payment",["Start exactly 30 consecutive days","Activate live reminders and 15-minute benefit","Keep library access excluded"]],
       ["LS-41","Light Shower","required","Live-access instructions","`$199` fulfillment",["Send weekday schedule","Offer reminder preferences","Provide support path"]],
@@ -419,16 +471,16 @@
       ["LS-45","Light Shower","required","Engagement and repurchase","Timed from access start and end",["Day 7 check-in","Mid-month benefit reminder","Seven-day and two-day expiry notices"]],
       ["LS-46","Light Shower","required","Unlimited Month expiration","Payment time plus exactly 30 days",["Stop live access and reminders","Preserve benefit under its separate policy","Move to alumni or repurchase nurture"]],
 
-      ["LS-50","Light Shower","hold","`$499` eligibility router","`$199` purchase or qualifying `$99` engagement",["Exclude refunded and support-review contacts","Respect declines","Do not activate until offer is complete"]],
-      ["LS-51","Light Shower","hold","`$499` viewed or declined","Upsell view or decline",["Record event","Suppress follow-up after decline","Preserve original purchase"]],
-      ["LS-52","Light Shower","hold","`$499` purchase fulfillment","Successful `$499` payment",["Confirm exact inclusions","Create tasks","Request facilitator choice after policy approval"]],
-      ["LS-53","Light Shower","hold","Frequency-scan intake","`$499` purchase",["Collect only necessary information","Remind at 24 and 72 hours","Stop when complete"]],
-      ["LS-54","Light Shower","hold","Combined scan/session scheduling","Intake ready",["Offer one remote 30-minute appointment","Track booked, completed, and rescheduled","Do not create a second session"]],
-      ["LS-55","Light Shower","hold","Combined appointment status","Appointment event",["Update scan and session together","Preserve facilitator attribution","Route mismatches to review"]],
-      ["LS-56","Light Shower","hold","Appointment no-show or reschedule","Appointment status",["Apply final policy once approved","Return to scheduling or review","Do not invent a rule"]],
-      ["LS-57","Light Shower","hold","Light Treasures fulfillment","`$499` purchase",["Do not activate until treasures are defined","Initialize three owed","Track delivery and completion"]],
-      ["LS-58","Light Shower","hold","`$499` package completion","All deliverables complete",["Mark fulfilled","Send operational confirmation","Send a restrained check-in"]],
-      ["LS-59","Light Shower","hold","Post-fulfillment testimonial request","Fulfilled plus waiting period",["Ask voluntarily","Capture explicit publication consent","Do not prompt a medical outcome claim"]],
+      ["LS-50","Light Shower","required","`$499` eligibility router","`$199` purchase or qualifying `$99` engagement",["Exclude refunded and support-review contacts","Respect declines","Send only eligible buyers to the optional page"]],
+      ["LS-51","Light Shower","required","`$499` viewed or declined","Upsell view or decline",["Record event","Suppress follow-up after decline","Preserve original purchase"]],
+      ["LS-52","Light Shower","required","`$499` purchase fulfillment","Successful `$499` payment",["Confirm exact inclusions","Send the approved Light Treasure definition and guidance","Timestamp delivery and create fulfillment tasks"]],
+      ["LS-53","Light Shower","required","Frequency-scan intake","`$499` purchase",["Collect only necessary information","Remind at 24 and 72 hours","Stop when complete"]],
+      ["LS-54","Light Shower","required","Combined scan/session scheduling","Intake ready",["Offer one remote 30-minute appointment","Track booked, completed, and rescheduled","Do not create a second session"]],
+      ["LS-55","Light Shower","required","Combined appointment status","Appointment event",["Update scan and session together","Preserve facilitator attribution","Route mismatches to review"]],
+      ["LS-56","Light Shower","required","Appointment no-show or reschedule","Appointment status",["Apply the Terms-based 24-hour rule","Return eligible contacts to scheduling or review","Mark a late cancellation or no-show used"]],
+      ["LS-57","Light Shower","required","Light Treasures fulfillment","`$499` purchase",["Confirm the definition message was sent","Initialize three owed","Track all three through completion"]],
+      ["LS-58","Light Shower","required","`$499` package completion","All deliverables complete",["Mark fulfilled","Send operational confirmation","Send a restrained check-in"]],
+      ["LS-59","Light Shower","hold","Future post-fulfillment testimonial request","Fulfilled plus waiting period",["Keep inactive at initial launch","Ask voluntarily only after approval","Do not prompt a medical outcome claim"]],
 
       ["LS-60","Light Shower","required","Refund request intake","Refund form, reply, or staff tag",["Pause promotion","Create staff task","Preserve access until decision"]],
       ["LS-61","Light Shower","required","Refund approved","Staff approval or successful refund",["Revoke applicable access","Expire benefits and reminders","Preserve CRM history"]],
@@ -455,16 +507,19 @@
     ].map(function(row){return{id:row[0],system:row[1],status:row[2],name:row[3],trigger:row[4],actions:row[5]};});
 
     var zoomLastIds=["LS-12","LS-13","LS-14","LS-20","LS-21","LS-22","LS-23","LS-24","LS-25","LS-26","LS-27","LS-28","LS-29","LS-31","LS-32","LS-33"];
+    var premiumIds=["LS-34","LS-50","LS-51","LS-52","LS-53","LS-54","LS-55","LS-56","LS-57","LS-58"];
     var workflowPhases={
       foundation:{label:"Foundation",order:1},
       customer:{label:"Customer journeys",order:2},
       private:{label:"Private sessions",order:3},
-      zoom:{label:"Zoom and Pabbly last",order:4},
-      held:{label:"Held work",order:5}
+      premium:{label:"$499 premium expansion",order:4},
+      zoom:{label:"Zoom and Pabbly last",order:5},
+      held:{label:"Held work",order:6}
     };
     function workflowPhase(flow){
       if(flow.status==="hold")return"held";
       if(zoomLastIds.indexOf(flow.id)!==-1)return"zoom";
+      if(premiumIds.indexOf(flow.id)!==-1)return"premium";
       if(flow.system==="Private Sessions")return"private";
       if(/^LS-0/.test(flow.id))return"foundation";
       return"customer";
@@ -481,13 +536,14 @@
       ["launch-backup","A fresh production backup exists","Current GHL pages, settings, URLs, form IDs, and redirects can be restored."],
       ["launch-routes","All final URLs are reconciled","Buttons, menus, confirmations, calendars, emails, SMS, canonicals, schema, and redirects use the same route map."],
       ["launch-placeholders","No unresolved customer-facing placeholders remain","Search every production source and rendered page for `{{HCLA_`, TODO, TBD, test URLs, and local-preview language."],
-      ["launch-products","Every native order form has one correct product","Verify `$99`, `$199`, Winnie `$399`, and Jay `$399` independently. `$499` stays inactive."],
+      ["launch-products","Every native order form has one correct product","Verify `$99`, `$199`, Winnie `$399`, Jay `$399`, and `$499` independently."],
       ["launch-workflows","Required workflows have passed their test cases","Check trigger filters, re-entry, waits, stop conditions, mismatch branches, and staff alerts."],
       ["launch-private","Winnie canary passes before Jay launches","Test booking, 10-minute reminder, payment, 30-minute release, mismatch, reschedule, no-show, HCLA cancellation, refund, and credit."],
       ["launch-mobile","Desktop and mobile GHL rendering is approved","Check at roughly 375px and desktop widths, including calendars, order forms, menus, accordions, footer, focus, and reduced motion."],
       ["launch-analytics","Analytics records the journey without sensitive intake data","Verify page, calendar, checkout, purchase, appointment, and source events. Do not send unnecessary health information."],
       ["launch-legal","Terms and Privacy have final review","Published policies match current offers, recording behavior, cancellation rules, and information handling."],
       ["launch-links","External and internal links pass","Test social links, email, phone, legal, facilitator routes, day pages, confirmations, decline paths, and support routes."],
+      ["launch-premium","The `$499` post-purchase path passes","Verify eligibility, equal decline, payment, immediate Light Treasure definition delivery, intake, facilitator request, combined appointment, all three fulfillment records, duplicate payment, and support."],
       ["launch-zoom","Final phase: today's Zoom link path is verified","Pabbly creates the meeting inside the one-hour window, registers any queued roster, GHL stores the fresh values, staff preflight passes, and only then does the link reminder send."],
       ["launch-attendance","Final phase: attendance and no-show reconciliation works","Repeat joins aggregate, contact matching is auditable, duplicates do not count twice, and no-show does not consume a `$99` credit."],
       ["launch-recording","Final phase: replay fulfillment is safe before `$99` traffic","Consent, Drive copy, verification, protected playback, exact expiry, and conditional Zoom deletion all pass."],
@@ -523,7 +579,8 @@
     }
 
     function renderSetup(){
-      document.getElementById("setupCards").innerHTML=setupData.map(function(item){var isFinal=item.phase==="zoom";return '<details class="card"><summary><div><div class="card-title-row"><span class="badge '+(isFinal?'final':'phase')+'">'+(isFinal?'final phase':'foundation')+'</span><h3>'+esc(item.name)+'</h3></div><p class="card-subtitle">'+esc(item.detail)+'</p></div><span class="chevron">+</span></summary><div class="card-body"><div class="detail-grid"><div><p>'+esc(item.detail)+'</p></div><div><span class="label">Setup checklist</span>'+setupSteps.map(function(step,i){return checkbox("setup:"+item.id+":"+i,step);}).join("")+'</div></div></div></details>';}).join("");
+      var labels={foundation:"foundation",premium:"$499 premium expansion",zoom:"final phase"};
+      document.getElementById("setupCards").innerHTML=setupData.map(function(item){var isFinal=item.phase==="zoom";return '<details class="card"><summary><div><div class="card-title-row"><span class="badge '+(isFinal?'final':'phase')+'">'+esc(labels[item.phase]||item.phase)+'</span><h3>'+esc(item.name)+'</h3></div><p class="card-subtitle">'+esc(item.detail)+'</p></div><span class="chevron">+</span></summary><div class="card-body"><div class="detail-grid"><div><p>'+esc(item.detail)+'</p></div><div><span class="label">Setup checklist</span>'+setupSteps.map(function(step,i){return checkbox("setup:"+item.id+":"+i,step);}).join("")+'</div></div></div></details>';}).join("");
       bindDynamic();
     }
 
