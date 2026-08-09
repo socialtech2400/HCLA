@@ -134,8 +134,10 @@
     details[open] .chevron { transform:rotate(45deg); }
     .badge { display:inline-flex; align-items:center; min-height:25px; padding:3px 9px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:11px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }
     .badge.create { border-color:var(--success); color:var(--success); }
+    .badge.production { border-color:var(--success); background:var(--success); color:var(--surface); }
     .badge.replace { border-color:var(--accent); color:var(--warning); }
     .badge.hold { border-color:var(--danger); color:var(--danger); }
+    .badge.deferred { border-color:var(--muted); color:var(--muted); }
     .badge.redirect { border-color:var(--muted); color:var(--muted); }
     .badge.final { border-color:var(--danger); color:var(--danger); }
     .badge.phase { border-color:var(--accent); color:var(--warning); }
@@ -149,6 +151,8 @@
     .note { padding:14px; border-left:3px solid var(--accent); background:var(--surface-2); color:var(--text); }
     .check-grid { display:grid; gap:4px; }
     .check { display:flex; min-height:44px; align-items:center; gap:10px; padding:8px 10px; border-bottom:1px solid var(--line); cursor:pointer; }
+    .check.locked { cursor:default; }
+    .check.locked span::after { content:"Production baseline"; display:block; color:var(--success); font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
     .check input { width:20px; height:20px; accent-color:var(--success); }
     .check span { flex:1; }
     .workflow-meta { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:16px 0; }
@@ -233,10 +237,10 @@
       <section class="hero" aria-labelledby="pageTitle">
         <div>
           <p class="eyebrow">HCLA Website 2026</p>
-          <h1 id="pageTitle">See what is ready, what still needs work, and what happens next.</h1>
-          <p class="lede">A simple guide to the new Heart Center LA website and the systems that will support it.</p>
+          <h1 id="pageTitle">Midweek is live. Light Shower is the next implementation focus.</h1>
+          <p class="lede">The dashboard now separates the production Midweek slice from deferred work and the remaining Light Shower build.</p>
         </div>
-        <div class="warning"><strong>Do not send visitors to new booking or checkout pages until their automations have been tested.</strong> The pages can be uploaded as drafts while the rest of the system is built.</div>
+        <div class="warning"><strong>Keep the current Midweek production path stable while Light Shower is rebuilt.</strong> Do not send visitors to untested Light Shower booking or checkout pages; upload them as drafts until their complete journeys pass.</div>
         <div class="progress-grid" aria-label="Deployment progress">
           <div class="metric"><strong id="overallPct">0%</strong><span>overall completion</span></div>
           <div class="metric"><strong id="pagePct">0%</strong><span>page tasks</span></div>
@@ -264,35 +268,38 @@
         <div class="owner-summary">
           <div class="owner-lede">
             <p class="eyebrow">What this board means</p>
-            <h2>The new pages are ready to build, but the full system is not live yet.</h2>
-            <p>The website also needs working forms, calendars, payments, messages, access rules, and testing. This board keeps all of that work in one place.</p>
+            <h2>The core Midweek customer path is in production; Light Shower still needs a controlled implementation.</h2>
+            <p>Midweek now provides a working reference for mode-specific confirmations, reminders, cancellations, and fresh Zoom-link delivery. The remaining Midweek workflow families are deferred while the Light Shower foundation, access rules, and four-day class delivery are built and tested. Use the <a href="docs/LIGHT-SHOWER-IMPLEMENTATION-PLAN.md">Light Shower implementation plan</a> as the phase-by-phase execution tracker.</p>
           </div>
           <aside class="owner-decisions" aria-labelledby="ownerDecisionTitle">
             <h3 id="ownerDecisionTitle">The big picture</h3>
             <ul>
-              <li>The new page designs and copy are prepared locally.</li>
-              <li>GHL will connect forms, calendars, payments, access, and messages.</li>
-              <li>Zoom and Pabbly will handle daily class links, attendance, and recordings.</li>
-              <li>The website will launch in small steps so each part can be checked.</li>
+              <li>Midweek Women&rsquo;s Circle is in production.</li>
+              <li>`MW-10`, `MW-11`, `MW-12`, and `MW-14` are owner-reported production workflow families.</li>
+              <li>The fresh Midweek Zoom-link handoff from Pabbly is in production.</li>
+              <li>Other Midweek workflow families are intentionally deferred and remain visible on this board.</li>
+              <li>The new Light Shower page designs and copy are prepared locally.</li>
+              <li>Light Shower runs Monday, Tuesday, Thursday, and Friday; Wednesday Light Shower is canceled and `/wednesday` stays unpublished.</li>
+              <li>Light Shower will reuse the proven Midweek link pattern, but its access, attendance, credits, recordings, and replays still need separate proof.</li>
             </ul>
           </aside>
         </div>
 
         <div class="status-board" aria-label="Current program status">
-          <div class="status-item"><span class="status-label">Built locally</span><strong>Website pages</strong><p>The new marketing, checkout, confirmation, and weekday pages are ready to upload into GHL.</p></div>
-          <div class="status-item"><span class="status-label">Needs setup</span><strong>GHL system</strong><p>Products, calendars, contact fields, and automations still need to be built and tested.</p></div>
-          <div class="status-item"><span class="status-label">Built last</span><strong>Zoom and Pabbly</strong><p>Daily meeting links, attendance records, recordings, and replays will be connected after the main system works.</p></div>
-          <div class="status-item"><span class="status-label">Ready to build</span><strong>$499 expansion</strong><p>The offer is defined. Its checkout, messages, intake, appointment, and fulfillment tracking still need to be connected.</p></div>
+          <div class="status-item"><span class="status-label">In production</span><strong>Midweek Women&rsquo;s Circle</strong><p>The public program and current standalone customer path are live.</p></div>
+          <div class="status-item"><span class="status-label">In production</span><strong>MW-10 / 11 / 12 / 14</strong><p>Confirmations, remote reminders, in-person reminders, and cancellation/waitlist workflows are active.</p></div>
+          <div class="status-item"><span class="status-label">In production</span><strong>Pabbly Zoom link</strong><p>The fresh Midweek meeting link reaches the remote reminder path.</p></div>
+          <div class="status-item"><span class="status-label">Deferred</span><strong>Other Midweek workflows</strong><p>Foundation, entitlement, attendance, replay, and follow-up families will be resumed later.</p></div>
         </div>
 
         <div class="section-head" id="upgradeOutcomes"><div><p class="eyebrow">What changes</p><h2>What this upgrade will automate</h2></div><p>The new system will handle routine work, keep better records, and ask staff to check anything unclear.</p></div>
         <div class="system-change" aria-label="Current system compared with the completed upgrade">
-          <article class="system-column"><h3>Today</h3><ul><li>Pabbly creates each Zoom meeting shortly before class.</li><li>It cleans the join link and sends it to GHL.</li><li>We still need to confirm that GHL received the correct link.</li><li>The current setup does not record attendance or save recordings.</li><li>Most access, credits, and follow-up are handled by hand.</li></ul></article>
-          <article class="system-column future"><h3>After the upgrade</h3><ul><li>GHL keeps each person's purchase, access, credits, and messages in one place.</li><li>Zoom reports who joined each class.</li><li>Pabbly passes information between Zoom and GHL.</li><li>Google Drive stores a checked copy of each recording before Zoom removes it.</li><li>If information does not match, the automation pauses and asks staff to check it.</li></ul></article>
+          <article class="system-column"><h3>Working now</h3><ul><li>Midweek is serving customers in production.</li><li>GHL sends the live confirmation, remote reminder, in-person reminder, and cancellation/waitlist paths.</li><li>Pabbly creates and publishes the fresh Midweek Zoom link.</li><li>Unlisted Midweek workflow families stay deferred.</li><li>Production monitoring and QA evidence should be captured without redesigning the live path.</li></ul></article>
+          <article class="system-column future"><h3>Light Shower next</h3><ul><li>Inventory the live TCLW assets before changing them.</li><li>Build the four-day GHL access and booking foundation.</li><li>Reuse the Midweek occurrence and link-release pattern for Monday/Friday and Tuesday/Thursday.</li><li>Add attendance, credit, recording, and replay automation only after link delivery passes.</li><li>Release traffic by canary occurrence with rollback ready.</li></ul></article>
         </div>
 
-        <h3 class="flow-heading">How one live class will work</h3>
-        <ol class="system-flow" aria-label="Planned Light Shower class automation flow">
+        <h3 class="flow-heading">How the Light Shower implementation will work</h3>
+        <ol class="system-flow" aria-label="Planned Light Shower implementation flow">
           <li class="flow-step"><strong>Sign up or pay</strong><p>GHL saves the person's details, chosen class, and purchase.</p></li>
           <li class="flow-step"><strong>Prepare the class list</strong><p>GHL holds the list of people who should receive that day's Zoom link.</p></li>
           <li class="flow-step"><strong>Create Zoom</strong><p>Pabbly creates the meeting about 50 minutes before class and sends the fresh link to GHL.</p></li>
@@ -305,10 +312,10 @@
           <article class="automation-item"><strong>Keep sign-ups and payments organized</strong><p>Save each person once in GHL, record what they chose, and send them to the correct checkout and confirmation page.</p></article>
           <article class="automation-item"><strong>Send the correct daily class link</strong><p>Create a fresh Zoom link about 50 minutes before class, check it, send reminders, and alert staff if the link is missing.</p></article>
           <article class="automation-item"><strong>Record attendance</strong><p>Match each Zoom guest to the right GHL contact, combine repeat joins, prevent duplicate records, and flag names that cannot be matched safely.</p></article>
-          <article class="automation-item"><strong>Manage the $99 plan</strong><p>Use one of the three class credits only after confirmed attendance. A no-show keeps the credit. The matching replay ends exactly 72 hours after class.</p></article>
-          <article class="automation-item"><strong>Manage the $199 Unlimited Month</strong><p>Start 30 days of access when payment succeeds, send reminders, count the 11 attendances used by the satisfaction policy, and end live access on time.</p></article>
+          <article class="automation-item"><strong>Manage the $99 plan</strong><p>Use one credit only after verified Light Shower or Midweek attendance. Remote Midweek has no surcharge; in person adds $15. A no-show keeps the credit, and the matching replay ends exactly 72 hours after class.</p></article>
+          <article class="automation-item"><strong>Manage the $199 Unlimited Month</strong><p>Start 30 days of access when payment succeeds, include remote Midweek, require $15 for in-person Midweek, count verified eligible attendance toward the 11-class policy, and end access on time.</p></article>
           <article class="automation-item"><strong>Save recordings and control replays</strong><p>Copy recordings to a private Google Drive folder, check the copy, give access only to the right people, and remove the Zoom copy after 72 hours when safe.</p></article>
-          <article class="automation-item"><strong>Send follow-up and support messages</strong><p>Send confirmations, reminders, and help messages. Track benefits and refund requests, and create a staff task when a person needs help.</p></article>
+          <article class="automation-item"><strong>Send mode-safe messages</strong><p>Send confirmations, reminders, cancellations, waitlist, mode-change, replay, and recovery messages. Remote sends contain no clinic instructions; in-person sends contain no Zoom link.</p></article>
           <article class="automation-item"><strong>Track private and $499 services</strong><p>For $399, confirm the Winnie or Jay appointment before payment. For $499, track payment, intake, the combined session, and all three Light Treasures.</p></article>
         </div>
         <div class="human-review"><strong>People remain in control.</strong> Staff still handle unclear attendance, identity problems, special requests, refunds, failed connections, and sensitive support.</div>
@@ -345,14 +352,14 @@
           <article class="owner-card"><h3>Progress and Export</h3><p>Shows how much is finished. Export saves the checklist and web addresses in a file that can be moved to another computer.</p><button class="button" type="button" id="ownerExportButton">Export Progress</button></article>
         </div>
 
-        <div class="section-head"><div><h2>The build order</h2></div><p>The Zoom connection comes last because it is the most time-sensitive part of the Light Shower system.</p></div>
+        <div class="section-head"><div><h2>The Light Shower recovery order</h2></div><p>Keep Midweek stable, prove Light Shower state and customer journeys first, then connect the time-sensitive Zoom, attendance, and replay layers.</p></div>
         <ol class="phase-list">
-          <li class="phase-step"><span class="phase-marker">1</span><strong>Confirm the plan</strong><p>Set the final web addresses, offers, policies, and pages that will stay on hold.</p></li>
-          <li class="phase-step"><span class="phase-marker">2</span><strong>Build the base</strong><p>Upload page drafts and create the GHL products, calendars, fields, and forms.</p></li>
-          <li class="phase-step"><span class="phase-marker">3</span><strong>Add automations</strong><p>Build the payment, access, reminder, and private-session workflows.</p></li>
-          <li class="phase-step"><span class="phase-marker">4</span><strong>Connect the $499 offer</strong><p>Add its checkout, follow-up message, intake, appointment, and fulfillment tracking.</p></li>
-          <li class="phase-step"><span class="phase-marker">5</span><strong>Launch stable pages</strong><p>Release the main information pages and private sessions in small groups.</p></li>
-          <li class="phase-step"><span class="phase-marker">6</span><strong>Connect Zoom last</strong><p>Add daily meeting links, attendance, recording storage, replays, and final testing.</p></li>
+          <li class="phase-step"><span class="phase-marker">1</span><strong>Freeze Midweek</strong><p>Record live IDs, owners, and rollback steps. Keep the production slice unchanged and leave other MW families deferred.</p></li>
+          <li class="phase-step"><span class="phase-marker">2</span><strong>Audit TCLW</strong><p>Back up the live funnel and inventory pages, calendars, products, fields, workflows, publishers, routes, and current failures.</p></li>
+          <li class="phase-step"><span class="phase-marker">3</span><strong>Build the GHL base</strong><p>Create or verify the four-day calendars, `$99/$199` products, state fields, forms, mode routing, and stop rules.</p></li>
+          <li class="phase-step"><span class="phase-marker">4</span><strong>Prove core journeys</strong><p>Test free, `$99`, and `$199` purchase, access, booking, reminder-preference, expiry, refund, and support paths without live traffic.</p></li>
+          <li class="phase-step"><span class="phase-marker">5</span><strong>Connect fresh links</strong><p>Adapt the Midweek pattern to M/F and T/Th publishers, occurrence validation, staff preflight, and remote-only link release.</p></li>
+          <li class="phase-step"><span class="phase-marker">6</span><strong>Connect messages, analytics, and Zoom last</strong><p>Prove attendance, no-show, credit, recording, replay, rollback, and a single canary occurrence; then expand by wave.</p></li>
         </ol>
       </section>
 
@@ -362,7 +369,7 @@
         <div class="toolbar">
           <input class="input" id="pageSearch" type="search" placeholder="Search pages, routes, or sources" aria-label="Search pages">
           <select class="select" id="pageDomain" aria-label="Filter pages by domain"><option value="all">All domains</option><option value="heartcenter.la">heartcenter.la</option><option value="breathing.heartcenter.la">breathing.heartcenter.la</option></select>
-          <select class="select" id="pageAction" aria-label="Filter pages by action"><option value="all">All actions</option><option value="replace">Replace</option><option value="create">Create</option><option value="hold">Hold</option></select>
+          <select class="select" id="pageAction" aria-label="Filter pages by action"><option value="all">All actions</option><option value="production">Production</option><option value="replace">Replace</option><option value="create">Create</option><option value="hold">Hold</option></select>
         </div>
         <div class="cards" id="pageCards"></div>
       </section>
@@ -374,19 +381,19 @@
       </section>
 
       <section class="panel" id="panel-workflows" role="tabpanel" aria-labelledby="tab-workflows" hidden>
-        <div class="section-head"><div><p class="eyebrow">One by one</p><h2>Workflow construction order</h2></div><p>Build by phase, then by ID. The `$499` premium expansion follows the stable customer journeys. Zoom and Pabbly remain the final phase.</p></div>
+        <div class="section-head"><div><p class="eyebrow">Live, deferred, and next</p><h2>Workflow construction order</h2></div><p>Production rows reflect the owner-reported Midweek slice. Deferred Midweek rows stay parked while Light Shower is implemented; Light Shower Zoom and Pabbly work remains its final integration phase.</p></div>
         <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>Every automation, what starts it, what it does, and how it should be tested.</p></div><div class="guide-block"><strong>How to use it</strong><p>Build workflows in the listed order and test normal cases, mistakes, repeat entries, and stop rules.</p></div><div class="guide-block"><strong>Finished when</strong><p>Every required workflow passes with test contacts before real customers enter it.</p></div></div>
         <div class="toolbar">
           <input class="input" id="workflowSearch" type="search" placeholder="Search workflow names, triggers, or actions" aria-label="Search workflows">
-          <select class="select" id="workflowSystem" aria-label="Filter workflows by system"><option value="all">All systems</option><option value="Light Shower">Light Shower</option><option value="Private Sessions">Private Sessions</option></select>
-          <select class="select" id="workflowStatus" aria-label="Filter workflows by launch status"><option value="all">All statuses</option><option value="required">Required</option><option value="hold">Hold</option></select>
-          <select class="select" id="workflowPhase" aria-label="Filter workflows by implementation phase"><option value="all">All phases</option><option value="foundation">Foundation</option><option value="customer">Customer journeys</option><option value="private">Private sessions</option><option value="premium">$499 premium expansion</option><option value="zoom">Zoom and Pabbly last</option><option value="held">Held work</option></select>
+          <select class="select" id="workflowSystem" aria-label="Filter workflows by system"><option value="all">All systems</option><option value="Light Shower">Light Shower</option><option value="Midweek">Midweek</option><option value="Pabbly">Pabbly</option><option value="Private Sessions">Private Sessions</option></select>
+          <select class="select" id="workflowStatus" aria-label="Filter workflows by launch status"><option value="all">All statuses</option><option value="production">Production</option><option value="required">Required</option><option value="deferred">Deferred</option><option value="hold">Hold</option></select>
+          <select class="select" id="workflowPhase" aria-label="Filter workflows by implementation phase"><option value="all">All phases</option><option value="foundation">Foundation</option><option value="customer">Customer journeys</option><option value="private">Private sessions</option><option value="premium">$499 premium expansion</option><option value="zoom">Zoom and Pabbly integration</option><option value="held">Held work</option></select>
         </div>
         <div class="cards" id="workflowCards"></div>
       </section>
 
       <section class="panel" id="panel-redirects" role="tabpanel" aria-labelledby="tab-redirects" hidden>
-        <div class="section-head"><div><p class="eyebrow">Preserve old traffic</p><h2>Redirect checklist</h2></div><p>Confirm active campaigns before retiring a route. Use permanent redirects only after the replacement is working.</p></div>
+        <div class="section-head"><div><p class="eyebrow">Preserve old traffic</p><h2>Redirect checklist</h2></div><p>Confirm active campaigns before retiring a route. Use permanent redirects only after the replacement is working. Do not add `/wednesday` here; it should return a normal not-found response.</p></div>
         <div class="tab-guide"><div class="guide-block"><strong>What this tab shows</strong><p>Old web addresses and the new pages they should open.</p></div><div class="guide-block"><strong>How to use it</strong><p>Check ads, emails, QR codes, bookmarks, and Google results before moving an old address.</p></div><div class="guide-block"><strong>Finished when</strong><p>The new page works and the old address has been tested from start to finish.</p></div></div>
         <div id="redirectTable"></div>
       </section>
@@ -398,7 +405,7 @@
       </section>
     </main>
 
-    <footer class="footer">Checkboxes and edited URLs are saved only in this browser. Last updated July 23, 2026.</footer>
+    <footer class="footer">Checkboxes and edited URLs are saved only in this browser. Production statuses are owner-reported. Last updated August 9, 2026.</footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -406,9 +413,9 @@
   (function(){
     "use strict";
     var storageKey="hcla-deployment-board-v1";
-    /* Published baseline from Progress Exports/hcla-deployment-progress July 23-2026 1_54.json. Browser changes are layered on top. */
+    /* Published baseline combines the July 23 progress export with owner-reported production status from August 9, 2026. Browser changes are layered on top. */
     var publishedProgress={
-      exportedAt:"2026-07-22T17:53:56.710Z",
+      exportedAt:"2026-08-09T00:00:00.000Z",
       routes:{},
       checks:{
         "page:home:0":true,
@@ -432,10 +439,10 @@
         "page:privacy:0":true,
         "page:terms:0":true,
         "page:midweek:0":true,
+        "page:midweek:5":true,
         "page:light-shower:0":true,
         "page:monday:0":true,
         "page:tuesday:0":true,
-        "page:wednesday:0":true,
         "page:thursday:0":true,
         "page:friday:0":true,
         "page:free-visit:0":true,
@@ -456,9 +463,32 @@
         "setup:setup-backup:0":true,
         "setup:setup-backup:1":true,
         "setup:setup-backup:2":true,
-        "setup:setup-backup:3":true
+        "setup:setup-backup:3":true,
+        "workflow:MW-10:0":true,
+        "workflow:MW-10:1":true,
+        "workflow:MW-10:4":true,
+        "workflow:MW-11:0":true,
+        "workflow:MW-11:1":true,
+        "workflow:MW-11:4":true,
+        "workflow:MW-12:0":true,
+        "workflow:MW-12:1":true,
+        "workflow:MW-12:4":true,
+        "workflow:MW-14:0":true,
+        "workflow:MW-14:1":true,
+        "workflow:MW-14:4":true,
+        "workflow:PB-MW-01:0":true,
+        "workflow:PB-MW-01:1":true,
+        "workflow:PB-MW-01:4":true
       }
     };
+    var confirmedProductionChecks=[
+      "page:midweek:0","page:midweek:5",
+      "workflow:MW-10:0","workflow:MW-10:1","workflow:MW-10:4",
+      "workflow:MW-11:0","workflow:MW-11:1","workflow:MW-11:4",
+      "workflow:MW-12:0","workflow:MW-12:1","workflow:MW-12:4",
+      "workflow:MW-14:0","workflow:MW-14:1","workflow:MW-14:4",
+      "workflow:PB-MW-01:0","workflow:PB-MW-01:1","workflow:PB-MW-01:4"
+    ];
     var state={checks:Object.assign({},publishedProgress.checks),routes:Object.assign({},publishedProgress.routes),theme:"light"};
     try{
       var storedState=JSON.parse(localStorage.getItem(storageKey)||"{}");
@@ -466,6 +496,7 @@
       state.routes=Object.assign({},publishedProgress.routes,storedState.routes||{});
       state.theme=storedState.theme||state.theme;
     }catch(error){}
+    confirmedProductionChecks.forEach(function(id){state.checks[id]=true;});
 
     /* Permanent route defaults: edit the url values here if you want the source file itself to carry different recommendations. */
     var pageData=[
@@ -476,19 +507,18 @@
       {id:"conscious",name:"Conscious Connections",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/conscious-connections",sources:["pages/conscious-connections/ghl-conscious-connections-v4-framework-alternative.html"],assembly:"One custom-code block",note:"No future event date is invented. Contact remains the fallback until a real event is scheduled."},
       {id:"connection",name:"Heart Center Connection",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/connection",sources:["pages/heart-center-connection/ghl-heart-center-connection-v4-framework-alternative.html"],assembly:"One custom-code block with current video and calendar",note:"Test both the invitation video and calendar embed in GHL."},
       {id:"new-student",name:"New Student",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/new-student",sources:["pages/new-student/ghl-new-student-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Verify every free-first-visit link uses the final route selected below."},
-      {id:"faq",name:"FAQ",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/faq",sources:["pages/faq/ghl-faq-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Recheck `$99`, `$199`, and `$399` terms whenever an offer changes."},
+      {id:"faq",name:"FAQ",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/faq",sources:["pages/faq/ghl-faq-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Recheck `$52`, `$38`, protected `$15`, `$99`, `$199`, and `$399` terms whenever an offer changes."},
       {id:"contact",name:"Contact",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/contact",sources:["pages/contact/ghl-contact-v4-framework-alternative.html"],assembly:"One custom-code block with existing GHL form",note:"Preserve the query parameters used for in-person private-session requests."},
       {id:"privacy",name:"Privacy Policy",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/privacy-policy",sources:["pages/privacy-policy/ghl-privacy-policy-custom-code.html"],assembly:"One custom-code block",note:"Legal review is recommended before publication."},
-      {id:"terms",name:"Terms and Conditions",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/tos",sources:["pages/tos/ghl-tos-custom-code.html"],assembly:"One custom-code block",note:"Legal review is recommended. Current source includes `$99`, `$199`, and standalone `$399` terms."},
-      {id:"midweek",name:"Midweek Women's Circle",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/midweek-healing-circle",sources:["pages/midweek-healing-circle/ghl-midweek-healing-circle-custom-code.html"],assembly:"One custom-code block with embedded calendar",note:"Verify that this program is currently active before linking from the rebuilt site."},
+      {id:"terms",name:"Terms and Conditions",domain:"heartcenter.la",action:"replace",url:"https://heartcenter.la/tos",sources:["pages/tos/ghl-tos-custom-code.html"],assembly:"One custom-code block",note:"Legal review is recommended. Current source includes Midweek `$52/$38`, protected `$15`, `$99`, `$199`, and standalone `$399` terms."},
+      {id:"midweek",name:"Midweek Women's Circle",domain:"heartcenter.la",action:"production",url:"https://heartcenter.la/midweek-healing-circle",sources:["pages/midweek-healing-circle/ghl-midweek-healing-circle-custom-code.html"],assembly:"Production page with mode-specific calendars",note:"Owner-reported production on August 9, 2026. Reconcile the live GHL source, metadata, and mobile QA evidence against this local source without disrupting the active path."},
 
-      {id:"light-shower",name:"Light Shower hub",domain:"breathing.heartcenter.la",action:"replace",url:"https://breathing.heartcenter.la/",sources:["pages/classes/ghl-classes-v5-feedback-revision.html"],assembly:"One custom-code block",note:"Approved funnel direction. Replace all free, `$99`, and `$199` links with their final destinations before publishing."},
+      {id:"light-shower",name:"Light Shower hub",domain:"breathing.heartcenter.la",action:"replace",url:"https://breathing.heartcenter.la/",sources:["pages/classes/ghl-classes-v5-feedback-revision.html"],assembly:"One custom-code block",note:"Four active days: Monday/Friday remote; Tuesday/Thursday remote or in person. `/wednesday` remains unpublished and unlinked."},
       {id:"monday",name:"Light Shower Monday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/monday",sources:["pages/light-shower-monday/ghl-light-shower-monday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Latest green/ivory v4 design with the workbook schedule. Optional day art uses HCLA_LIGHT_SHOWER_MONDAY_IMAGE_URL; a real fallback image is included."},
-      {id:"tuesday",name:"Light Shower Tuesday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/tuesday",sources:["pages/light-shower-tuesday/ghl-light-shower-tuesday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Latest green/ivory v4 design with the workbook schedule. Optional day art uses HCLA_LIGHT_SHOWER_TUESDAY_IMAGE_URL; a real fallback image is included."},
-      {id:"wednesday",name:"Light Shower Wednesday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/wednesday",sources:["pages/light-shower-wednesday/ghl-light-shower-wednesday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Latest green/ivory v4 design with the workbook schedule. Optional day art uses HCLA_LIGHT_SHOWER_WEDNESDAY_IMAGE_URL; a real fallback image is included."},
-      {id:"thursday",name:"Light Shower Thursday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/thursday",sources:["pages/light-shower-thursday/ghl-light-shower-thursday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Latest green/ivory v4 design with the workbook schedule. Optional day art uses HCLA_LIGHT_SHOWER_THURSDAY_IMAGE_URL; a real fallback image is included."},
+      {id:"tuesday",name:"Light Shower Tuesday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/tuesday",sources:["pages/light-shower-tuesday/ghl-light-shower-tuesday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Paid participants may choose remote or in person at the clinic. The free first visit is online only."},
+      {id:"thursday",name:"Light Shower Thursday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/thursday",sources:["pages/light-shower-thursday/ghl-light-shower-thursday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Paid participants may choose remote or in person at the clinic. The free first visit is online only."},
       {id:"friday",name:"Light Shower Friday",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/friday",sources:["pages/light-shower-friday/ghl-light-shower-friday-v4-framework-alternative.html"],assembly:"One custom-code block",note:"Latest green/ivory v4 design with the workbook schedule. Optional day art uses HCLA_LIGHT_SHOWER_FRIDAY_IMAGE_URL; a real fallback image is included."},
-      {id:"free-visit",name:"Free first Light Shower visit",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/free-first-visit",sources:["pages/light-shower-free-visit/ghl-light-shower-free-visit-v1-custom-code.html"],assembly:"One custom-code block with a five-option GHL Class Booking calendar",note:"Recommended new route. Replace the calendar placeholder and do not publish until free-visit workflows 10 through 15 pass."},
+      {id:"free-visit",name:"Free first Light Shower visit",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/free-first-visit",sources:["pages/light-shower-free-visit/ghl-light-shower-free-visit-v1-custom-code.html"],assembly:"One custom-code block with a four-day online-only GHL Class Booking calendar",note:"Monday, Tuesday, Thursday, or Friday; always remote. Do not expose `$15` or the internal `$35` path."},
       {id:"three-pack",name:"$99 Three-Class checkout",domain:"breathing.heartcenter.la",action:"replace",url:"https://breathing.heartcenter.la/three-pack-class",sources:["pages/three-pack-class/ghl-three-pack-class-top-custom-code.html","pages/three-pack-class/ghl-three-pack-class-bottom-custom-code.html"],assembly:"Top custom code + native `$99` order form + bottom custom code",note:"Assign only the `$99` product. Do not activate until attendance, credit, and replay fulfillment are working."},
       {id:"three-pack-confirm",name:"$99 confirmation",domain:"breathing.heartcenter.la",action:"create",url:"https://breathing.heartcenter.la/three-pack-class-confirmation",sources:["pages/three-pack-class-confirmation/ghl-three-pack-class-confirmation-custom-code.html"],assembly:"One custom-code block",note:"Set the `$99` order-form success redirect here and insert the approved class-selection/access destination."},
       {id:"unlimited",name:"$199 Unlimited Month checkout",domain:"breathing.heartcenter.la",action:"replace",url:"https://breathing.heartcenter.la/monthly-unlimited",sources:["pages/monthly-unlimited/ghl-monthly-unlimited-top-custom-code.html","pages/monthly-unlimited/ghl-monthly-unlimited-bottom-custom-code.html"],assembly:"Top custom code + native `$199` order form + bottom custom code",note:"Assign only the `$199` product. Confirm exact 30-day access and no library promise."},
@@ -511,14 +541,18 @@
       {id:"setup-backup",phase:"foundation",name:"Production backup and route inventory",detail:"Duplicate or export every live page before replacement. Record the current URL, page ID, funnel/site location, and active campaigns."},
       {id:"setup-fields",phase:"foundation",name:"Contact fields and state model",detail:"Create Light Shower access, attendance, replay, benefit, attribution, and private-session fields before building workflows."},
       {id:"setup-tags",phase:"foundation",name:"Tag taxonomy",detail:"Create the approved `ls:` and `ps:` tags. Fields and appointment/payment records remain authoritative for mutable state."},
-      {id:"setup-products",phase:"foundation",name:"Products and native order forms",detail:"Create separate `$99`, `$199`, Winnie `$399`, Jay `$399`, and `$499` products and order forms. Keep each inactive until its own test path passes."},
-      {id:"setup-calendars",phase:"foundation",name:"Calendars",detail:"Create one five-option Light Shower free-visit calendar plus separate 30-minute remote calendars for Winnie and Jay. Configure the 15-minute benefit calendar only after its policy is approved."},
+      {id:"setup-products",phase:"foundation",name:"Products and native order forms",detail:"Verify `$52`, `$38`, `$99`, and `$199`; create the protected `$15` Midweek surcharge; keep `$35` Tuesday/Thursday internal; preserve separate Winnie `$399`, Jay `$399`, and `$499` products."},
+      {id:"setup-calendars",phase:"foundation",name:"Calendars",detail:"Create the four-day online-only free calendar; entitled Tuesday/Thursday remote and in-person calendars; and separate Midweek standalone remote/in-person, friend remote/in-person, and entitled remote/in-person calendars. Configure capacity before activation."},
       {id:"setup-pipeline",phase:"foundation",name:"Customer journey pipeline",detail:"Create stages for lead, registered, attended, paid access, private appointment, review, completed, and alumni. Use it for visibility, not access control."},
-      {id:"setup-values",phase:"foundation",name:"Core URLs and destinations",detail:"Create or verify support contacts, access URLs, and approved checkout and confirmation destinations. Defer Zoom-specific values until the final integration phase."},
-      {id:"setup-test",phase:"foundation",name:"Dedicated test contacts and payment method",detail:"Create separate free, `$99`, `$199`, `$499`, Winnie, Jay, mismatch, no-show, refund, and DND test contacts so histories remain readable."},
+      {id:"setup-values",phase:"foundation",name:"Core URLs and destinations",detail:"Create or verify support contacts, protected calendar URLs, access destinations, occurrence fields, and approved checkout and confirmation destinations. Defer Zoom secrets until the final integration phase."},
+      {id:"setup-test",phase:"foundation",name:"Dedicated test contacts and payment method",detail:"Create separate free Tuesday/Thursday, `$52` remote/in-person, `$38` remote/in-person, `$99` remote/in-person, `$199` remote/in-person, surcharge failure, `$499`, Winnie, Jay, mismatch, no-show, refund, and DND test contacts."},
+      {id:"setup-route-wednesday",phase:"foundation",name:"Retired Wednesday route boundary",detail:"Configure `/wednesday` as a normal not-found response. Keep it out of public navigation, sitemap, redirects, canonicals, and active schema; preserve the local folder only for rollback."},
+      {id:"setup-analytics",phase:"foundation",name:"Analytics event contract",detail:"Map `program_viewed`, `delivery_mode_selected`, `eligibility_checked`, `pricing_path_selected`, `surcharge_payment_succeeded`, `booking_completed`, `attendance_verified`, `credit_consumed`, `satisfaction_count_incremented`, `replay_granted`, and `manual_review_created` to page, GHL, Pabbly, and reporting destinations with stable IDs, occurrence-level deduplication, and no sensitive intake data."},
+      {id:"setup-messages",phase:"foundation",name:"Mode-safe operational messages",detail:"Midweek MW-10/11/12/14 messages are owner-reported production. Build and test the Light Shower confirmations, reminders, mode-change, replay, recovery, and support messages from the Phase 6 specification; leave other Midweek families deferred."},
+      {id:"setup-owner-inputs",phase:"foundation",name:"Owner launch inputs",detail:"Enter capacity, arrival time, parking, accessibility, friend validation, `$15` refund handling, Wednesday-notice audience/timing, sender and Reply-To tests, analytics destinations, and actual GHL asset IDs before dependent paths activate."},
       {id:"setup-premium",phase:"premium",name:"$499 post-purchase fulfillment",detail:"Create the private-expansion pipeline or tasks, immediate Light Treasure definition message, intake, facilitator request, combined appointment tracking, three-item fulfillment count, and named staff owner."},
-      {id:"setup-security",phase:"zoom",name:"Rotate the exposed GHL inbound webhook",detail:"Final integration phase: delete and recreate the exposed inbound-webhook trigger, update both Pabbly publisher endpoints, test the new value, and confirm the old URL no longer executes."},
-      {id:"setup-zoom",phase:"zoom",name:"Zoom and Pabbly meeting publishing",detail:"Final integration phase: keep the intentional T-50 weekday publishers. Never create these meetings more than one hour before class. Verify the receiving GHL update, register the queued roster after meeting creation when enabled, and complete a staff preflight before customer link sends."},
+      {id:"setup-security",phase:"zoom",name:"Rotate the exposed GHL inbound webhook",detail:"Final integration phase: delete and recreate the exposed inbound-webhook trigger, update every active Pabbly publisher endpoint, test the new value, and confirm the old URL no longer executes."},
+      {id:"setup-zoom",phase:"zoom",name:"Zoom and Pabbly meeting publishing",detail:"The independent Midweek Wednesday publisher is owner-reported production. For Light Shower, verify morning Monday/Friday and evening Tuesday/Thursday T-50 publishers, then validate program, occurrence, date, and link before customer sends."},
       {id:"setup-attendance",phase:"zoom",name:"Attendance transport and reconciliation",detail:"Final integration phase: queue bookings by GHL contact ID; after T-50 creation, store contact ID plus meeting UUID plus Zoom registrant ID. Aggregate repeat joins, deduplicate each occurrence, and route missing or ambiguous identities to staff."},
       {id:"setup-recording",phase:"zoom",name:"Recording archive and replay storage",detail:"Final integration phase: enable the record-copy-verify-entitle-expire-delete sequence only after consent, protected playback, and Drive retention decisions are complete."}
     ];
@@ -539,14 +573,17 @@
       ["LS-14","Light Shower","required","Free visit no-show","No-show after reconciliation",["Offer reschedule","Stop after two nudges","Use no pressure language"]],
       ["LS-15","Light Shower","required","Post-visit decision follow-up","Verified free attendance",["Send thank-you and reflection","Explain `$99` and `$199` choices on Day 3","Stop immediately on purchase"]],
       ["LS-16","Light Shower","required","Abandoned registration or checkout","Supported GHL abandonment event",["Send one helpful reminder","Send one final reminder","Stop on registration or payment"]],
+      ["LS-17","Light Shower","required","Delivery-mode router","Entitled Light Shower booking",["Route Monday and Friday to remote","Route Tuesday and Thursday by selected mode","Reject every in-person free-visit request"]],
+      ["LS-18","Light Shower","required","Delivery-mode change","Approved booking change",["Preserve booking and occurrence IDs","Transfer capacity and stop obsolete reminders","Prevent duplicate attendance"]],
+      ["LS-19","Light Shower","hold","Wednesday cancellation notice","Owner-approved roster, message, and send time",["Send the approved cancellation template once","Explain Midweek as a distinct optional program","Do not auto-enroll or expose a protected `$15` link"]],
 
       ["LS-20","Light Shower","required","Monday reminder loop","Daily-reminders-active contact",["Wait until publisher and preflight succeed","Send Monday's fresh Zoom link","Stop when access or reminders end"]],
-      ["LS-21","Light Shower","required","Tuesday reminder loop","Daily-reminders-active contact",["Wait until publisher and preflight succeed","Send Tuesday's fresh Zoom link","Stop when access or reminders end"]],
-      ["LS-22","Light Shower","required","Wednesday reminder loop","Daily-reminders-active contact",["Wait until publisher and preflight succeed","Send Wednesday's fresh Zoom link","Stop when access or reminders end"]],
-      ["LS-23","Light Shower","required","Thursday reminder loop","Daily-reminders-active contact",["Wait until publisher and preflight succeed","Send Thursday's fresh Zoom link","Stop when access or reminders end"]],
+      ["LS-21","Light Shower","required","Tuesday hybrid reminder loop","Confirmed Tuesday booking",["Remote: send fresh Zoom link after preflight","In person: send clinic details and suppress Zoom","Stop obsolete branch after a mode change"]],
+      ["LS-22","Light Shower","required","Retire Wednesday reminder loop","Existing LS-22 workflow",["Block new entry","Review and exit queued contacts safely","Preserve history; never repurpose for Midweek"]],
+      ["LS-23","Light Shower","required","Thursday hybrid reminder loop","Confirmed Thursday booking",["Remote: send fresh Zoom link after preflight","In person: send clinic details and suppress Zoom","Stop obsolete branch after a mode change"]],
       ["LS-24","Light Shower","required","Friday reminder loop","Daily-reminders-active contact",["Wait until publisher and preflight succeed","Send Friday's fresh Zoom link","Stop when access or reminders end"]],
       ["LS-25","Light Shower","required","Zoom link staff preflight","After each Pabbly publisher",["Verify inbound workflow ran","Verify link and class date","Stop customer send and alert staff when missing or stale"]],
-      ["LS-26","Light Shower","required","Attendance capture and reconciliation","Zoom participant evidence or facilitator check-in",["Match contact and aggregate repeat joins","Deduplicate contact plus occurrence","Increment attendance once or route to review"]],
+      ["LS-26","Light Shower","required","Hybrid attendance reconciliation","Zoom participant evidence or facilitator check-in",["Match both modes to one occurrence","Deduplicate contact plus occurrence","Increment attendance once or route to review"]],
       ["LS-27","Light Shower","required","No-show reconciliation","Post-class reconciliation time",["Check Zoom, Pabbly, and facilitator evidence","Record no-show only after evidence check","Do not consume a `$99` credit"]],
       ["LS-28","Light Shower","required","Post-class check-in","Valid attendance event",["Send brief class-specific follow-up","Update engagement","Invite the next appropriate class"]],
       ["LS-29","Light Shower","required","Recording archive and Zoom cleanup","Zoom recording.completed",["Copy MP4 to restricted Drive and verify","Set customer expiry from scheduled class end","Delete Zoom after 72 hours only when archive remains verified"]],
@@ -558,7 +595,7 @@
       ["LS-34","Light Shower","required","`$99` private-expansion eligibility","Two or three meaningful attendances",["Record `$499` eligibility","Exclude refunded or unresolved contacts","Invite without interrupting current access"]],
 
       ["LS-40","Light Shower","required","`$199` purchase and 30-day activation","Successful `$199` payment",["Start exactly 30 consecutive days","Activate live reminders and 15-minute benefit","Keep library access excluded"]],
-      ["LS-41","Light Shower","required","Live-access instructions","`$199` fulfillment",["Send weekday schedule","Offer reminder preferences","Provide support path"]],
+      ["LS-41","Light Shower","required","Live-access instructions","`$199` fulfillment",["Send the four-day Light Shower and eligible Midweek schedule","Offer reminder preferences","Provide support path"]],
       ["LS-42","Light Shower","required","Access rescue","No schedule click or setup after 48 hours",["Send help message","Create staff task if unresolved","Stop after successful setup"]],
       ["LS-43","Light Shower","required","Complimentary 15-minute session","Benefit becomes available",["Send Winnie and Jay options","Track available, booked, and redeemed","Do not auto-expire until policy is approved"]],
       ["LS-44","Light Shower","hold","In-person event discount","Real eligible event is approved",["Remain inactive while no event exists","Deliver event-specific code when approved","Expire with active access"]],
@@ -581,6 +618,24 @@
       ["LS-62","Light Shower","required","Refund manual review","Eligibility cannot be automated",["Record reason","Assign owner","Avoid automatic legal conclusions"]],
       ["LS-63","Light Shower","required","Support escalation","Unanswered contact or overdue task",["Notify owner","Escalate at service interval","Record resolution"]],
 
+      ["MW-00","Midweek","deferred","Contact and booking normalization","Midweek form, appointment, or payment",["Normalize pricing path and delivery mode","Write booking and occurrence IDs","Record consent and source"]],
+      ["MW-01","Midweek","deferred","Eligibility and pricing router","Midweek booking request",["Route `$52`, valid `$38`, active `$99`, or active `$199`","Reject unsupported eligibility","Protect entitled calendar URLs"]],
+      ["MW-02","Midweek","deferred","Standalone payment router","Successful `$52` or validated `$38` payment",["Match payment to occurrence and booking","Confirm the correct mode and seat","Grant no Light Shower entitlement"]],
+      ["MW-03","Midweek","deferred","Entitled in-person surcharge","Eligible `$99/$199` in-person request",["Require the matching `$15` payment","Confirm seat only after success","Grant nothing from surcharge alone"]],
+      ["MW-04","Midweek","deferred","Payment failure and refund","Failed or refunded Midweek payment",["Withhold or update confirmation","Release seat according to policy","Preserve history and notify support"]],
+      ["MW-10","Midweek","production","Booking confirmations (A–D)","Confirmed standalone Midweek booking",["Run one exact-calendar confirmation workflow per `$52/$38` and remote/in-person path","Write booking state and production tags","Send only the matching mode-safe confirmation"]],
+      ["MW-11","Midweek","production","Remote reminders (A–B)","Confirmed standalone remote booking",["Send schedule-only reminder before the meeting exists","Wait for the independent Midweek publisher","Send the fresh Pabbly-published link through the remote branch"]],
+      ["MW-12","Midweek","production","In-person reminders (A–B)","Confirmed standalone in-person booking",["Send clinic and approved arrival details","Suppress every Zoom link","Keep remote and in-person messaging separate"]],
+      ["MW-13","Midweek","deferred","Delivery-mode change","Approved Midweek mode change",["Preserve one booking and occurrence","Update capacity and surcharge state","Stop obsolete reminders"]],
+      ["MW-14","Midweek","production","Cancellations and waitlist (A–F)","Cancellation or staff-controlled waitlist event",["Run separate exact-calendar cancellation workflows","Apply the current refund and seat-release handling","Send the matching cancellation or waitlist message"]],
+      ["MW-20","Midweek","deferred","Attendance evidence intake","Zoom/Pabbly event or facilitator check-in",["Normalize evidence from either mode","Deduplicate contact plus occurrence","Send ambiguous identity to review"]],
+      ["MW-21","Midweek","deferred","Attendance reconciliation","Evidence window closes",["Set attended, no-show, duplicate, or manual review","Apply no premature penalty","Preserve evidence"]],
+      ["MW-22","Midweek","deferred","Entitlement fulfillment","Verified Midweek attendance",["`$99`: consume one reserved credit once","`$199`: increment active-cycle threshold once","Do nothing twice for duplicate evidence"]],
+      ["MW-23","Midweek","deferred","Recording and `$99` replay","Archive and attendance verified",["Grant matching replay to eligible `$99` attendee","Expire at scheduled end plus 72 hours","Retain and alert on archive failure"]],
+      ["MW-24","Midweek","deferred","Follow-up and support","Reconciled result or workflow failure",["Send approved follow-up","Create staff review task when needed","Prevent duplicate fulfillment"]],
+
+      ["PB-MW-01","Pabbly","production","Midweek Zoom link publisher","Wednesday at 10:40 AM Pacific",["Create the fresh 11:30 AM Midweek Zoom meeting","Clean and publish the current join URL to GHL","Release the remote MW-11 reminder path after the handoff"]],
+
       ["PS-00","Private Sessions","required","In-person request review","Contact form with facilitator and in-person mode",["Preserve facilitator and mode","Have staff confirm location, date, and time","Send checkout only after appointment confirmation"]],
       ["PS-W01","Private Sessions","required","Winnie appointment confirmed","Confirmed Winnie calendar appointment",["Write appointment ID, time, facilitator, and mode","Apply confirmed and payment-pending state","Send Winnie checkout and start 30-minute hold"]],
       ["PS-W02","Private Sessions","required","Winnie 10-minute payment reminder","Winnie hold reaches 10 minutes unpaid",["Recheck appointment and payment","Send one reminder","Stop on payment or cancellation"]],
@@ -600,14 +655,14 @@
       ["PS-09","Private Sessions","required","Private-session integrity audit","Daily schedule",["Find confirmed-unpaid and paid-without-appointment cases","Find facilitator mismatches and duplicate payments","Apply needs-review and notify staff"]]
     ].map(function(row){return{id:row[0],system:row[1],status:row[2],name:row[3],trigger:row[4],actions:row[5]};});
 
-    var zoomLastIds=["LS-12","LS-13","LS-14","LS-20","LS-21","LS-22","LS-23","LS-24","LS-25","LS-26","LS-27","LS-28","LS-29","LS-31","LS-32","LS-33"];
+    var zoomLastIds=["LS-12","LS-13","LS-14","LS-20","LS-21","LS-22","LS-23","LS-24","LS-25","LS-26","LS-27","LS-28","LS-29","LS-31","LS-32","LS-33","MW-11","MW-20","MW-21","MW-22","MW-23","PB-MW-01"];
     var premiumIds=["LS-34","LS-50","LS-51","LS-52","LS-53","LS-54","LS-55","LS-56","LS-57","LS-58"];
     var workflowPhases={
       foundation:{label:"Foundation",order:1},
       customer:{label:"Customer journeys",order:2},
       private:{label:"Private sessions",order:3},
       premium:{label:"$499 premium expansion",order:4},
-      zoom:{label:"Zoom and Pabbly last",order:5},
+      zoom:{label:"Zoom and Pabbly integration",order:5},
       held:{label:"Held work",order:6}
     };
     function workflowPhase(flow){
@@ -616,6 +671,7 @@
       if(premiumIds.indexOf(flow.id)!==-1)return"premium";
       if(flow.system==="Private Sessions")return"private";
       if(/^LS-0/.test(flow.id))return"foundation";
+      if(/^MW-0/.test(flow.id))return"foundation";
       return"customer";
     }
 
@@ -630,13 +686,16 @@
       ["launch-backup","A fresh production backup exists","Current GHL pages, settings, URLs, form IDs, and redirects can be restored."],
       ["launch-routes","All final URLs are reconciled","Buttons, menus, confirmations, calendars, emails, SMS, canonicals, schema, and redirects use the same route map."],
       ["launch-placeholders","No unresolved customer-facing placeholders remain","Search every production source and rendered page for `{{HCLA_`, TODO, TBD, test URLs, and local-preview language."],
-      ["launch-products","Every native order form has one correct product","Verify `$99`, `$199`, Winnie `$399`, Jay `$399`, and `$499` independently."],
+      ["launch-products","Every native order form has one correct product","Verify Midweek `$52`, validated `$38`, protected `$15`, `$99`, `$199`, Winnie `$399`, Jay `$399`, and `$499` independently."],
       ["launch-workflows","Required workflows have passed their test cases","Check trigger filters, re-entry, waits, stop conditions, mismatch branches, and staff alerts."],
       ["launch-private","Winnie canary passes before Jay launches","Test booking, 10-minute reminder, payment, 30-minute release, mismatch, reschedule, no-show, HCLA cancellation, refund, and credit."],
       ["launch-mobile","Desktop and mobile GHL rendering is approved","Check at roughly 375px and desktop widths, including calendars, order forms, menus, accordions, footer, focus, and reduced motion."],
       ["launch-analytics","Analytics records the journey without sensitive intake data","Verify page, calendar, checkout, purchase, appointment, and source events. Do not send unnecessary health information."],
+      ["launch-analytics-contract","Required Phase 6 events and deduplication pass","Verify stable event IDs plus program, occurrence, booking, mode, and entitlement context where applicable. Confirm duplicates do not change credits, counts, or replay state."],
+      ["launch-mode-messages","Remote and in-person messages are separated","Remote messages contain the verified online-room link and no clinic instructions. In-person messages contain clinic and arrival instructions and no Zoom link."],
+      ["launch-wednesday-boundary","Wednesday Light Shower is absent from public systems","`/wednesday` returns not found and appears in no navigation, sitemap, redirect, canonical, booking, reminder, or active schema."],
       ["launch-legal","Terms and Privacy have final review","Published policies match current offers, recording behavior, cancellation rules, and information handling."],
-      ["launch-links","External and internal links pass","Test social links, email, phone, legal, facilitator routes, day pages, confirmations, decline paths, and support routes."],
+      ["launch-links","External and internal links pass","Test social links, email, phone, legal, facilitator routes, four active day pages, Midweek, confirmations, decline paths, and support routes. Confirm no public Wednesday Light Shower link exists."],
       ["launch-premium","The `$499` post-purchase path passes","Verify eligibility, equal decline, payment, immediate Light Treasure definition delivery, intake, facilitator request, combined appointment, all three fulfillment records, duplicate payment, and support."],
       ["launch-zoom","Final phase: today's Zoom link path is verified","Pabbly creates the meeting inside the one-hour window, registers any queued roster, GHL stores the fresh values, staff preflight passes, and only then does the link reminder send."],
       ["launch-attendance","Final phase: attendance and no-show reconciliation works","Repeat joins aggregate, contact matching is auditable, duplicates do not count twice, and no-show does not consume a `$99` credit."],
@@ -647,13 +706,13 @@
     ].map(function(row){return{id:row[0],name:row[1],detail:row[2]};});
 
     var pageSteps=["Route created or selected","Correct source blocks pasted","Calendar, form, product, and URL integrations connected","Title, description, canonical, schema, and index setting configured","Desktop and mobile rendering checked","Published or deliberately held"];
-    var workflowSteps=["Created with exact trigger and filters","Fields, tags, waits, and stop conditions configured","Failure and manual-review branches configured","Tested with a dedicated contact","Activated or deliberately held"];
+    var workflowSteps=["Created with exact trigger and filters","Fields or values, waits, and stop conditions configured","Failure and manual-review branches configured","Tested with a dedicated contact","Activated or deliberately held"];
     var setupSteps=["Created or verified","Names and IDs recorded","Tested independently","Ready for dependent workflows"];
 
     function esc(value){return String(value).replace(/[&<>\"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
     function save(){localStorage.setItem(storageKey,JSON.stringify(state));updateProgress();}
     function checked(id){return !!state.checks[id];}
-    function checkbox(id,label){return '<label class="check"><input type="checkbox" data-check="'+esc(id)+'" '+(checked(id)?'checked':'')+'><span>'+esc(label)+'</span></label>';}
+    function checkbox(id,label){var locked=confirmedProductionChecks.indexOf(id)!==-1;return '<label class="check'+(locked?' locked':'')+'"><input type="checkbox" data-check="'+esc(id)+'" '+(checked(id)?'checked':'')+' '+(locked?'disabled':'')+'><span>'+esc(label)+'</span></label>';}
     function sourceLinks(sources){return sources.map(function(src){return '<a href="'+encodeURI(src)+'" target="_blank">'+esc(src)+'</a>';}).join("");}
     function routeFor(page){return state.routes[page.id]||page.url;}
     function showToast(message){var t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(showToast.timer);showToast.timer=setTimeout(function(){t.classList.remove("show");},1800);}
@@ -685,7 +744,7 @@
       var phase=document.getElementById("workflowPhase").value;
       var html="",count=0;
       workflows.slice().sort(function(a,b){var pa=workflowPhases[workflowPhase(a)].order,pb=workflowPhases[workflowPhase(b)].order;return pa-pb||a.id.localeCompare(b.id);}).forEach(function(flow){var flowPhase=workflowPhase(flow);var hay=(JSON.stringify(flow)+" "+workflowPhases[flowPhase].label).toLowerCase();if(q&&!hay.includes(q))return;if(system!=="all"&&flow.system!==system)return;if(status!=="all"&&flow.status!==status)return;if(phase!=="all"&&flowPhase!==phase)return;count++;
-        html+='<details class="card"><summary><div><div class="card-title-row"><span class="badge '+(flow.status==="hold"?'hold':'create')+'">'+esc(flow.status)+'</span><span class="badge '+(flowPhase==="zoom"?'final':'phase')+'">'+esc(workflowPhases[flowPhase].label)+'</span><span class="badge">'+esc(flow.id)+'</span><h3>'+esc(flow.name)+'</h3></div><p class="card-subtitle">'+esc(flow.system)+' | Trigger: '+esc(flow.trigger)+'</p></div><span class="chevron">+</span></summary><div class="card-body"><div class="workflow-meta"><div class="meta-block"><span class="label">Workflow name</span><p>'+esc(flow.id+' | '+flow.name+' | v1')+'</p></div><div class="meta-block"><span class="label">Build phase</span><p>'+esc(workflowPhases[flowPhase].label)+'</p></div><div class="meta-block"><span class="label">Trigger</span><p>'+esc(flow.trigger)+'</p></div></div><span class="label">Core actions</span><ol class="action-list">'+flow.actions.map(function(a){return '<li>'+esc(a)+'</li>';}).join("")+'</ol><div class="detail-grid"><div class="note">'+(flow.status==="hold"?'Build only as an inactive draft if useful. Do not activate until the stated offer or policy blocker is resolved.':flowPhase==="zoom"?'Build this only after the stable GHL phases pass. Do not activate until the T-50 meeting window, identity matching, failure path, and staff fallback are proven.':'Do not activate until its trigger, success case, failure case, and stop conditions have all passed.')+'</div><div><span class="label">Workflow checklist</span>'+workflowSteps.map(function(step,i){return checkbox("workflow:"+flow.id+":"+i,step);}).join("")+'</div></div></div></details>';
+        html+='<details class="card"><summary><div><div class="card-title-row"><span class="badge '+(flow.status==="hold"?'hold':flow.status==="deferred"?'deferred':flow.status==="production"?'production':'create')+'">'+esc(flow.status)+'</span><span class="badge '+(flowPhase==="zoom"?'final':'phase')+'">'+esc(workflowPhases[flowPhase].label)+'</span><span class="badge">'+esc(flow.id)+'</span><h3>'+esc(flow.name)+'</h3></div><p class="card-subtitle">'+esc(flow.system)+' | Trigger: '+esc(flow.trigger)+'</p></div><span class="chevron">+</span></summary><div class="card-body"><div class="workflow-meta"><div class="meta-block"><span class="label">Workflow name</span><p>'+esc(flow.id+' | '+flow.name+' | v1')+'</p></div><div class="meta-block"><span class="label">Build phase</span><p>'+esc(workflowPhases[flowPhase].label)+'</p></div><div class="meta-block"><span class="label">Trigger</span><p>'+esc(flow.trigger)+'</p></div></div><span class="label">Core actions</span><ol class="action-list">'+flow.actions.map(function(a){return '<li>'+esc(a)+'</li>';}).join("")+'</ol><div class="detail-grid"><div class="note">'+(flow.status==="production"?'Owner-reported production on August 9, 2026. Created, configured, and activated are fixed in the published baseline; dedicated test evidence and failure-path reconciliation remain open.':flow.status==="deferred"?'Deferred by the owner while Light Shower is implemented. Preserve the current record and resume it later.':flow.status==="hold"?'Build only as an inactive draft if useful. Do not activate until the stated offer or policy blocker is resolved.':flowPhase==="zoom"?'Build this only after the stable GHL phases pass. Do not activate until the T-50 meeting window, identity matching, failure path, and staff fallback are proven.':'Do not activate until its trigger, success case, failure case, and stop conditions have all passed.')+'</div><div><span class="label">Workflow checklist</span>'+workflowSteps.map(function(step,i){return checkbox("workflow:"+flow.id+":"+i,step);}).join("")+'</div></div></div></details>';
       });
       document.getElementById("workflowCards").innerHTML=count?html:'<div class="empty">No workflows match these filters.</div>';
       bindDynamic();
